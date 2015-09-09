@@ -62,7 +62,7 @@
   display: none;
   color: #FFFFFF;
  }
-/*p.tooltip1:hover span {
+p.tooltip1:hover span {
   display: block;
   position: absolute;
   background-color: #35132C;
@@ -75,7 +75,7 @@
   /*margin-top: 10px;*/
   color: #FFFFFF;
   padding: 2px 5px;
- }*/
+ }
  .comment_icon {
      float: left;
      width: 8%;

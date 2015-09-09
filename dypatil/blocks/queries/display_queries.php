@@ -111,7 +111,9 @@ echo $OUTPUT->header();
                     ON ra.userid = u.id
                     WHERE cxt.instanceid = $course->id AND ra.roleid = 9 AND cxt.contextlevel = 50 AND u.id =$USER->id";
          $registrars =  $DB->get_record_sql($sql);
-         $allregistrars[] = $registrars->id;
+         if($registrars){
+            $allregistrars[] = $registrars->id;
+         }
       }
       if(!empty($allregistrars)){
          $registrarresponses = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid = $USER->id AND userrole = 'registrar'");
