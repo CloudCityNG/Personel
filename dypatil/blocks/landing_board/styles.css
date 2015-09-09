@@ -1,0 +1,124 @@
+/*@import url('./../blocks/landing_board/style/jquery.qtip.min.css');*/
+/* qTip2 v2.2.1 | Plugins: None | Styles: core | qtip2.com | Licensed MIT | Sat Sep 06 2014 23:12:15 */
+
+.qtip{position:absolute;left:-28000px;top:-28000px;display:none;max-width:280px;min-width:50px;font-size:10.5px;line-height:12px;direction:ltr;box-shadow:none;padding:0}.qtip-content{position:relative;padding:5px 9px;overflow:hidden;text-align:left;word-wrap:break-word}.qtip-titlebar{position:relative;padding:5px 35px 5px 10px;overflow:hidden;border-width:0 0 1px;font-weight:700}.qtip-titlebar+.qtip-content{border-top-width:0!important}.qtip-close{position:absolute;right:-9px;top:-9px;z-index:11;cursor:pointer;outline:0;border:1px solid transparent}.qtip-titlebar .qtip-close{right:4px;top:50%;margin-top:-9px}* html .qtip-titlebar .qtip-close{top:16px}.qtip-icon .ui-icon,.qtip-titlebar .ui-icon{display:block;text-indent:-1000em;direction:ltr}.qtip-icon,.qtip-icon .ui-icon{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;text-decoration:none}.qtip-icon .ui-icon{width:18px;height:14px;line-height:14px;text-align:center;text-indent:0;font:400 bold 10px/13px Tahoma,sans-serif;color:inherit;background:-100em -100em no-repeat}.qtip-default{border:1px solid #F1D031;background-color:#FFFFA3;color:#555}.qtip-default .qtip-titlebar{background-color:#FFEF93}.qtip-default .qtip-icon{border-color:#CCC;background:#F1F1F1;color:#777}.qtip-default .qtip-titlebar .qtip-close{border-color:#AAA;color:#111}
+.depth2,#depth2 {
+    margin-left: 28px;
+}
+.depth3,#depth3 {
+   
+    margin-left: 58px;
+  
+}
+.depth4,#depth4 {
+  
+    margin-left: 88px;
+  
+}
+.depth5,#depth5 {
+  
+    margin-left: 118px;
+  
+}
+.depth6,#depth6 {
+  
+    margin-left: 148px;
+  
+}
+.depth7,#depth7 {
+  
+    margin-left: 185px;
+  
+}
+.depth8,#depth8 {
+  
+    margin-left: 215px;
+  
+}
+.depth9,#depth9 {
+  
+    margin-left: 245px;
+  
+}
+.depth10,#depth10 {
+  
+    margin-left: 275px;
+  
+}
+/* Custom css by vinod for CobaltLMS29 */
+.block.list_block .unlist>li>.column {
+    width: 100%;
+}
+.column > div.hierarchyitem {
+    background-image: url([[pix:block_landing_board|Institute-icon]]);
+    background-position: left center;
+    background-repeat: no-repeat;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.column > div.hierarchyitem > a {
+    font-family: Domine;
+}
+.block_landing_board .display_table {
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+    margin: 10px 10px 20px;
+    border-radius: 5px;
+}
+.block_landing_board .display_table table{
+    margin: 0;
+}
+.block_landing_board .generaltable{
+    margin-top: 10px;
+}
+.block_landing_board .generaltable td {
+    /*font-size: initial;*/
+    /*font-weight: initial;*/
+    padding: 12px;
+    vertical-align: middle;
+}
+.block_landing_board .generaltable tr:first-child td {
+    border-top: none;
+}
+.block_landing_board .generaltable td button {
+    margin: 0;
+}
+.block_landing_board .left_panel {
+    width: 34%;
+    float: left;
+}
+.block_landing_board .right_panel {
+    width: 55%;
+    float: right;
+    background: #FAFAFA;
+}
+.block_landing_board .right_panel .right_value {
+    color: #ff622d;
+}
+.block_landing_board .right_panel p {
+    padding: 2px;
+}
+.block_landing_board .unlist li {
+    border-bottom: 14px solid #EAEAEA;
+    padding: 10px;
+}
+.block_landing_board .unlist li:last-child {
+    border-bottom: none;
+}
+.block_landing_board {
+    padding: 0;
+    border: 0;
+}
+
+
+.qtip-default {
+    background: #f2f2f2;
+    border: 1px solid #e8e8e8;
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+}
+.qtip-content .generaltable tbody>tr:nth-child(odd)>td, .qtip-content .generaltable tbody>tr:nth-child(odd)>th, .qtip-content .generaltable tbody tr:hover>td, .qtip-content .generaltable tbody tr:hover>th {
+    background: #f2f2f2;
+}

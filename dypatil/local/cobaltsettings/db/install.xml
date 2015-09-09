@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/cobaltsettings/db" VERSION="20130107" COMMENT="XMLDB file for Moodle local/cobaltsettings"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+  <TABLE NAME="local_school_settings" COMMENT="Creating cobalt(custom) department for the cobalt courses" NEXT="local_cobalt_entity"  >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="name"/>
+        <FIELD NAME="name" TYPE="text" NOTNULL="true" SEQUENCE="false"  COMMENT="name of the settings" PREVIOUS="schoolid" NEXT="value"/>
+        <FIELD NAME="value" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" PREVIOUS="name"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+  </TABLE>
+  <TABLE NAME="local_cobalt_entity" COMMENT="used story only main cobalt entities" PREVIOUS="local_school_settings" NEXT="local_cobalt_subentities"  >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="name"/>
+        <FIELD NAME="name" TYPE="text" NOTNULL="true" COMMENT="name of the settings" PREVIOUS="id" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+  </TABLE>
+  <TABLE NAME="local_cobalt_subentities" COMMENT="used story only sub entities" PREVIOUS="local_cobalt_entity" NEXT="local_cobalt_entitylevels" >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="categoryid"/>
+        <FIELD NAME="entityid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="types"/>
+        <FIELD NAME="name" TYPE="text" NOTNULL="true" COMMENT="name of the category types" PREVIOUS="categoryid" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="entityid" TYPE="foreign" FIELDS="entityid" REFTABLE="local_cobalt_entity" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+  </TABLE>
+    <TABLE NAME="local_cobalt_entitylevels" COMMENT="used to store cobalt entity levels" PREVIOUS="local_cobalt_subentities" NEXT="local_cobalt_gpasettings"  >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="entityid"/>
+        <FIELD NAME="entityid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="schoolid" NEXT="level"/>
+        <FIELD NAME="level" TYPE="text" NOTNULL="true" COMMENT="name of the level either school,or program, curriculum" PREVIOUS="entityid" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="entityid" TYPE="foreign" FIELDS="entityid" REFTABLE="local_cobalt_entity" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+  </TABLE>
+ 
+  
+  <TABLE NAME="local_cobalt_gpasettings" COMMENT="used to store the cobalt gpa settings" PREVIOUS="local_cobalt_entitylevels" NEXT="local_level_settings"  >
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+<FIELD NAME="schoolid" TYPE="int" LENGTH="10"  PREVIOUS="id" NEXT="sub_entityid"/>
+<FIELD NAME="sub_entityid" TYPE="int" LENGTH="10"  PREVIOUS="schoolid" NEXT="programid"/>
+<FIELD NAME="programid" TYPE="int" LENGTH="10" DEFAULT="0" PREVIOUS="sub_entityid" NEXT="semid"/>
+<FIELD NAME="semid" TYPE="int" LENGTH="10"  PREVIOUS="programid" NEXT="gpa"/>
+<FIELD NAME="gpa" TYPE="float" LENGTH="10"  DECIMALS="4"  PREVIOUS="semid" NEXT="cgpa"/>
+<FIELD NAME="cgpa" TYPE="float" LENGTH="10"  DECIMALS="4"  PREVIOUS="gpa" NEXT="probationgpa"/>
+<FIELD NAME="probationgpa" TYPE="float" LENGTH="10" DECIMALS="4" NOTNULL="true"  PREVIOUS="cgpa" NEXT="dismissalgpa"/>
+<FIELD NAME="dismissalgpa" TYPE="float" LENGTH="10" DECIMALS="4"  NOTNULL="true"  PREVIOUS="probationgpa" NEXT="visible"/>
+<FIELD NAME="visible" TYPE="int" LENGTH="10"  DEFAULT="1" PREVIOUS="cgpa" NEXT="timecreated"/>
+<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"  PREVIOUS="visible" NEXT="timemodified" />
+<FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"  PREVIOUS="timecreated" NEXT="usermodified" />
+<FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"  PREVIOUS="timemodified" />
+</FIELDS>
+    <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+	<KEY NAME="schoolid" TYPE="foreign" FIELDS="schoolid" REFTABLE="local_school" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+ </TABLE>
+ 
+   <TABLE NAME="local_level_settings" COMMENT="used to store the cobalt gpa settings" PREVIOUS="local_cobalt_gpasettings"   >
+    <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="entityid"/>
+        <FIELD NAME="entityid" TYPE="int" LENGTH="10"  PREVIOUS="id" NEXT="subentityid"/>
+        <FIELD NAME="subentityid" TYPE="int" LENGTH="10"  PREVIOUS="entityid" NEXT="level"/>
+        <FIELD NAME="level" TYPE="char" LENGTH="100" DEFAULT="0" PREVIOUS="subentityid" NEXT="levelid"/>
+        <FIELD NAME="levelid" TYPE="int" LENGTH="10"  PREVIOUS="levelid" NEXT="mincredithours"/>
+        <FIELD NAME="mincredithours" TYPE="float" LENGTH="10"  DECIMALS="4"  PREVIOUS="levelid" NEXT="maxcredithours"/>
+        <FIELD NAME="maxcredithours" TYPE="float" LENGTH="10"  DECIMALS="4"  PREVIOUS="mincredithours" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="float" LENGTH="10" DECIMALS="4" NOTNULL="true"  PREVIOUS="maxcredithours" NEXT="departmentid"/>
+        <FIELD NAME="departmentid" TYPE="float" DEFAULT="0" LENGTH="10" DECIMALS="4"  NOTNULL="true"  PREVIOUS="schoolid" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"  PREVIOUS="departmentid" NEXT="timemodified" />
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"  PREVIOUS="timecreated" NEXT="usermodified" />
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"  PREVIOUS="timemodified" />
+    </FIELDS>
+     <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+     </KEYS>
+ </TABLE>
+
+
+    
+    
+  </TABLES>
+</XMLDB>

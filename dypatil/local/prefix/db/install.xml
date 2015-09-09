@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/prefix/db" VERSION="20130107" COMMENT="XMLDB file for Moodle local/prefix"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_create_entity" COMMENT="Creating new entity" NEXT="local_prefix_suffix">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="entity_name"/>
+        <FIELD NAME="entity_name" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="name of the entity" PREVIOUS="id"  NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int"  LENGTH="10"  NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="entity_name"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_prefix_suffix" COMMENT="prefix_suffix settings" PREVIOUS="local_create_entity">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="entityid"/>
+        <FIELD NAME="entityid" TYPE="int" LENGTH="15" NOTNULL="false" SEQUENCE="false" COMMENT="id of the enity" PREVIOUS="id" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="15" NOTNULL="true" SEQUENCE="false" COMMENT="id of the program" PREVIOUS="entityid" NEXT="programid"/>
+        <FIELD NAME="programid" TYPE="int" LENGTH="15" NOTNULL="true" SEQUENCE="false" COMMENT="id of the program" PREVIOUS="schoolid" NEXT="sequence_no"/>
+        <FIELD NAME="sequence_no" TYPE="text" NOTNULL="true" SEQUENCE="false" PREVIOUS="programid" NEXT="prefix"/>
+        <FIELD NAME="prefix" TYPE="text" NOTNULL="true" SEQUENCE="false" PREVIOUS="sequence_no" NEXT="suffix"/>
+        <FIELD NAME="suffix" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="prefix"  NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int"  LENGTH="10"  NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="suffix"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

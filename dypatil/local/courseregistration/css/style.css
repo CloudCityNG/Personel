@@ -1,0 +1,16 @@
+
+.desc
+{
+    display:none;
+    text-align: justify;
+    margin-left: 0px;
+    margin-top: -10px;
+}
+#programs
+{
+    list-style-type:none;
+}
+#course
+{
+    list-style-type:none;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/collegestructure/db" VERSION="20120123" COMMENT="XMLDB file for Moodle local/collegestructure"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_school" COMMENT="List of schools assigned" NEXT="local_school_permissions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="fullname"/>
+        <FIELD NAME="fullname" TYPE="char" LENGTH="225" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="parentid"/>
+	<FIELD NAME="parentid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="fullname" NEXT="description"/>
+	<FIELD NAME="description" TYPE="text" LENGTH="big"  SEQUENCE="false" PREVIOUS="parentid" NEXT="type"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="225" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="description" NEXT="visible"/>
+	<FIELD NAME="visible" TYPE="int" LENGTH="2" NOTNULL="true" UNSIGNED="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="description" NEXT="timecreated" />
+	<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="visible" NEXT="timemodified" />
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified" />
+	<FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified" NEXT="path" />
+        <FIELD NAME="path" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="usermodified" NEXT="depth"/>
+        <FIELD NAME="depth" TYPE="int" LENGTH="20" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="path" NEXT="sortorder"/>
+        <FIELD NAME="sortorder" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="depth" NEXT="childpermission"/>
+        <FIELD NAME="childpermission" TYPE="int" LENGTH="2" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="sortorder" NEXT="theme" />
+		<FIELD NAME="theme" TYPE="char" LENGTH="255"  NOTNULL="false" SEQUENCE="false" PREVIOUS="childpermission"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+	  
+    </TABLE>
+    
+    
+      <TABLE NAME="local_school_permissions" COMMENT="List of schools assigned" PREVIOUS="local_school" NEXT="local_userdata">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
+        <FIELD NAME="userid" TYPE="char" LENGTH="225" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="schoolid"/>
+	<FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="userid" NEXT="role"/>
+	<FIELD NAME="roleid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="schoolid" NEXT="programid"/>
+        <FIELD NAME="programid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="role" NEXT="curriculumid"/>
+	<FIELD NAME="curriculumid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="programid" NEXT="batchid"/>
+        <FIELD NAME="batchid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="curriculumid" NEXT="departmentid"/>
+        <FIELD NAME="departmentid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="batchid" NEXT="value"/>
+        <FIELD NAME="value" TYPE="int" LENGTH="2" NOTNULL="true" UNSIGNED="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="departmentid" NEXT="timecreated" />
+	<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="value" NEXT="timemodified" />
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified" />
+	<FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified"  />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+	  
+    </TABLE>
+    
+    <TABLE NAME="local_userdata" COMMENT="Default comment for the table, please edit me" PREVIOUS="local_school_permissions">
+      <FIELDS>
+	<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+	<FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="programid"/>
+	<FIELD NAME="programid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="schoolid" NEXT="batchid"/>
+	<FIELD NAME="batchid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="programid" NEXT="curriculumid"/>
+	<FIELD NAME="curriculumid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="batchid" NEXT="userid"/>
+	<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="curriculumid" NEXT="serviceid"/>
+	<FIELD NAME="serviceid" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="userid" NEXT="usermodified"/>
+	<FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="serviceid" NEXT="timemodified"/>
+	<FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="usermodified" NEXT="timecreated"/>
+	<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="timemodified" NEXT="applicationid"/>
+	<FIELD NAME="applicationid" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="timecreated" NEXT="applicantid"/>
+    <FIELD NAME="applicantid" TYPE="int" LENGTH="10" NOTNULL="false"  SEQUENCE="false" PREVIOUS="applicationid" NEXT="fundsbygovt"/>
+	<FIELD NAME="fundsbygovt" TYPE="int" LENGTH="2" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="applicantid"/>
+       </FIELDS>
+    <KEYS>
+    <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+    </KEYS>
+</TABLE>
+	
+   </TABLES>
+</XMLDB>

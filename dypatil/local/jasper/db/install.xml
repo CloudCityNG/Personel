@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/jasper/db" VERSION="20120123" COMMENT="XMLDB file for Moodle local/sms"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_jasper" COMMENT="This is the jasper settigs" >
+      <FIELDS>
+            <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="jasperhost"/>
+            <FIELD NAME="jasperhost" TYPE="text" LENGTH="small" NOTNULL="true" UNSIGNED="true" DEFAULT="NULL" SEQUENCE="false" PREVIOUS="id" NEXT="jasperport"/>
+            <FIELD NAME="jasperport" TYPE="text" LENGTH="small" NOTNULL="true" UNSIGNED="true" DEFAULT="NULL" SEQUENCE="false" PREVIOUS="jasperhost" NEXT="jasperusername"/>
+            <FIELD NAME="jasperusername" TYPE="text" LENGTH="small" NOTNULL="true" UNSIGNED="true" DEFAULT="NULL" SEQUENCE="false" PREVIOUS="jasperport" NEXT="jasperpassword"/>
+            <FIELD NAME="jasperpassword" TYPE="text" LENGTH="small" NOTNULL="true" UNSIGNED="true" DEFAULT="NULL" SEQUENCE="false" PREVIOUS="jasperusername" NEXT="jasperbase"/>
+            <FIELD NAME="jasperbaseurl" TYPE="text" LENGTH="small" NOTNULL="true" UNSIGNED="true" DEFAULT="NULL" SEQUENCE="false" PREVIOUS="jasperpassword" NEXT="visible"/>
+	   <FIELD NAME="visible" TYPE="int" LENGTH="2" NOTNULL="true" UNSIGNED="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="jasperbase" />
+	   
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+	  
+    </TABLE>
+   
+   
+	
+   
+    </TABLES>
+</XMLDB>

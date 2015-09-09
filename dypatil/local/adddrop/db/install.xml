@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/adddrop/db" VERSION="20120123" COMMENT="XMLDB file for Moodle local/slip"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+  <TABLES>
+    <TABLE NAME="local_course_adddrop" COMMENT="List of all student registered courses which can be added and droped here" >
+      <FIELDS>
+            <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
+            <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="classid"/>
+            <FIELD NAME="classid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="userid" NEXT="semesterid"/>
+            <FIELD NAME="semesterid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="classid" NEXT="programid"/>
+            <FIELD NAME="programid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="semesterid" NEXT="studentapproval"/>
+            <FIELD NAME="studentapproval" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="programid" NEXT="mentorapproval"/>
+            <FIELD NAME="mentorapproval" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="studentapproval" NEXT="registrarapproval"/>
+            <FIELD NAME="registrarapproval" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="mentorapproval" NEXT="modifiedid"/>
+	    <FIELD NAME="modifiedid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="registrarapproval" NEXT="timecreated" />
+            <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="modifiedid" NEXT="timemodified" />
+            <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified" />
+	    <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified"  />
+      </FIELDS>
+      <KEYS>
+      <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+	   </TABLE>
+    </TABLES>
+</XMLDB>

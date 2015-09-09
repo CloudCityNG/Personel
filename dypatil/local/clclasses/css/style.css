@@ -1,0 +1,19 @@
+.help_cont{
+color: #999999;
+font-size:12px;
+}
+.help_cont h1,h4{
+color:#29A1C4;
+}
+.disremove{
+    cursor: not-allowed;
+}
+#region-main a{
+    color: #0EABB7;
+}
+.userselector select{
+    max-width: 100% ;
+}
+.generaltable td {
+    background-color: #fff !important;
+}

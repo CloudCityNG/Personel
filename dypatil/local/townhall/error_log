@@ -1,0 +1,4 @@
+[19-Sep-2014 07:01:18 America/Chicago] PHP Notice:  Use of undefined constant php - assumed 'php' in /home/cobaltlm/public_html/demo/theme/colms/layout/course.php on line 179
+[19-Sep-2014 07:01:19 America/Chicago] PHP Notice:  Undefined variable: plural in /home/cobaltlm/public_html/demo/local/townhall/lib.php on line 47
+[19-Sep-2014 07:01:19 America/Chicago] PHP Notice:  Use of undefined constant style - assumed 'style' in /home/cobaltlm/public_html/demo/local/townhall/index.php on line 101
+[19-Sep-2014 07:01:19 America/Chicago] PHP Notice:  Undefined variable: insert in /home/cobaltlm/public_html/demo/local/townhall/index.php on line 127

@@ -1,0 +1,76 @@
+/* Set the item indentation on the hierarchy index page */
+#hierarchy-index .hierarchyitem {
+    background-repeat: no-repeat;
+}
+#hierarchy-index .depth1 {
+    background-position: left top;
+    margin-left: 5px;
+    padding-left: 20px;
+}
+#hierarchy-index .depth2 {
+    background-position: left top;
+    margin-left: 28px;
+    padding-left: 20px;
+}
+#hierarchy-index .depth3 {
+    background-position: left top;
+    margin-left: 58px;
+    padding-left: 20px;
+}
+
+#hierarchy-index .coursedepth1 {
+    margin-left:40px;
+    padding:5px;
+    /* border:1px solid #000; */
+}
+#hierarchy-index .coursedepth2 {
+    margin-left:75px;
+    padding:5px;
+
+}
+
+
+/* override in RTL languages */
+
+.dir-rtl #hierarchy-index .depth1 {
+    background-position: right top;
+    margin-right: 5px;
+    padding-right: 20px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.dir-rtl #hierarchy-index .depth2 {
+    background-position: right top;
+    margin-right: 35px;
+    padding-right: 20px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.dir-rtl #hierarchy-index.depth3 {
+    background-position: right top;
+    margin-right: 65px;
+    padding-right: 20px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+#classtable {
+    display:none;
+}
+
+
+#classenroll td{
+    background-color:transparent;
+    padding:3px;
+}
+#classenroll{
+    padding-bottom:10px;
+    /* //background-color:#0088CC;*/
+}
+
+#cur_customplan tr:nth-child(4n+3) td{
+    background-color:transparent !important;
+}
+
+#inner_curtable{
+    float:right;
+}

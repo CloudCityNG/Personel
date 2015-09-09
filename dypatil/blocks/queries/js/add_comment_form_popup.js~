@@ -1,0 +1,14 @@
+// Example 1: From an element in DOM
+$('.open-popup-link').magnificPopup({
+  type:'inline',
+  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+});
+
+setTimeout(popup, 3000); // Setting time 3s to popup login form
+function popup() {
+$("#logindiv").css("display", "block");
+}
+
+$("#commenticon").click(function() {
+$("#formdiv").css("display", "block");
+});

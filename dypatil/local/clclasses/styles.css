@@ -1,0 +1,86 @@
+
+
+#second_inner {
+    margin: 14px 0;
+    padding: 10px;
+    border: 1px dashed #CCC;
+    background: #FAFAFA;   
+    clear:both;
+}
+#second_inner li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 2%;
+    font-size: 14px;
+    font-weight: bold;
+    border-right: 2px solid #EAEAEA;
+    letter-spacing: -1px;
+}
+#second_inner li:last-child {
+    border-right: none;
+}
+.cl_buttonrow li{
+    
+      list-style: none;
+    display: inline-block;
+  //  padding-right: 25px;
+    font-size: 12px;
+    
+}
+
+.cl_curdrow li{
+    
+     list-style: none;
+    display: inline-flex;
+  //  padding-right: 25px;
+    font-size: 12px;
+    
+}
+
+#cl_insinfo{
+    
+    display: block;
+    
+}
+.first_inner{
+   // float:left;
+    
+}
+ul.cl_curdrow {
+  float: right; 
+}
+
+td.colms_cell.cell {
+   padding: 0 20 0 20px;
+}   
+ 
+    
+ul.third_inner {
+  margin: 0 0 0 0px !important;
+  float:left;
+}
+.first_inner {
+  margin-top: 10px;
+}
+
+span#cl_instructorname {
+  font-size: 14px;
+  padding: 13px;
+}
+
+span#cl_name {
+  font-weight: bold;
+}
+
+span#classes_thirdinner {
+  float: right;
+  font-size: 11px;
+  font-style: italic;
+  padding-top: 18px;
+}
+
+ul.first_innerclassdetail {
+  list-style: none;
+  font-size: 12px;
+  margin-left: 0px;
+}

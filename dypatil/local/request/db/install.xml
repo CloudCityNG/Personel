@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/request/db" VERSION="20120123" COMMENT="XMLDB file for Moodle local/request"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_request_idcard" COMMENT="List of requests for id card" >
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="studentid"/>
+<FIELD NAME="studentid" TYPE="char" LENGTH="32"  PREVIOUS="id" NEXT="reason"/>
+<FIELD NAME="reason" TYPE="char" LENGTH="150"  PREVIOUS="studentid" NEXT="notification"/>
+<FIELD NAME="notification" TYPE="char" LENGTH="32"  PREVIOUS="reason" NEXT="requested_date"/>
+<FIELD NAME="requested_date" TYPE="char" LENGTH="32"  PREVIOUS="notification" NEXT="reg_approval"/>
+<FIELD NAME="reg_approval" TYPE="char" LENGTH="32"  PREVIOUS="requested_date" NEXT="regapproved_date"/>
+<FIELD NAME="regapproved_date" TYPE="char" LENGTH="32"  PREVIOUS="reg_approval" NEXT="semesterid"/>
+<FIELD NAME="semesterid" TYPE="char" LENGTH="32"  PREVIOUS="regapproved_date" NEXT="programid"/>
+<FIELD NAME="programid" TYPE="char" LENGTH="32"  PREVIOUS="semesterid" NEXT="school_id"/>
+<FIELD NAME="school_id" TYPE="char" LENGTH="32"  PREVIOUS="programid"/>
+</FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_request_profile_change" COMMENT="List of requests for profile change" >
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="studentid"/>
+<FIELD NAME="studentid" TYPE="int" LENGTH="10"  PREVIOUS="id" NEXT="schoolid"/>
+<FIELD NAME="schoolid" TYPE="int" LENGTH="10"  PREVIOUS="studentid" NEXT="programid"/>
+<FIELD NAME="programid" TYPE="int" LENGTH="10"  PREVIOUS="schoolid" NEXT="presentdata"/>
+<FIELD NAME="presentdata" TYPE="char" LENGTH="255"  PREVIOUS="programid" NEXT="changeto"/>
+<FIELD NAME="changeto" TYPE="char" LENGTH="255"  PREVIOUS="presentdata" NEXT="notification"/>
+<FIELD NAME="notification" TYPE="char" LENGTH="32"  PREVIOUS="changeto" NEXT="reg_approval"/>
+<FIELD NAME="reg_approval" TYPE="char" LENGTH="32" DEFAULT="0"  PREVIOUS="notification" NEXT="mentor_approval"/>
+<FIELD NAME="mentor_approval" TYPE="char" LENGTH="32" DEFAULT="0"  PREVIOUS="reg_approval" NEXT="requested_date"/>
+<FIELD NAME="requested_date" TYPE="char" LENGTH="152"  PREVIOUS="mentor_approval" NEXT="regapproval_date"/>
+<FIELD NAME="regapproval_date" TYPE="char" LENGTH="152"  PREVIOUS="requested_date" NEXT="mentorapproval_date"/>
+<FIELD NAME="mentorapproval_date" TYPE="char" LENGTH="152"  PREVIOUS="regapproval_date" NEXT="subjectcode"/>
+<FIELD NAME="subjectcode" TYPE="char" LENGTH="32" DEFAULT="0"   PREVIOUS="mentorapproval_date"  NEXT="reason"/>
+<FIELD NAME="reason" TYPE="char" LENGTH="225" DEFAULT="0"   PREVIOUS="subjectcode" NEXT="semesterid"/>
+<FIELD NAME="semesterid" TYPE="char" LENGTH="32" DEFAULT="0"   PREVIOUS="reason" />
+</FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+   <TABLE NAME="local_request_transfer" COMMENT="List of requests for transfers" >
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="studentid"/>
+<FIELD NAME="studentid" TYPE="int" LENGTH="10"  PREVIOUS="id" NEXT="schoolid"/>
+<FIELD NAME="schoolid" TYPE="int" LENGTH="10"  PREVIOUS="studentid" NEXT="programid"/>
+<FIELD NAME="programid" TYPE="int" LENGTH="10"  PREVIOUS="schoolid" NEXT="toprogramid"/>
+<FIELD NAME="toprogramid" TYPE="char" LENGTH="255"  PREVIOUS="programid" NEXT="reason"/>
+<FIELD NAME="reason" TYPE="char" LENGTH="255"  PREVIOUS="toprogramid" NEXT="notification"/>
+<FIELD NAME="notification" TYPE="char" LENGTH="32"  PREVIOUS="reason" NEXT="approvalstatus"/>
+<FIELD NAME="approvalstatus" TYPE="char" LENGTH="32" DEFAULT="0"  PREVIOUS="notification" NEXT="requested_date"/>
+<FIELD NAME="requested_date" TYPE="char" LENGTH="152"  PREVIOUS="approvalstatus" NEXT="regapproval_date"/>
+<FIELD NAME="regapproval_date" TYPE="char" LENGTH="152"  PREVIOUS="requested_date" NEXT="mentorapproval_date"/>
+<FIELD NAME="mentorapproval_date" TYPE="char" LENGTH="152"  PREVIOUS="regapproval_date" NEXT="timecreated"/>
+<FIELD NAME="timecreated" TYPE="char" LENGTH="32" DEFAULT="0"   PREVIOUS="mentorapproval_date"  NEXT="timemodified"/>
+<FIELD NAME="timemodified" TYPE="char" LENGTH="225" DEFAULT="0"   PREVIOUS="timecreated" NEXT="usermodified"/>
+<FIELD NAME="usermodified" TYPE="char" LENGTH="32" DEFAULT="0"   PREVIOUS="timemodified" />
+</FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+      <TABLE NAME="local_request_transcript" COMMENT="List of requests for transcripts" >
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="studentid"/>
+<FIELD NAME="studentid" TYPE="int" LENGTH="10"  PREVIOUS="id" NEXT="reason"/>
+<FIELD NAME="reason" TYPE="char" LENGTH="225"  PREVIOUS="studentid" NEXT="notification"/>
+<FIELD NAME="notification" TYPE="int" LENGTH="10"  PREVIOUS="reason" NEXT="reg_approval"/>
+<FIELD NAME="reg_approval" TYPE="int" LENGTH="10" DEFAULT="0" PREVIOUS="notification" NEXT="mentor_approval"/>
+<FIELD NAME="mentor_approval" TYPE="int" LENGTH="10" DEFAULT="0" PREVIOUS="reg_approval" NEXT="requested_date"/>
+<FIELD NAME="requested_date" TYPE="char" LENGTH="152"  PREVIOUS="mentor_approval" NEXT="regapproval_date"/>
+<FIELD NAME="regapproval_date" TYPE="char" LENGTH="152"  PREVIOUS="requested_date" NEXT="mentorapproval_date"/>
+<FIELD NAME="mentorapproval_date" TYPE="char" LENGTH="152"  PREVIOUS="regapproval_date" NEXT="timecreated"/>
+<FIELD NAME="req_semester" TYPE="int" LENGTH="10"    PREVIOUS="mentorapproval_date"  NEXT="semester"/>
+<FIELD NAME="semester" TYPE="int" LENGTH="10"    PREVIOUS="req_semester" />
+</FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	
+
+
+	<TABLE NAME="local_request_courseexem" COMMENT="List of requests for Course Exemption" >
+<FIELDS>
+		<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="studentid"/>
+		<FIELD NAME="studentid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="schoolid"/>
+		<FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="studentid" NEXT="semesterid"/>
+		<FIELD NAME="semesterid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid" NEXT="courseid"/>
+		<FIELD NAME="courseid" TYPE="int" LENGTH="10" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="semesterid" NEXT="grades"/>
+		<FIELD NAME="grades" TYPE="int" LENGTH="10" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="courseid" NEXT="attachment"/>
+		<FIELD NAME="attachment" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="grades" NEXT="definition"/>
+		<FIELD NAME="definition" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="attachment" NEXT="requestedon"/>
+		<FIELD NAME="requestedon" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"  PREVIOUS="definition" NEXT="registrarapproval"/>
+		<FIELD NAME="registrarapproval" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="requestedon"  NEXT="regapprovedon"/>
+		<FIELD NAME="regapprovedon" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="registrarapproval" />
+	</FIELDS>
+	<KEYS>
+		<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+	</KEYS>
+    </TABLE>
+    </TABLES>
+</XMLDB>

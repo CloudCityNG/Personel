@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/departments/db" VERSION="20130107" COMMENT="XMLDB file for Moodle local/departments"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+  <TABLE NAME="local_department" COMMENT="Creating cobalt(custom) department for the cobalt courses" NEXT="local_dept_instructor">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="shortname"/>
+        <FIELD NAME="shortname" TYPE="text" NOTNULL="true" SEQUENCE="false"  COMMENT="code of the department" PREVIOUS="id"  NEXT="fullname"/>
+        <FIELD NAME="fullname" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="name of the department" PREVIOUS="shortname"  NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="fullname" NEXT="description_text"/>
+        <FIELD NAME="description_text" TYPE="text" LENGTH="big" COMMENT="decription about the department" PREVIOUS="schoolid"  NEXT="description_format"/>
+        <FIELD NAME="description_format" TYPE="text" COMMENT="format of the description" PREVIOUS="description_text"  NEXT="visible"/> 
+        <FIELD NAME="visible" TYPE="int"  LENGTH="10"  COMMENT="used to active or inactive the department" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="description_format" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="INT"  LENGTH="20"  NOTNULL="true"  COMMENT="used to store created time"  SEQUENCE="false" PREVIOUS="visible" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="20" COMMENT="used to store updated time"  NOTNULL="true" PREVIOUS="timecreated" NEXT="usermodified"/>
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="20" COMMENT="used to store modified user id"  NOTNULL="true" PREVIOUS="timemodified" NEXT="sortorder"/>
+       <FIELD NAME="sortorder" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"   COMMENT="used to display purpose" PREVIOUS="usermodified" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_dept_instructor" COMMENT="assign instructor to department" PREVIOUS="local_department" NEXT="local_assignedschool_department">
+    <FIELDS>
+     <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="instructorid"/>
+     <FIELD NAME="instructorid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="departmentid"/>      
+     <FIELD NAME="departmentid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="instructorid" NEXT="programid"/>      
+     <FIELD NAME="programid" TYPE="int"  LENGTH="10"  NOTNULL="false"  SEQUENCE="false" PREVIOUS="departmentid" NEXT="schoolid"/>  
+     <FIELD NAME="schoolid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="programid" NEXT="timecreated"/>
+     <FIELD NAME="timecreated" TYPE="INT"  LENGTH="20"  NOTNULL="true"  COMMENT="used to store created time"  SEQUENCE="false" PREVIOUS="schoolid" NEXT="timemodified"/>
+     <FIELD NAME="timemodified" TYPE="int" LENGTH="20" COMMENT="used to store updated time"  NOTNULL="true" PREVIOUS="timecreated" NEXT="usermodified"/>
+     <FIELD NAME="usermodified" TYPE="int" LENGTH="20" COMMENT="used to store modified user id"  NOTNULL="true" PREVIOUS="timemodified" />
+    </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="departmentid" TYPE="foreign" FIELDS="departmentid" REFTABLE="local_department" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_assignedschool_dept" COMMENT="used to hold the assigned school to department information" PREVIOUS="assign instructor to department">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="deptid"/>
+        <FIELD NAME="deptid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="assigned_schoolid"/>       
+        <FIELD NAME="assigned_schoolid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="deptid" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int"  LENGTH="10"  COMMENT="used to active or inactive the department" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="assigned_schoolid" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="INT"  LENGTH="20"  NOTNULL="true"  COMMENT="used to store created time"  SEQUENCE="false" PREVIOUS="visible" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="20" COMMENT="used to store updated time"  NOTNULL="true" PREVIOUS="timecreated" NEXT="usermodified"/>
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="20" COMMENT="used to store modified user id"  NOTNULL="true" PREVIOUS="timemodified" /> 
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="deptid" TYPE="foreign" FIELDS="deptid" REFTABLE="local_department" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+    
+  </TABLES>
+</XMLDB>

@@ -1,0 +1,47 @@
+#navlist li
+{
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
+.maintable
+{
+    border:3px solid rgb(222,222,222);
+    width: 80%;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+.rowtitle
+{
+    background-color: #C9E1FB;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 30px;
+    padding-left: 15px;
+
+}
+.rowname
+{
+    line-height:30px;
+    text-decoration:underline;
+    padding-left: 15px;
+}
+.rowusername
+{
+    line-height:30px;
+
+    padding-left: 15px;
+}
+.rowintro
+{
+    line-height:30px;
+    padding-left:15px;
+}
+.rowrating
+{
+    line-height:30px;
+    text-align:right;
+    padding-right:15px;
+}

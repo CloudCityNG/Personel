@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/classroomresources/db" VERSION="20130816" COMMENT="XMLDB file for Moodle local/classroomresources"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_classroomresources" COMMENT="Default comment for local_classroomresources, please edit me" NEXT="local_building">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="buildingid"/>
+        <FIELD NAME="buildingid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="floorid"/>
+        <FIELD NAME="floorid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="buildingid" NEXT="classroomid"/>
+        <FIELD NAME="classroomid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="floorid" NEXT="resourceid"/>
+        <FIELD NAME="resourceid" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="classroomid" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="resourceid" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="5" NOTNULL="false"  SEQUENCE="false" PREVIOUS="visible"/>
+	  </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_building" COMMENT="Default comment for the table, please edit me" PREVIOUS="local_classroomresources" NEXT="local_floor">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="fullname"/>
+        <FIELD NAME="fullname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text"  NOTNULL="false" SEQUENCE="false" PREVIOUS="fullname" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="description" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="5" NOTNULL="false"  SEQUENCE="false" PREVIOUS="visible" NEXT="shortname"/>
+		<FIELD NAME="shortname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid" />
+        
+	  </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_floor" COMMENT="Default comment for the table, please edit me" PREVIOUS="local_building" NEXT="local_classroom">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="buildingid"/>
+        <FIELD NAME="buildingid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="fullname"/>
+        <FIELD NAME="fullname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="buildingid" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text"  NOTNULL="false" SEQUENCE="false" PREVIOUS="fullname" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="description" NEXT="schoolid"/>
+		<FIELD NAME="schoolid" TYPE="int" LENGTH="5" NOTNULL="false"  SEQUENCE="false" PREVIOUS="visible" NEXT="shortname"/>
+		<FIELD NAME="shortname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_classroom" COMMENT="Default comment for the table, please edit me" PREVIOUS="local_floor" NEXT="local_resource">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="buildingid"/>
+        <FIELD NAME="buildingid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="floorid"/>
+        <FIELD NAME="floorid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="buildingid" NEXT="classroomname"/>
+        <FIELD NAME="fullname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="floorid" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text"  NOTNULL="false" SEQUENCE="false" PREVIOUS="classroomname" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="description" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="5" NOTNULL="false"  SEQUENCE="false" PREVIOUS="visible" NEXT="shortname"/>
+	   <FIELD NAME="shortname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid" />
+	  </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_resource" COMMENT="Default comment for the table, please edit me" PREVIOUS="local_classroom">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="fullname"/>
+        <FIELD NAME="fullname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text"  NOTNULL="false" SEQUENCE="false" PREVIOUS="fullname" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="description" NEXT="schoolid"/>
+		<FIELD NAME="schoolid" TYPE="int" LENGTH="5" NOTNULL="false"  SEQUENCE="false" PREVIOUS="visible" NEXT="shortname"/>
+     <FIELD NAME="shortname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid" />
+	 </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

@@ -1,0 +1,123 @@
+.syllabus{
+    margin-top: 20px;
+}
+.syllabus, .author p{
+    font-size: 15px;
+    text-align: justify;
+    clear: both;
+    padding: 0 3%;
+}
+.author{
+    float:right;
+    width:24%;
+    margin-top: 20px;
+}
+h1,h3,h4 {
+    color:#22adf4;
+}
+p {
+    font-size:13px;margin:0 10 0 10;text-align:justify;
+}
+.author img {
+    border-radius:120px;
+    height:100px;
+    width:100px;
+}
+.enroll {
+    margin-left: 40%;
+}
+h1 {
+    font-size:30px;
+    font-family: "sofiapro",Arial,sans-serif;
+    padding-bottom: 20px;
+
+    padding-top: 20px;
+    text-align: center;
+}
+.heading {
+    padding: 0 3%;
+    height:auto;
+}
+.heading p{
+    text-align:justify;
+}
+.desc li {
+    line-height:20px;
+    padding-top:10px;
+    text-align:justify;
+    list-style-type:square;
+}
+
+.auth_img img {
+    border-radius: 120px;
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+}
+.auth_img {
+    padding-left:50px;
+    padding-bottom:10px;
+}
+.auth_img span {
+    color:red;
+}
+tr .auth {border-spacing:5em;}
+td span {
+    padding-left:10px;
+}
+.course_sum {
+
+}
+
+.course_sum iframe {
+    float: right;
+    margin-right: 15%;
+    padding-bottom: 20px;
+}
+.view_auth_img img {
+    border-radius:120px;
+    height:100px;
+    width:100px;
+    margin-right: 680px;
+}
+.view_auth_img {
+    float:right;
+    padding-right: 50px;
+}
+tr .view_auth {border-spacing:5em;}
+td span {
+    padding-left:10px;
+}
+.view_auth_detail  {
+    padding-top:10px;
+    margin-left:-20px;
+}
+
+.view_auth_desc {
+    text-align: justify;
+    width: 70%;
+}
+.align{
+    text-align:justify;
+}
+.viewh1 {
+    text-align:center;
+}
+#teach p {
+    float: left;
+    font-size: 13px;
+    text-align: justify;
+    width: 77%;
+}
+#teach img {
+    border-radius: 50px;
+    margin-left: 50px;
+}
+.teach_name{
+    float: right;
+    padding-right: 50px;
+}
+.first{
+    padding: 20px;
+    width: 70%;
+}
