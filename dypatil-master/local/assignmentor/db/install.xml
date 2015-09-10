@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/assignmentor/db" VERSION="20130107" COMMENT="XMLDB file for Moodle local/departments"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+  <TABLE NAME="local_assignmentor_tostudent" COMMENT="used to assign  mentor/parent to student " >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="10"  NOTNULL="true" SEQUENCE="false"  COMMENT="id of the school" PREVIOUS="id"  NEXT="programid"/>
+        <FIELD NAME="programid" TYPE="int" LENGTH="10"  NOTNULL="true" SEQUENCE="false" COMMENT="id of the program" PREVIOUS="schoolid"  NEXT="studentid"/>
+        <FIELD NAME="studentid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" PREVIOUS="programid" NEXT="mentorid"/>
+        <FIELD NAME="mentorid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" DEFAULT="0"  PREVIOUS="studentid" NEXT="parentid"/>
+        <FIELD NAME="parentid" TYPE="int"  LENGTH="10"  NOTNULL="true" SEQUENCE="false" DEFAULT="0"  PREVIOUS="mentorid" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="INT"  LENGTH="20"  NOTNULL="true"  COMMENT="used to store created time"  SEQUENCE="false" PREVIOUS="parentid" NEXT="usermodified"/>
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="20" COMMENT="used to store modified user id"  NOTNULL="true" PREVIOUS="timecreated" />
+       </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="schoolid" TYPE="foreign" FIELDS="schoolid" REFTABLE="local_school" REFFIELDS="id" PREVIOUS="primary"/>
+        <KEY NAME="programid" TYPE="foreign" FIELDS="programid" REFTABLE="local_program" REFFIELDS="id" PREVIOUS="schoolid"/>
+      </KEYS>
+  </TABLE>
+  </TABLES>
+</XMLDB>

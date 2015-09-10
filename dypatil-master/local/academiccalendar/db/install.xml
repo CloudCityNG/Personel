@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/academiccalendar/db" VERSION="20130701" COMMENT="XMLDB file for Moodle local/academiccalendar"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_event_activities" COMMENT="Default comment for local_academiccalendar, please edit me">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" NEXT="eventtypeid" SEQUENCE="true"/>
+        <FIELD NAME="eventlevel" TYPE="int" LENGTH="11" NOTNULL="true" PREVIOUS="id" NEXT="eventtypeid"  SEQUENCE="false"/>
+        <FIELD NAME="eventtypeid" TYPE="int" LENGTH="11" NOTNULL="true" PREVIOUS="eventlevel" NEXT="semesterid"  SEQUENCE="false"/>
+        <FIELD NAME="semesterid" TYPE="int" LENGTH="11" NOTNULL="false"  PREVIOUS="eventtypeid" NEXT="programid" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="programid" TYPE="int" LENGTH="11" NOTNULL="false" PREVIOUS="semesterid"  NEXT="schoolid" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="schoolid" TYPE="int" LENGTH="11" NOTNULL="false" PREVIOUS="programid"  NEXT="batchid" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="batchid" TYPE="int" LENGTH="11" NOTNULL="false" PREVIOUS="schoolid"  NEXT="startdate" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="startdate" TYPE="int" LENGTH="20" NOTNULL="false" PREVIOUS="batchid"  NEXT="enddate" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="enddate" TYPE="int" LENGTH="20" NOTNULL="false" PREVIOUS="startdate"  NEXT="academicyear" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="academicyear" TYPE="int" LENGTH="20" NOTNULL="false" PREVIOUS="enddate" NEXT="publish" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="publish" TYPE="int" LENGTH="1" NOTNULL="true" PREVIOUS="academicyear"   NEXT="eventtitle" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="eventtitle" TYPE="char" LENGTH="450" NOTNULL="false" PREVIOUS="publish"  NEXT="description" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="description" TYPE="text" NOTNULL="false"  PREVIOUS="eventtitle"   NEXT="userid" SEQUENCE="false"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="11" NOTNULL="true" PREVIOUS="description" NEXT="timecreated"  DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="20" NOTNULL="true" PREVIOUS="userid" NEXT="timemodified" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="20" NOTNULL="true" PREVIOUS="timecreated" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE  NAME="local_event_types" COMMENT="Stores all event types of academics.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" NEXT="eventtypename" SEQUENCE="true"/>
+        <FIELD NAME="eventtypename" TYPE="char" LENGTH="55" NOTNULL="false" PREVIOUS="id" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+</TABLE>
+  </TABLES>
+</XMLDB>

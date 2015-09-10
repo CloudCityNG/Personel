@@ -1,0 +1,317 @@
+/*===code for progress bar===*/
+.task_bar{
+    float: left;
+    width: 75%;
+    border: 1px solid #29A1C4;
+    height: 15px;
+    border-radius: 10px;
+}
+.main_list_bar{
+    float: none;
+    width: 100%;
+    height: auto;
+}
+.percent{
+    float: none;
+    margin-right: 8%;
+}
+.dynamic_bar{
+    background: none repeat scroll 0 0 #29A1C4;
+    border-radius: 10px;
+    height: 15px;
+    float: left;
+}
+#enrol_filters{
+      margin: 0 auto;
+  /* text-align: center; */
+  width: 50%;
+}
+.dialog1 {
+background: #FFF;
+margin: 7px 0;
+width: 95%;
+margin: 7px auto;
+padding: 20px;
+/*border-radius: 15px;*/
+/*-webkit-border-radius: 15px;
+-webkit-box-shadow: inset 0px 0px 11px 1px rgba(219,219,219,1);
+-moz-box-shadow: inset 0px 0px 11px 1px rgba(219,219,219,1);*/
+box-shadow: inset 0px 0px 11px 3px rgba(226, 219, 219, 1);
+border-top: 2px solid rgb(233, 135, 135);
+border-bottom: 2px solid #6D6E72;
+}
+.ui-tabs .ui-tabs-nav li a{
+    padding:.5em 1.4em !important;
+}
+.ui-tabs .ui-tabs-nav li a{
+    background-image:url([[pix:local_costcenter|plus]]);
+      background-repeat: no-repeat;
+  background-position: 100% 50%;
+}
+.ui-state-active a:link{
+        background-image:url([[pix:local_costcenter|minus]]) !important;
+      background-repeat: no-repeat;
+  background-position-y: 100% 50%;
+}
+/*.batchtable thead{
+    display:none;
+}*/
+span.lp_ccinfo {
+float: right;
+font-size: 12px;
+}
+
+.batch_filter{
+    text-align:center;
+}
+.batchdates{
+    display: block;
+    text-align: right;
+}
+
+span#lp_actions {
+  float: left;
+  display: block;
+ /* margin-top: -32px;*/
+}
+
+.local_batches_indexmiddlepart ul li {
+    
+    padding-right:12px !important;
+}
+
+#action_buttons{
+    float:right;
+}
+#costcenter_name{
+    font-size: 16px;
+}
+.coursename a {
+    float: left;
+    background-position: inherit !important;
+    font-size: 20px;
+    background-image:none !important;
+}
+#enrollink {
+border: 1px solid;
+border-radius: 3px;
+float: right;
+padding: 1px;
+margin-left: 5px;
+font-size: 12px;
+}
+#enrollink:hover,#enrollink:focus{
+    text-decoration: none;
+}
+#toggle-content{
+    padding-top:10px;
+}
+.course-item-actions a {
+    padding: 3px;
+}
+.course-item-actions.item-actions {
+    float: right;
+}
+div#manager_list {
+padding: 15px 0 0 15px;
+font-size: 12px;
+}
+#bulk_enrollment{
+    float: right;
+margin: 5px;
+padding: 5px;
+border: 1px solid;
+border-radius: 5px;
+}
+#back_tp_course {
+    border: 1px solid;
+    border-radius: 5px;
+    float: right;
+    margin: 5px;
+    padding: 5px;
+}
+.addcoursebutton{
+    text-align: right;
+}
+#courseview-info-costcenter{
+/*clear: both;*/
+font-size: 11px;
+padding-left: 30px;
+}
+.coursebox{
+    margin: 10px 0;
+}
+
+.coursebox.clearfix.collapsed.odd {
+background: #f9f9f9;
+}
+/*.dialog1 {
+background: #FFF;
+margin: 7px 0;
+width: 95%;
+margin: 7px auto;
+padding: 20px 0;
+/*border-radius: 15px;*/
+/*-webkit-border-radius: 15px;
+-webkit-box-shadow: inset 0px 0px 11px 1px rgba(219,219,219,1);
+-moz-box-shadow: inset 0px 0px 11px 1px rgba(219,219,219,1);
+box-shadow: inset 0px 0px 11px 3px rgba(226, 219, 219, 1);
+border-top: 2px solid rgb(233, 135, 135);
+border-bottom: 2px solid #6D6E72;
+}*/
+.dialog1 .dataTables_wrapper {
+width: 90%;
+margin: 0 auto;
+font-size: 12px;
+}
+.dialog1 .dataTables_wrapper .dataTables_filter input {
+margin-left: 0.5em;
+padding: 0;
+width: 150px;
+}
+.dialog1 .dataTables_wrapper label{
+    font-size: 12px;
+}
+.dialog1 .dataTables_length select{
+   height: 23px;
+line-height: 16px;
+font-size: 12px;
+}
+#assignform {
+    clear: both;
+}
+.ui-tabs-panel{
+    background: #FFF;
+  margin: 7px 0;
+  width: 95%;
+  margin: 7px auto;
+  /*padding: 20px 0;*/
+  -webkit-box-shadow: inset 0px 0px 11px 1px rgba(219,219,219,1);
+  -moz-box-shadow: inset 0px 0px 11px 1px rgba(219,219,219,1);
+  box-shadow: inset 0px 0px 11px 3px rgba(226, 219, 219, 1);
+  border-top: 2px solid rgb(233, 135, 135);
+  border-bottom: 2px solid #6D6E72;
+}
+.ui-tabs .ui-tabs-nav li a{
+    padding:.5em 1.4em !important;
+}
+.ui-tabs .ui-tabs-nav li a{
+    background-image:url([[pix:local_costcenter|plus]]);
+      background-repeat: no-repeat;
+  background-position-y: 50%;
+  background-position-x: 100%
+}
+.ui-state-active a:link{
+        background-image:url([[pix:local_costcenter|minus]]) !important;
+      background-repeat: no-repeat;
+  background-position-y: 50%;
+  background-position-x: 100%
+}
+
+
+.completed_color {
+    color: #2B9903;
+}
+.notenrolled_color{
+    color: #FE0612;
+}
+.inprogress_color{
+    color: #0222F1;
+}
+#costcenter-form a {
+font-size: 14px;
+/* margin: 50px 0; */
+}
+/*div#costcenter-form {*/
+/*margin: 15px 0;*/
+/*}*/
+#costcenter-info,#courseview-info {
+margin: 0;
+clear: both;
+}
+#costcenter-info{
+    /*float: right;*/
+margin: 0 auto;
+border: 1px dashed #CABDBD;
+padding: 5px;
+width: 70%;
+}
+
+#courseview-info{
+text-align: center;
+width: 50%;
+margin: 0 auto;
+border: 1px dashed #6D6E72;
+padding: 5px;
+}
+#costcenter-info li,#courseview-info li {
+list-style: none;
+display: inline-block;
+padding: 0 10px;
+font-size: 12px;
+/* border: 1px solid #EAEAEA; */
+border-radius: 4px;
+margin: 0 5px;
+}
+
+.ui-widget-header {
+  /* border-bottom: 1px solid #333; */
+}
+
+
+#lp_heading
+ {
+  min-width: 90%;
+  float: left;
+}
+
+
+ul.local_batches_first_innerclassdetail {
+  list-style: none;
+  font-size: 12px;
+  margin-left: 0px;
+  display: inline-flex; 
+}
+
+ul.local_batches_first_innerclassdetail li {
+    padding-right: 12px;
+}
+
+.moodle-dialogue-confirm .confirmation-dialogue input {
+  min-width: 80px;
+  margin: 0px 4px;
+}
+
+
+#addcontrols {
+  margin-top: 173px;
+  text-align: center;
+  margin-bottom: 3em;
+  /* vertical-align: middle; */
+}
+
+input#select_add_all {
+  margin-bottom: 4px;
+}
+
+input#select_add_none {
+  margin-bottom: 4px;
+}
+
+input#select_remove_all {
+  margin-bottom: 4px;
+}
+
+input#select_remove_none {
+  margin-bottom: 4px;
+}
+
+#addselect_wrapper div {
+  display: none;
+}
+
+
+#back_to_local_batches{    
+    float:right;
+    margin-bottom:6px;        
+}

@@ -1,0 +1,206 @@
+.local_dashboard .content {
+    text-align: center;
+}
+
+.local_dashboard table {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.progressBarProgressTable {
+    width: 100%;
+    margin: 0 0 5px 0;
+    height: 25px;
+    overflow: hidden;
+}
+
+.progressBarProgressTable.noNow {
+    height: 19px;
+}
+
+.progressBarCell {
+    height: 19px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    background-color: none;
+    cursor: pointer;
+    border-left: solid 1px #e3e3e3;
+}
+
+.progressBarCell#first {
+    border-radius: 3px 0 0 3px;
+    border-left: none;
+}
+
+.progressBarCell#last {
+    border-radius: 0 3px 3px 0;
+}
+
+.progressBarCell img {
+    width: 100%;
+    height: 15px;
+    margin: 1px 0 0 0;
+    padding: 0;
+}
+.progressBarCell .smallicon {
+    width: 85%;
+    height: 85%;
+    max-width: 15px;
+    height: auto;
+    max-height: 15px;
+    vertical-align: text-bottom;
+}
+
+.progressEventInfo {
+    font-size: x-small;
+    text-align: left;
+    white-space: pre;
+    overflow: hidden;
+    padding: 0;
+}
+
+.progressEventInfo img {
+    vertical-align: middle;
+}
+
+.moduleIcon {
+    float: left;
+    margin-right: 5px;
+}
+
+.progressBarHeader {
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+.progressConfigBox {
+    border:1px dashed #cccccc;
+    padding: 5px;
+    margin:5px 0 !important;
+}
+
+.progressConfigModuleTitle {
+    font-weight: bold;
+}
+
+.progressConfigModuleTitle img {
+    vertical-align: middle;
+}
+
+.local_dashboard .groupselector {
+    text-align: center;
+}
+
+.progressoverviewmenus {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.progressoverviewmenus form, .progressoverviewmenus select, .progressoverviewmenus div {
+    display: inline;
+}
+
+.progressoverviewmenus select {
+    margin-left: 2px;
+}
+
+.overviewButton {
+    margin: 10px;
+}
+.course_name{
+    font-size: 24px;
+    text-align: center;
+    padding-top: 20px;
+    text-decoration: underline;
+}
+
+.task_list_bar{
+    padding-bottom: 20px;
+    padding-left: 175px;
+    width: 20%;
+    float: none!important;
+}
+.task_bar{
+    float: left;
+    padding-left: 150px;
+    width: 20%;
+}
+.task_list_bar img{
+    border:1px solid #000000;
+    border-radius: 20px;
+    padding: 4px;
+}
+.task_list{
+    padding-left: 175px;
+    width: 20%;
+    font-size: 12px;
+    float:left;
+    text-decoration: underline;
+}
+.list_bar, .main_list_bar{
+    padding-top:50px;
+}
+.list_bar:first-child{
+    padding-top:0px!important;
+}
+.list_bar_head{
+    padding-top:50px;
+    font-size: 20px;
+}
+.percent{
+    font-size: 20px;
+    padding-left: 12px;
+}
+.task_status{
+    font-size: 20px;
+    padding-left: 220px;
+    text-decoration: underline;
+}
+.task_total{
+    padding-left: 150px;
+    width: 20%;
+    font-size: 20px;
+    float:left;
+}
+.task_list img{
+    height:20px;
+    width:20px;
+    padding:5px;
+    vertical-align: middle;
+}
+.dynamic_bar{
+    background: none repeat scroll 0 0 #29A1C4;
+    border-radius: 10px;
+    height: 10px;
+}
+.outer {
+    border-radius: 10px;
+    height: 10px;
+    border: 1px solid #29A1C4; 
+    margin-top: 8px;
+}
+.ratings img{
+    border:0;
+    border: 0 none;
+    height: 15px;
+    width: 15px;
+}
+.ratings {
+    border:0!important;
+    border-radius: 10px;
+    margin-left: 40px !important;
+    margin-top:0!important;
+}
+.task_head{
+    font-size: 20px;
+    padding-left: 200px;
+    text-decoration: underline;
+}
+.empty{
+    text-align:center;
+    font-size: 16px;
+    padding:50px;
+}

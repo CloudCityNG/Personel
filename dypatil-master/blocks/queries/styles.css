@@ -1,0 +1,107 @@
+.block_queries .mform .fitem div.fitemtitle {
+    width: 30%;
+}
+.block_queries #id_subject{
+       width: 65% !important;  
+}
+.block_queries .mform .fitem {
+    margin-top: -5%;
+}
+.block_queries .fheader{
+     font-size: 15px;
+}
+#page form #fitem_id_submitbutton {
+    background-color: none !important;
+    width: 0;
+    height: 12px;
+}
+.block_queries .mform .fitem .felement {
+    margin-left: -1% !important;
+}
+.block_queries fieldset.hidden {
+     margin-top: -14%;
+}
+.block_queries .mform .fdescription.required {
+     display: none;
+}
+.block_queries #fgroup_id_buttonar, #fitem_id_submitbutton {
+     padding: 0% !important;
+}
+
+.block_queries div.editor_atto_toolbar div.atto_group {
+         margin: 2px 0 0 2px !important;
+
+}
+}
+.block_queries #id_descriptioneditable{
+    min-height: 87px !important;
+    height: 87px !important;
+}
+#page-blocks-queries-display_queries .row-fluid .span6 {
+     width: 100% !important; 
+}
+.mypreviewqueries {
+     float: right;
+}
+.mypreviousqueries_link{
+ clear: both;
+ margin-left: 9px;
+}
+.backtohome {
+    text-align: center !important;
+}
+.date {
+     font-size: 80%;
+}
+.tooltip1 {
+ position: relative;
+ width: 90%;
+  float: left;
+}
+.tooltip1 span {
+  display: none;
+  color: #FFFFFF;
+ }
+p.tooltip1:hover span {
+  display: block;
+  position: absolute;
+  background-color: #35132C;
+  width: 70%;
+  z-index: 1; /*for div over content*/
+  min-width: 100%;
+  min-height: 70px;
+  height: auto;
+  margin-left: 50%;
+  /*margin-top: 10px;*/
+  color: #FFFFFF;
+  padding: 2px 5px;
+ }
+ .comment_icon {
+     float: left;
+     width: 8%;
+ }
+ #queryresponse_length {
+     float: right;
+ }
+ .commenticon {
+     float: right;
+ }
+ /*for show pop up class*/
+ .white-popup {           
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width:auto;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+ /*code for popup*/
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+ 

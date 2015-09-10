@@ -1,0 +1,74 @@
+<?php
+require_once($CFG->dirroot.'/config.php');
+require_once($CFG->dirroot.'/local/lib.php'); 
+function get_semslist() {
+	global $DB, $CFG, $USER;
+	$userid = $USER->id;
+	$systemcontext = get_context_instance(CONTEXT_SYSTEM);
+		$string = '<div id="tabs">
+		<ul>
+		<li><a href="#fragment-1"><span>Current Semester</span></a></li>
+		<li><a href="#fragment-2"><span>Completed Semester</span></a></li>
+		<li><a href="#fragment-3"><span>Upcoming Semester</span></a></li>
+		</ul>';
+		$string.='<div id="fragment-1">';
+		$today = time();
+		$select = 'SELECT DISTINCT p.id , p.fullname, p.startdate, p.enddate, us.programid ';
+		$from = " FROM {local_semester} p, {local_user_semester} us ";
+		$where = " WHERE us.userid ={$userid} AND us.semesterid=p.id AND p.id = us.semesterid AND ( {$today} BETWEEN p.startdate  AND  p.enddate) ";
+
+		$vv = $select . $from . $where;
+		echo $vv;
+		$tools = $DB->get_records_sql($vv);
+		foreach ($tools as $tool) {
+            $sql="SELECT cc.fullname  FROM {local_user_classes} uc , {local_cobaltcourses}  cc, {local_classes} cls where 
+			uc.userid=$userid and uc.semesterid=$tool->id and uc.classid= cls.id and cls.cobaltcourseid= cc.id";
+            $courses = $DB->get_records_sql($sql);
+			foreach ($courses as $course) {
+				$carray[]= $course ->fullname;
+			}
+			$clist=implode('</br>', $carray);
+			 $stdate = date('d-M-Y', $tool->startdate);
+			$endate = date('d-M-Y', $tool->enddate);
+			$string.='<table border="0">
+				   <tr><td>Semester Name :</td><td>'.$tool->fullname.'</td></tr>
+				  <tr><td>Courses</td><td>'.$clist.'</td></tr>
+				   <tr><td>Start Date</td><td>'.$stdate.'</td></tr>
+				    <tr><td>End Date</td><td>'.$endate.'</td></tr>
+				  </table>';
+        }
+ 		$string.='</div>';
+		$string.='<div id="fragment-2">';
+		$today =time();
+		$select = 'SELECT  p.id , p.fullname, p.startdate, p.enddate';
+		$from = " FROM {local_semester} p";
+		$where = " WHERE  '{$today}' >  p.enddate ORDER BY p.enddate ASC";
+
+		$vv = $select . $from . $where;
+		$tools = $DB->get_records_sql($vv);
+		$string.='<table border="0"><th>Semester Name</th><th>Completion Date</th>';
+		foreach ($tools as $tool) {
+            $endate = date('d-M-Y', $tool->enddate);
+			$string.='<tr><td>'.$tool->fullname.'</td><td>'.$endate.'</td></tr>';
+        }
+		$string.='</table></div>';
+		
+		$string.='<div id="fragment-3">';
+		$today =time();
+		$select = 'SELECT  p.id , p.fullname, p.startdate, p.enddate';
+		$from = " FROM {local_semester} p";
+		$where = " WHERE  '{$today}' <  p.startdate ORDER BY p.enddate ASC";
+
+		$vv = $select . $from . $where;
+		$tools = $DB->get_records_sql($vv);
+		$string.='<table border="0"><th>Semester Name</th><th>From</th><th>To</th>';
+		foreach ($tools as $tool) {
+            $stdate = date('d-M-Y', $tool->startdate);
+			$endate = date('d-M-Y', $tool->enddate);
+			$string.='<tr><td>'.$tool->fullname.'</td><td>'.$stdate.'</td><td>'.$endate.'</td></tr>';
+        }
+		$string.='</table></div>';
+		return $string.'</div>';
+ }
+ ?>
+

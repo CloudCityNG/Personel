@@ -1,0 +1,427 @@
+/* Large desktop */
+@media (min-width: 1200px) {
+#page-footer .span4 {
+width: 15%;
+min-height: 120px;
+#background: url([[pix:theme|footerdivider]]) no-repeat  right 0;
+margin:0;
+padding-left: 50px;
+}
+.da-slider {
+width: 55.4%;
+background: url([[pix:theme|ribbon]]), url([[pix:theme|slideshow_bg]]);
+background-repeat:no-repeat,no-repeat;
+background-size: auto, 90% 100% !important;
+background-position: 10% 0%,50% 100%;
+}
+.row-fluid .span12{
+	width:94%;
+}
+.row-fluid .span6 .block{
+	width:228px;
+}
+#sliderout{
+    	background: transparent url([[pix:theme|slider_out]]) no-repeat 0% 0%;
+}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	#page-footer .span4 {
+text-align: center;
+}
+.row-fluid .span6 {
+width: 100%;
+}
+.selfilterpos .singleselect{
+	margin-left:5% !important;
+}
+#sliderout{
+    	background: transparent url([[pix:theme|slider_out]]) no-repeat 0% 0%;
+background-size: 100%;
+height: 197px !important;
+}
+.da-slider {
+width: 50.4%;
+height: 180px;
+background: transparent url([[pix:theme|slideshow_bg]]) no-repeat 0% 0%;
+background-size: 100% !important;
+margin:0 !important;
+}
+.da-slide .da-img{
+	width:38%;
+	height: 175px !important;
+	top:7%;
+}
+.da-slider h2{
+	font-size:16px;top:17px;
+}
+.da-slide .da-link {
+top: 142px;
+margin-left: 135px;
+}
+.row-fluid .span4 {
+width: 100% !important;
+}
+.nav-collapse .nav{
+	background: #F6F6F6;
+z-index: 10000;
+}
+.row-fluid .span9 {
+width: 67.309392%;
+margin-left:1%;
+}
+.row-fluid .span6 {
+width: 23.93617%;
+}
+.datefilterpos,.selfilterpos{
+	width:100% !important;
+	padding:0 !important;
+	float:none !important;
+}
+.selfilterpos label,.datefilterpos label{
+	display:none;
+}
+.singleselect {
+display: inline;
+}
+.datefilterpos input[type=text]{
+	margin:0 !important;
+}
+.scrollup{
+bottom: 0 !important;
+right: 0 !important;
+width:62px !important;
+}	
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media (max-width: 767px) {
+/* Styles */
+body{
+	padding:0;
+}
+#page-footer .span4 {
+text-align: center;
+}
+#middle-blocks .span4{
+	width:100% !important;
+}
+.row-fluid .span6 {
+width: 100%;
+}
+.da-slider{
+	width: 100%;
+        margin:0 !important;
+}
+#sliderout{
+    width:100%;
+        background:none !important;
+}
+.navbar .nav li.dropdown>.dropdown-toggle .caret{
+	float:right;
+}
+.nav-collapse .nav>li{
+	background-color: #EAEAEA;
+}
+.navbar .nav>li{
+	background-color: #EAEAEA;
+}
+.navbar-inner{
+	max-height: inherit !important; 
+}
+.navbar .nav{
+	float:none !important;
+	margin:0 !important;
+}
+.datefilterpos,.selfilterpos{
+	width:100% !important;
+	padding:0 !important;
+	float:none !important;
+}
+.selfilterpos select{
+	float:none !important;
+}
+.selfilterpos .singleselect{
+	margin-left:5% !important;
+}
+.datefilterpos input[type=text]{
+	margin:0 !important;
+}
+.selfilterpos label,.datefilterpos label{
+	display:none;
+}
+.singleselect {
+display: inline;
+}
+.scrollup{
+bottom: 0 !important;
+right: 0 !important;
+width:62px !important;
+}
+#page-footer {
+width:auto !important;
+}
+.breadcrumb-button input[type="submit"] {
+width:100% !important;
+}
+.breadcrumb-button {
+ max-width: 100% !important;
+}
+.breadcrumb-button .singlebutton div {
+    margin-right: 0;
+    width: 100%;
+}
+#page-mod-forum-view .customtag_search_box {
+    float: left;
+    margin-left: 25%;
+    text-align: right;
+    width: auto;
+}
+#page-mod-assign-view .cell.c5 {
+    max-width: 100px;
+}
+#loginlink {
+    margin-top: 20px!important;
+    width: 100% !important;
+}
+.logininfo {
+    float: right;
+    margin-right: 0 !important;
+}
+#page-mod-forum-discuss .forum_posting {
+    width: 45% !important;
+}
+#course_infotable .first {
+width: 50% !important;
+}
+}
+
+@media  (max-width: 1024px)
+and (min-width: 768px) {
+	.row-fluid .span9 {
+width: 67.309392%;
+margin-left:1%;
+}
+#middle-blocks .span4{
+	width:47% !important;
+}
+.row-fluid .span6 {
+width: 23.93617%;
+}
+	#page-footer .span4 {
+width: 15%;
+}
+.selfilterpos .singleselect{
+	margin-left:5% !important;
+}
+#sliderout{
+    	background: transparent url([[pix:theme|slider_out]]) no-repeat 0% 0%;
+background-size: 100%;
+height: 197px !important;
+}
+.da-slider {
+width: 50.4%;
+height: 180px;
+background: transparent url([[pix:theme|slideshow_bg]]) no-repeat 0% 0%;
+background-size: 100% !important;
+margin:0 !important;
+}
+.da-slide .da-img{
+	width:38%;
+	height: 175px !important;
+	top:7%;
+}
+.da-slider h2{
+	font-size:16px;top:17px;
+}
+.da-slide .da-link {
+top: 142px;
+margin-left: 135px;
+}
+}
+/* Landscape phones and down */
+@media (max-width: 810px) {
+body{
+	padding:0;
+}
+#page-footer .span4 {
+	width:100%;
+text-align: center;
+}
+.row-fluid .span6 {
+width: 100%;
+}
+#middle-blocks .span4{
+	width:100% !important; 
+}
+.da-slider{
+	width: 100%;
+        margin:0 !important;
+}
+#sliderout{
+    width:100%;
+        background:none !important;
+}
+.navbar .nav li.dropdown>.dropdown-toggle .caret{
+	float:right;
+}
+.nav-collapse .nav>li{
+	background-color: #EAEAEA;
+}
+.navbar .nav>li{
+	background-color: #EAEAEA;
+}
+.navbar-inner{
+	max-height: inherit !important; 
+}
+.navbar .nav{
+	float:none !important;
+	margin:0 !important;
+}
+.datefilterpos,.selfilterpos{
+	width:100% !important;
+	padding:0 !important;
+	float:none !important;
+}
+.selfilterpos select{
+	float:none !important;
+}
+.selfilterpos .singleselect{
+	margin-left:5% !important;
+}
+.datefilterpos input[type=text]{
+	margin:0 !important;
+}
+.selfilterpos label,.datefilterpos label{
+	display:none;
+}
+.singleselect {
+display: inline;
+}
+.scrollup{
+bottom: 0 !important;
+right: 0 !important;
+width:62px !important;
+}
+.row-fluid .span9{
+	width:100%;
+}
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+	body{
+	border:1px solid red !important;
+	color:red!important;
+	}
+}
+/* iPads (portrait) */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+
+	body{
+	border:1px solid red !important;
+	color:red !important;
+	background-color:red !important;
+	}
+	#page-footer .span4 {
+		width: 15%;
+	}
+	#sliderout{
+		background: transparent url([[pix:theme|slider_out]]) no-repeat 0% 0%;
+		background-size: 100%;
+		height: 197px !important;
+	}
+	.da-slider {
+	width: 45.4%;
+	background: transparent url([[pix:theme|slideshow_bg]]) no-repeat 0% 0%;
+	background-size: 100% !important;
+	}
+	.da-slide .da-img{
+		height: 170px !important;
+	}
+	.row-fluid .span4 {
+	width: 46.914894%;
+	}
+	.datefilterpos,.selfilterpos{
+		width:100% !important;
+		padding:0 !important;
+		float:none !important;
+	}
+	.selfilterpos label,.datefilterpos label{
+		display:none;
+	}
+	.singleselect {
+	display: inline;
+	}
+	.selfilterpos .singleselect{
+		margin-left:5% !important;
+	}
+	.datefilterpos input[type=text]{
+		margin:0 !important;
+	}
+	.scrollup{
+	bottom: 0 !important;
+	right: 0 !important;
+	width:62px !important;
+	}
+}
+
+@media (max-width: 1024px)
+and (min-width: 768px){
+	#page-footer .span4 {
+		width: 15%;
+		background: url([[pix:theme|footerdivider]]) no-repeat  right 0;
+		padding-left: 15px;
+	}
+	#sliderout{
+		background: transparent url([[pix:theme|slider_out]]) no-repeat 0% 0%;
+		background-size: 100%;
+		height: 197px !important;
+	}
+	.da-slider {
+	width: 45.4%;
+	background: transparent url([[pix:theme|slideshow_bg]]) no-repeat 0% 0%;
+	background-size: 100% !important;
+	}
+	.da-slide .da-img{
+		height: 170px !important;
+	}
+	.row-fluid .span4 {
+	width: 46.914894%;
+	}
+	.nav-collapse .nav{
+		background: #F6F6F6;
+	z-index: 10000;
+	}
+	.row-fluid .span9 {
+	width: 67.309392%;
+	margin-left:1%;
+	}
+	.row-fluid .span6 {
+	width: 23.93617%;
+	}
+	.datefilterpos,.selfilterpos{
+		width:100% !important;
+		padding:0 !important;
+	}
+	.selfilterpos label,.datefilterpos label{
+		display:none;
+	}
+	.singleselect {
+	display: inline;
+	}
+	.datefilterpos input[type=text]{
+		margin:0 !important;
+	}
+	.scrollup{
+	bottom: 0 !important;
+	right: 0 !important;
+	width:62px !important;
+	}
+}

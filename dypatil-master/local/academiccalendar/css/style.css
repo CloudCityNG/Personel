@@ -1,0 +1,74 @@
+#afilter{
+    width: 42%;
+    float: left;
+    padding: 5px;
+}
+#afilter label{
+    font-family: "OpenSans-Semibold", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    width: 59%;
+    padding-right: 15px;
+}
+#afilter select {
+    width: 170px;
+    float: right;
+    display: inline-table;
+    margin-right: 17%;
+}
+
+.advfilter {
+    float:right;
+    width: 100%;
+}
+#active img{
+
+}
+.advfilter ul {
+    float: right;
+    margin: 0;
+}
+.advfilter input[type="submit"] {
+    height: 31px;
+    width: 30px;
+    text-align:center;
+}
+
+.dur_f_df input[type="submit"]{
+    background-image: url(../images/day.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.dur_f_df input[type="submit"]:active{
+
+}
+.dur_f_wf input[type="submit"]{
+    background-image: url(../images/week.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.dur_f_mf input[type="submit"]{
+    background-image: url(../images/month.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.dur_f_yf input[type="submit"]{
+    background-image: url(../images/year.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.advfilter .singlebutton {
+    margin: 0px;
+    padding: 0 !important;
+}
+.advfilter img{
+    height: 34px;
+    width: 26px;
+    padding-left: 5px;
+}
+.help_cont{
+    color: #444444;
+    font-size:12px;
+}
+.help_cont h1,h4{
+    color:#29A1C4;
+}

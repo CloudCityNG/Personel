@@ -1,0 +1,31 @@
+/*===code for progress bar===*/
+.task_bar{
+    float: left;
+    width: 75%;
+    border: 1px solid #29A1C4;
+    height: 15px;
+    border-radius: 10px;
+}
+.main_list_bar{
+    float: none;
+    width: 100%;
+    height: auto;
+}
+.percent{
+    float: none;
+    margin-right: 8%;
+}
+.dynamic_bar{
+    background: none repeat scroll 0 0 #29A1C4;
+    border-radius: 10px;
+    height: 15px;
+    float: left;
+}
+#enrol_filters{
+      margin: 0 auto;
+  /* text-align: center; */
+  width: 50%;
+}
+.singleselect select{
+    min-width: 360px;
+}

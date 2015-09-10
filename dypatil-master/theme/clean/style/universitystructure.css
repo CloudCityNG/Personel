@@ -1,0 +1,78 @@
+.notifications{list-style: none !important;margin-left:0px !important}
+.notifications li{background:url([[pix:theme|navigationitem]]) !important;background-repeat:no-repeat !important; background-position:-3px 0px !important}
+.notifications li a{padding-left: 20px !important}
+.ygtvlp{background: url([[pix:theme|collapsed]])  !important;background-repeat:no-repeat !important}
+.ygtvlph{background: url([[pix:theme|collapsed]])  !important;background-repeat:no-repeat !important}
+.ygtvlm{background:url([[pix:theme|expanded]])  !important;background-repeat:no-repeat !important}
+.ygtvlmh{background:url([[pix:theme|expanded]])  !important;background-repeat:no-repeat !important}
+.ygtvtn .ygtvspacer{background:url([[pix:theme|navigationitem]]) !important;background-repeat:no-repeat !important}
+.ygtvln .ygtvspacer{background:url([[pix:theme|navigationitem]]) !important;background-repeat:no-repeat !important}
+.ygtvtp{background: url([[pix:theme|collapsed]]) !important;background-repeat:no-repeat !important; background-position: 3px 6px !important;}
+.ygtvtph {background: url([[pix:theme|collapsed]]) !important;background-repeat:no-repeat !important; background-position: 3px 6px !important; }
+.ygtvtm{background:url([[pix:theme|expanded]]) !important;background-repeat:no-repeat !important;  background-position: 3px 6px !important; }
+.ygtvtmh{background:url([[pix:theme|expanded]]) !important;background-repeat:no-repeat !important;  background-position: 3px 6px !important;}
+.ygtvln{background:none !important}
+.ygtvdepthcell{background:none !important}
+.ygtvfocus .ygtvlabel,
+.ygtvfocus .ygtvlabel:link,
+.ygtvfocus .ygtvlabel span:visited,
+.ygtvfocus .ygtvlabel:hover{background:none !important;}
+a.ygtvspacer{text-decoration: none !important}
+.resource:visited{font-weight:normal !important}
+.ygtvspacer:focus,.ygtvspacer:visited,.ygtvspacer:hover{outline:none !important;text-decoration: none !important;outline-offset:0px !important}
+.grades:visited{font-weight:normal !important}
+.ygtv_spacer:focus,.ygtv_spacer:visited,.ygtv_spacer:hover{outline:none !important;text-decoration: none !important;outline-offset:0px !important}
+
+.ygtvspacer a:hover,.ygtvspacer a:focus{color: #005580;text-decoration: underline !important;outline:none !important;outline-offset:0px !important}
+#universitystructure_tree table td{padding:0px !important;}
+.ygtvlabel{font-size:12px !important}
+.ygtvspacer{font-size:12px !important}
+.ygtvtn{background: none !important}
+.ygtvfocus .ygtvlabel{background-color:white !important;border:0px !important}
+.ygtvfocus{background-color: white !important}
+#universitystructure_tree, #notifications{clear:both}
+/*
+.ygtv_spacer:focus,.ygtv_spacer:visited,.ygtv_spacer:hover{outline:none !important;text-decoration: none !important;outline-offset:0px !important}
+#sampleblock_tree #link_icon1{background:url([[pix:theme|schools]]) !important; width:30px; height:20px}
+#sampleblock_tree #link_icon2{background:url([[pix:theme|departments]]) !important; width:30px; height:20px}
+#sampleblock_tree #link_icon3{background:url([[pix:theme|programs]]) !important; width:30px; height:20px}
+#sampleblock_tree #link_icon4{background:url([[pix:theme|semester]]) !important; width:30px; height:20px}
+#sampleblock_tree #link_icon6{background:url([[pix:theme|modules]]) !important; width:30px; height:20px}
+#sampleblock_tree #link_icon7{background:url([[pix:theme|courses]]) !important; width:30px; height:20px}
+#sampleblock_tree #link_icon8{background:url([[pix:theme|class_manegment]]) !important; width:30px; height:20px}*/
+.ygtvtn .ygtvspacer {background: none;}
+#universitystructure_tree .ygtvln .ygtvspacer {background: none !important;}
+#universitystructure_tree  #link_icon1, #registrar_tree #link_icon1 {background: url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -1848px 0 !important; width: 34px; height: 31px;  }
+#universitystructure_tree #link_icon2, #registrar_tree #link_icon2 {background:  url([[pix:theme|co_sprite]]) no-repeat !important;   background-position: -336px 0 !important; width: 34px; height: 31px; }
+#universitystructure_tree #link_icon3, #registrar_tree #link_icon3 {background:url([[pix:theme|co_sprite]]) no-repeat !important;  background-position:  -1764px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon4,#registrar_tree #link_icon4 {background:url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -1512px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon5,#registrar_tree #link_icon5 {background: url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -840px 0 !important; width: 34px; height: 31px; }
+#universitystructure_tree #link_icon6,#registrar_tree #link_icon6 {background: url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -420px 0 !important; width: 34px; height: 31px;  }
+#universitystructure_tree #link_icon7,#registrar_tree #link_icon7 {background: url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -252px 0 !important; width: 34px; height: 31px;   }
+#universitystructure_tree #link_icon8,#registrar_tree #link_icon8 {background: url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -76px -81px !important; width: 34px; height: 33px;   }
+#student_tree #link_icon1 {background: url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -504px 0 !important; width: 34px; height: 31px; }
+#universitystructure_tree #link_icon10 ,#registrar_tree #link_icon10{background: url([[pix:theme|co_sprite]]) no-repeat !important;  background-position:0 0 !important; width: 34px; height: 31px; }
+#universitystructure_tree #link_icon11,#student_tree #link_icon7,#registrar_tree #link_icon11 {background: url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -756px 0 !important; width: 34px; height: 31px;  }
+#universitystructure_tree #link_icon12,#registrar_tree #link_icon12 {background:  url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -1176px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon17,#registrar_tree #link_icon17 {background:  url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -1092px 0 !important; width: 34px; height: 31px; }
+#universitystructure_tree #link_icon18,#registrar_tree #link_icon18 {background:  url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -1596px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon22,#registrar_tree #link_icon22 {background:  url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -1428px 0 !important; width: 34px; height: 34px; }
+#universitystructure_tree #link_icon28,#registrar_tree #link_icon28 {background:  url([[pix:theme|co_sprite]]) no-repeat !important; background-position: -1313px -81px !important; width: 34px; height: 28px;}
+#universitystructure_tree #link_icon29,#registrar_tree #link_icon29 {background:  url([[pix:theme|co_sprite]]) no-repeat !important; background-position:-84px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon30,#registrar_tree #link_icon30 {background:  url([[pix:theme|co_sprite]]) no-repeat !important; background-position:  -672px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon33,#registrar_tree #link_icon33 {background:  url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -924px 0 !important; width: 34px; height: 36px;}
+#universitystructure_tree #link_icon34 {background:  url([[pix:theme|co_sprite]]) no-repeat !important;  background-position: -168px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon35 {background:  url([[pix:theme|co_sprite]]) no-repeat !important;  background-position:-1008px 0 !important; width: 34px; height: 31px;}
+#universitystructure_tree #link_icon36,#student_tree #link_icon14,#registrar_tree #link_icon34{background:  url([[pix:theme|co_sprite]]) no-repeat !important; background-position:  -1344px 0 !important; width: 34px; height: 31px;}
+#child_icon { background: url([[pix:theme|co_sprite]])  no-repeat !important;background-position: -1386px -81px !important; width:30px; height: 23px; }
+#student_tree #link_icon9 {background:  url([[pix:theme|N-request]]) no-repeat !important;  width: 34px; height: 31px;}
+#universitystructure_tree #link_icon9,#registrar_tree #link_icon9 {background:  url([[pix:theme|N-Acalender]]) no-repeat !important;  width: 34px; height: 31px;}
+
+/*#universitystructure_tree #ygtvcontentel12 {background: url([[pix:theme|collapsed]]);  width:83%; height:28px; background-position:right !important; background-repeat:no-repeat !important}
+#universitystructure_tree #ygtvcontentel18 {background: url([[pix:theme|collapsed]]);  width:83%; height:28px; background-position:right !important; background-repeat:no-repeat !important}
+#universitystructure_tree #ygtvcontentel22 {background: url([[pix:theme|collapsed]]);  width:83%; height:28px; background-position:right !important; background-repeat:no-repeat !important}
+#universitystructure_tree #ygtvcontentel34 {background: url([[pix:theme|collapsed]]);  width:83%; height:28px; background-position:right !important; background-repeat:no-repeat !important}
+
+#universitystructure_tree .color11 {background: url([[pix:theme|expanded]]) !important;  width:83%; height:28px; background-position:right !important; background-repeat:no-repeat !important}
+*/
+

@@ -1,0 +1,10 @@
+#acdetails{
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 2px #888888;
+}
+#acdetails #acheading{
+    background-color: #EBEBEB;
+}
+#id_realname_op, #id_lastname_op, #id_firstname_op, #id_email_op, #id_suspended, #id_systemrole, #id_assignedschool, #id_username_op{
+    margin: 0px !important;
+}

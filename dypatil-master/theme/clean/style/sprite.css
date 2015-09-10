@@ -1,0 +1,53 @@
+#container li {
+    background: url(co_sprite.png) no-repeat top left;
+}
+
+.co-N-AproovedUser{ background-position: 0 0; width: 34px; height: 31px; } 
+.co-N-AssignAcademicadvisor{ background-position: -84px 0; width: 34px; height: 31px; } 
+.co-N-Classschedule{ background-position: -168px 0; width: 34px; height: 31px; } 
+.co-N-Courses{ background-position: -252px 0; width: 34px; height: 31px; } 
+.co-N-Departments{ background-position: -336px 0; width: 34px; height: 31px; } 
+.co-N-Modules{ background-position: -420px 0; width: 34px; height: 31px; } 
+.co-N-academics{ background-position: -504px 0; width: 34px; height: 31px; } 
+.co-N-batchmanagement{ background-position: -588px 0; width: 34px; height: 31px; } 
+.co-N-browseuser{ background-position: -672px 0; width: 34px; height: 31px; } 
+.co-N-courseregistration{ background-position: -756px 0; width: 34px; height: 31px; } 
+.co-N-curriculum{ background-position: -840px 0; width: 34px; height: 31px; } 
+.co-N-evulutions{ background-position: -924px 0; width: 34px; height: 31px; } 
+.co-N-examschedule{ background-position: -1008px 0; width: 34px; height: 31px; } 
+.co-N-examination{ background-position: -1092px 0; width: 34px; height: 31px; } 
+.co-N-gradingscale{ background-position: -1176px 0; width: 34px; height: 31px; } 
+.co-N-mycourses{ background-position: -1260px 0; width: 34px; height: 31px; } 
+.co-N-myprofile{ background-position: -1344px 0; width: 34px; height: 31px; } 
+.co-N-resource{ background-position: -1428px 0; width: 34px; height: 31px; } 
+.co-N-semester{ background-position: -1512px 0; width: 34px; height: 31px; } 
+.co-N-universitysettings{ background-position: -1596px 0; width: 34px; height: 31px; } 
+.co-N-warnings{ background-position: -1680px 0; width: 34px; height: 31px; } 
+.co-N_PROGRAMS{ background-position: -1764px 0; width: 34px; height: 31px; } 
+.co-N_school{ background-position: -1848px 0; width: 34px; height: 31px; } 
+.co-admission{ background-position: -1932px 0; width: 21px; height: 22px; } 
+.co-calendar-icon{ background-position: 0 -81px; width: 26px; height: 26px; } 
+.co-classmanegment{ background-position: -76px -81px; width: 34px; height: 33px; } 
+.co-collapsed{ background-position: -160px -81px; width: 17px; height: 23px; } 
+.co-down_arrow{ background-position: -227px -81px; width: 16px; height: 7px; } 
+.co-download{ background-position: -293px -81px; width: 97px; height: 33px; } 
+.co-expanded{ background-position: -440px -81px; width: 17px; height: 23px; } 
+.co-image1{ background-position: -507px -81px; width: 55px; height: 41px; } 
+.co-layout_0{ background-position: -612px -81px; width: 50px; height: 50px; } 
+.co-layout_1{ background-position: -712px -81px; width: 50px; height: 50px; } 
+.co-layout_2{ background-position: -812px -81px; width: 50px; height: 50px; } 
+.co-menuimage01{ background-position: -912px -81px; width: 38px; height: 28px; } 
+.co-menuimage02{ background-position: -1000px -81px; width: 36px; height: 28px; } 
+.co-menuimage03{ background-position: -1086px -81px; width: 39px; height: 28px; } 
+.co-menu_popup{ background-position: -1175px -81px; width: 17px; height: 28px; } 
+.co-message{ background-position: -1242px -81px; width: 21px; height: 22px; } 
+.co-n-prefixandsufix{ background-position: -1313px -81px; width: 34px; height: 31px; } 
+.co-navigationitem{ background-position: -1397px -81px; width: 17px; height: 23px; } 
+.co-plus{ background-position: -1464px -81px; width: 16px; height: 16px; } 
+.co-quicklinks{ background-position: -1530px -81px; width: 31px; height: 28px; } 
+.co-request{ background-position: -1611px -81px; width: 21px; height: 22px; } 
+.co-selectarrow{ background-position: -1682px -81px; width: 14px; height: 9px; } 
+.co-selectbox_arrow{ background-position: -1746px -81px; width: 24px; height: 24px; } 
+.co-top{ background-position: -1820px -81px; width: 72px; height: 53px; } 
+.co-universitysettings{ background-position: -1942px -81px; width: 34px; height: 31px; } 
+.co-userpic{ background-position: 0 -184px; width: 56px; height: 41px; } 

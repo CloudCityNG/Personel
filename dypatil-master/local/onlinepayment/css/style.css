@@ -1,0 +1,47 @@
+.pay_outermost{
+    border: 1px solid #D3D3D3;
+    float: left;
+    margin-bottom: 2%;
+    overflow: auto;
+    width: 98%;
+}
+.pay_outermost .pay_innerleft{
+    width:50%;
+    float: left;
+    padding: 2%;
+}
+.pay_outermost .pay_innerright{
+    width: 40%;
+    float: right;
+    padding: 2%;
+}
+.pay_outermost .table .td{
+    padding: 0px 10px;
+}
+
+.class_viewcost{
+    width: 96%;
+    /*height: 50px;*/
+    border: 1px solid lightgray;
+    margin-bottom: 2%;
+    padding: 2%;
+    overflow: auto;
+}
+.class_viewcost .td-right{
+    font-size: 16px;
+}
+.class_viewcost .second-table td{
+    padding: 0px 10px;
+}
+/*.class_viewcost-left{
+    float: left;
+    width: 49%;
+    height: 100%;
+    border: 1px dashed;
+}
+.class_viewcost-right{
+    float: right;
+    width: 49%;
+    height: 100%;
+    border: 1px dashed;
+}*/

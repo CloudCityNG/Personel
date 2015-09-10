@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/admission/db" VERSION="20130905" COMMENT="XMLDB file for Moodle local/admission"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_admission" COMMENT="Default comment for local_admission, please edit me">
+        <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="firstname"/>
+		<FIELD NAME="firstname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="middlename"/>
+        <FIELD NAME="middlename" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="firstname" NEXT="lastname"/>
+        <FIELD NAME="lastname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="middlename" NEXT="gender"/>
+		<FIELD NAME="gender" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="lastname" NEXT="dob"/>
+		<FIELD NAME="dob" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="gender" NEXT="birthcountry"/>
+		<FIELD NAME="birthcountry" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="dob" NEXT="birthplace"/>
+		<FIELD NAME="birthplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="birthcountry" NEXT="fathername"/>
+		<FIELD NAME="fathername" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="birthplace" NEXT="pob"/>
+		<FIELD NAME="pob" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="fathername" NEXT="region"/>
+		<FIELD NAME="region" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="pob" NEXT="town"/>
+        <FIELD NAME="town" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="region" NEXT="currenthno"/>
+		<FIELD NAME="currenthno" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="town" NEXT="currentcountry"/>
+		<FIELD NAME="currentcountry" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="currenthno" NEXT="phone"/>
+		<FIELD NAME="phone" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="currentcountry" NEXT="email"/>
+        <FIELD NAME="email" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="phone" NEXT="howlong"/>
+		<FIELD NAME="howlong" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false" PREVIOUS="email" NEXT="same"/>
+		<FIELD NAME="same" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false" PREVIOUS="howlong" NEXT="pcountry"/>
+		<FIELD NAME="pcountry" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="same" NEXT="permanenthno"/>
+		<FIELD NAME="permanenthno" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="pcountry" NEXT="state"/>
+		<FIELD NAME="state" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="permanenthno" NEXT="city"/>
+        <FIELD NAME="city" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="state" NEXT ="pincode"/>
+        <FIELD NAME="pincode" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="city" NEXT="contactname"/>
+		<FIELD NAME="contactname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="pincode" NEXT="primaryschoolname"/>
+		
+		<FIELD NAME="primaryschoolname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="contactname" NEXT="primaryyear"/>
+        <FIELD NAME="primaryyear" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryschoolname" NEXT="primaryscore"/>
+        <FIELD NAME="primaryscore" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryyear" NEXT="ugin"/>
+		<FIELD NAME="ugin" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryscore" NEXT="ugname"/>
+        <FIELD NAME="ugname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugin" NEXT="ugyear"/>
+	    <FIELD NAME="ugyear" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugname" NEXT="ugscore"/>
+	    <FIELD NAME="ugscore" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugyear" NEXT="graduatein"/>
+	    <FIELD NAME="graduatein" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugscore" NEXT="graduatename"/>
+        <FIELD NAME="graduatename" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduatein" NEXT="graduateyear"/>
+	    <FIELD NAME="graduateyear" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduatename" NEXT="graduatescore"/>
+	    <FIELD NAME="graduatescore" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduateyear" NEXT="examname"/>
+	    <FIELD NAME="examname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduatescore" NEXT="hallticketno"/>
+		<FIELD NAME="hallticketno" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="examname" NEXT="score"/>
+		<FIELD NAME="score" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="hallticketno" NEXT="noofmonths"/>
+        <FIELD NAME="noofmonths" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="score" NEXT="reason"/>
+        <FIELD NAME="reason" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="noofmonths" NEXT="description"/>
+		<FIELD NAME="description" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="reason" NEXT="schoolid"/>
+		<FIELD NAME="schoolid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="description" NEXT="programid"/>
+        <FIELD NAME="programid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="schoolid" NEXT="typeofprogram"/>
+		 <FIELD NAME="typeofprogram" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="programid" NEXT="typeofapplication"/>
+        <FIELD NAME="typeofapplication" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofprogram" NEXT="typeofstudent"/>
+		<FIELD NAME="typeofstudent" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofapplication" NEXT="dateofapplication"/>
+		<FIELD NAME="dateofapplication" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="typeofstudent" NEXT="applicationid"/>
+		<FIELD NAME="applicationid" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="dateofapplication" NEXT="fundsbygovt"/>
+		
+		<FIELD NAME="fundsbygovt" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="applicationid" NEXT="status"/>
+		
+        <FIELD NAME="status" TYPE="int" LENGTH="5" NOTNULL="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="fundsbygovt"  NEXT="primaryplace"/>
+        <FIELD NAME="primaryplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="status" NEXT="ugplace"/>
+        <FIELD NAME="ugplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryplace" NEXT="graduateplace"/>
+        <FIELD NAME="graduateplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugplace" NEXT="previousstudent"/>
+        <FIELD NAME="previousstudent" TYPE="int" LENGTH="20" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduateplace" NEXT="uploadfile"/>
+	<FIELD NAME="uploadfile" TYPE="int" LENGTH="20" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="previousstudent" NEXT="address" />
+	<FIELD NAME="address" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="uploadfile" NEXT= "otherphone"/>
+	<FIELD NAME="otherphone" TYPE="char" LENGTH="150" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="address" NEXT="fatheremail"/>
+	<FIELD NAME="fatheremail" TYPE="char" LENGTH="100" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="otherphone"  NEXT="category"/>
+	<FIELD NAME="category" TYPE="char" LENGTH="50" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="fatheremail" NEXT="caste" />
+	<FIELD NAME="caste" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="category" NEXT="mothername" />
+	<FIELD NAME="mothername" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="caste" />
+	
+		 <!--<FIELD NAME="fundsbygovt" TYPE="int" LENGTH="2" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="previousstudent"/>-->
+        </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_users" COMMENT="Default comment for the table, please edit me">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="middlename"/>
+		<FIELD NAME="middlename" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="gender"/>
+        <FIELD NAME="gender" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="middlename" NEXT="dob"/>
+		<FIELD NAME="dob" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="gender" NEXT="birthcountry"/>
+		<FIELD NAME="birthcountry" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="dob" NEXT="birthplace"/>
+		<FIELD NAME="birthplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="birthcountry" NEXT="fathername"/>
+		<FIELD NAME="fathername" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="birthplace" NEXT="pob"/>
+		<FIELD NAME="pob" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="fathername" NEXT="region"/>
+		<FIELD NAME="region" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="pob" NEXT="town"/>
+        <FIELD NAME="town" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="region" NEXT=""/>
+		<FIELD NAME="currenthno" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="town" NEXT="currentcountry"/>
+		<FIELD NAME="currentcountry" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="currenthno" NEXT="howlong"/>
+		<FIELD NAME="howlong" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false" PREVIOUS="currentcountry" NEXT="same"/>
+		<FIELD NAME="same" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false" PREVIOUS="howlong" NEXT="permanenthno"/>
+		<FIELD NAME="permanenthno" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="same" NEXT="state"/>
+		<FIELD NAME="state" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="permanenthno" NEXT="pincode"/>
+       <FIELD NAME="pincode" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="state" NEXT="contactname"/>
+		<FIELD NAME="contactname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="pincode" NEXT="primaryschoolname"/>
+		<FIELD NAME="primaryschoolname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="contactname" NEXT="primaryyear"/>
+        <FIELD NAME="primaryyear" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryschoolname" NEXT="primaryscore"/>
+        <FIELD NAME="primaryscore" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryyear" NEXT="ugin"/>
+		<FIELD NAME="ugin" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryscore" NEXT="ugname"/>
+       <FIELD NAME="ugname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugin" NEXT="ugyear"/>
+	   <FIELD NAME="ugyear" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugname" NEXT="ugscore"/>
+	   <FIELD NAME="ugscore" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugyear" NEXT="graduatein"/>
+	   <FIELD NAME="graduatein" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugscore" NEXT="graduatename"/>
+       <FIELD NAME="graduatename" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduatein" NEXT="graduateyear"/>
+	   <FIELD NAME="graduateyear" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduatename" NEXT="graduatescore"/>
+	   <FIELD NAME="graduatescore" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduateyear" NEXT="examname"/>
+	   <FIELD NAME="examname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduatescore" NEXT="hallticketno"/>
+		<FIELD NAME="hallticketno" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="examname" NEXT="score"/>
+		<FIELD NAME="score" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="hallticketno" NEXT="noofmonths"/>
+        <FIELD NAME="noofmonths" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="score" NEXT="reason"/>
+        <FIELD NAME="reason" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="noofmonths" NEXT="description"/>
+		<FIELD NAME="description" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="reason" NEXT="typeofprogram"/>
+		<FIELD NAME="typeofprogram" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="description" NEXT="typeofapplication"/>
+        <FIELD NAME="typeofapplication" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofprogram" NEXT="typeofstudent"/>
+		<FIELD NAME="typeofstudent" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofapplication" NEXT="dateofapplication"/>
+		<FIELD NAME="dateofapplication" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofstudent" NEXT="applicationid"/>
+		<FIELD NAME="applicationid" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="dateofapplication" NEXT="deleted"/>
+        <FIELD NAME="deleted" TYPE="int" LENGTH="5" NOTNULL="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="applicationid" NEXT="usermodified"/>
+        <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="false"  SEQUENCE="false" PREVIOUS="deleted" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="false"  SEQUENCE="false" PREVIOUS="usermodified" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="false"  SEQUENCE="false" PREVIOUS="timemodified" NEXT="userid"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"  SEQUENCE="false" PREVIOUS="timecreated" NEXT="fundsbygovt"/>
+		
+		<FIELD NAME="fundsbygovt" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="userid" NEXT="applicantid"/>
+		
+		 <FIELD NAME="applicantid" TYPE="int" LENGTH="10" NOTNULL="false"  SEQUENCE="false" PREVIOUS="fundsbygovt"  NEXT="primaryplace"/>
+		<FIELD NAME="primaryplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="applicantid" NEXT="ugplace"/>
+        <FIELD NAME="ugplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="primaryplace" NEXT="graduateplace"/>
+        <FIELD NAME="graduateplace" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="ugplace" NEXT="dashboard"/>
+        <FIELD NAME="dashboard" TYPE="int" LENGTH="15" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="graduateplace" NEXT="previousstudent"/>
+        <FIELD NAME="previousstudent" TYPE="int" LENGTH="20" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="dashboard" NEXT="otherphone"/>
+	
+	<FIELD NAME="otherphone" TYPE="char" LENGTH="150" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="previousstudent" NEXT="fatheremail"/>
+	<FIELD NAME="fatheremail" TYPE="char" LENGTH="100" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="otherphone"  NEXT="category"/>
+	<FIELD NAME="category" TYPE="char" LENGTH="50" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="fatheremail" NEXT="caste" />
+	<FIELD NAME="caste" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="category" NEXT="mothername" />
+	<FIELD NAME="mothername" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="caste" />
+        </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

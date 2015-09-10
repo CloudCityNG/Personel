@@ -1,0 +1,128 @@
+/* styles using by evaluation */
+.evaluation_required_mark {
+    color: #FF0000;
+    font-size: 0.83em;
+}
+
+.evaluation_switchrequired img{
+}
+
+div.missingrequire {
+    background:#FFAAAA;
+}
+.evaluation_info {
+    padding:6px;
+}
+span.evaluation_info {
+    font-weight:bold;
+    padding:15px;
+}
+div.evaluation_item_box_left, div.evaluation_item_box_right {
+    padding: 10px;
+    background-color: #EAEAEA;
+    margin-bottom: 12px;
+}
+
+div.evaluation_depend {
+    background:#DDDDDD;
+}
+
+div.evaluation_complete_depend {
+    background:#EEEEEE;
+}
+
+span.evaluation_depend {
+    color:#ff0000;
+}
+
+div.evaluation_item_number_left, div.evaluation_item_left {
+    float:left;
+}
+div.evaluation_item_number_right, div.evaluation_item_right {
+    float:right;
+}
+
+div.evaluation_item_commands_left {
+    float:left;
+    text-align:left;
+}
+
+div.evaluation_item_commands_right {
+    float:left;
+    text-align:left;
+}
+
+li.evaluation_item_check_h_left,
+li.evaluation_item_check_h_right,
+li.evaluation_item_select_h_left,
+li.evaluation_item_select_h_right,
+li.evaluation_item_radio_h_left,
+li.evaluation_item_radio_h_right{
+    list-style-type:none;
+    display:inline;
+}
+
+li.evaluation_item_check_v_left,
+li.evaluation_item_check_v_right,
+li.evaluation_item_select_v_left,
+li.evaluation_item_select_v_right,
+li.evaluation_item_radio_v_left,
+li.evaluation_item_radio_v_right{
+    list-style-type:none;
+    display:block;
+}
+
+div.evaluation_items label{
+    display: inline;
+}
+
+div.evaluation_item_captcha_text_left,
+div.evaluation_item_captcha_img_left {
+    display:inline;
+    margin: 5px;
+}
+div.evaluation_item_captcha_text_right,
+div.evaluation_item_captcha_img_right {
+    display:inline;
+    margin: 5px;
+}
+
+hr.evaluation_pagebreak {
+    height:8px;
+    color:#aaaaaa;
+    background-color:#aaaaaa;
+    border:0px;
+}
+
+.drag_target_active {
+    opacity: .25;
+}
+
+.drag_item_active {
+    opacity: .5;
+}
+
+ul#evaluation_draglist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+div#evaluation_dragarea {
+    width:95%;
+}
+.evaluation_item_presentation_left{
+    padding:15px;
+}
+.itemhandle {
+    width: 5%;
+    float: left;
+    margin-top: 35px;
+    margin-left: 20px;
+}
+.box.evaluation_items {
+    margin-top: 10px;
+}
+#templatedel .felement.fgroup ,#delquestion .felement.fgroup,#delitem .felement.fgroup{
+    margin: 0;
+}

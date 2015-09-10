@@ -1,0 +1,36 @@
+
+.desc
+{
+    display:none;
+    text-align: justify;
+    margin-left: 0px;
+    margin-top: -10px;
+}
+#programs
+{
+    list-style-type:none;
+}
+#course
+{
+    list-style-type:none;
+}
+#programs > li > a.expanded{
+    background-image: url('../../../pix/t/expanded.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+#programs > li > a.collapsed{
+    background-image: url('../../../pix/t/collapsed.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+#course > li > a.expanded{
+    background-image: url('../../../pix/t/switch_minus.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+#course > li > a.collapsed{
+    background-image: url('../../../pix/t/switch_plus.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+}

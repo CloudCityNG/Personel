@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/scheduleexam/db" VERSION="20130914" COMMENT="XMLDB file for Moodle local/scheduleexam"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_scheduledexams" COMMENT="List of Scheduled Exams for Classes" >
+      <FIELDS>
+		<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="examtype"/>
+		<FIELD NAME="examtype" TYPE="int" LENGTH="10" NOTNULL="true"  UNSIGNED="true" SEQUENCE="false" COMMENT="Exam Types under a school"  PREVIOUS="id" NEXT="schoolid"  />
+		<FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true"  UNSIGNED="true" SEQUENCE="false" PREVIOUS="examname" NEXT="programid"/>
+		<FIELD NAME="programid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="schoolid" NEXT="semesterid"/>
+		<FIELD NAME="semesterid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="programid" NEXT="classid"/>     
+		<FIELD NAME="classid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="semesterid" NEXT="opendate"/>
+		<FIELD NAME="opendate" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Exam Open date" PREVIOUS="classid" NEXT="starttimehour"/>
+		<FIELD NAME="starttimehour" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Exam Starttime" PREVIOUS="opendate" NEXT="starttimemin"/>
+		<FIELD NAME="starttimemin" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Exam Starttime" PREVIOUS="starttimehour" NEXT="endtimehour"/>
+		<FIELD NAME="endtimehour" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Exam Endtime" PREVIOUS="starttimemin" NEXT="endtimemin"/>
+		<FIELD NAME="endtimemin" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Exam Endtime" PREVIOUS="endtimehour" NEXT="lecturetype"/>
+		<FIELD NAME="lecturetype" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Lecture Type" PREVIOUS="endtimemin" NEXT="grademin"/>
+		<FIELD NAME="grademin" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Minimum Grade Marks" PREVIOUS="lecturetype" NEXT="grademax"/>
+                <FIELD NAME="grademax" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Maximum Grade Marks" PREVIOUS="grademin" NEXT="examweightage"/>
+		<FIELD NAME="examweightage" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Exam Weightage" PREVIOUS="grademax" NEXT="visible"/>
+                <FIELD NAME="visible" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="examweightage" NEXT="timecreated"/>
+		<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="visible" NEXT="timemodified" />
+		<FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified" />
+		<FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified"  />
+   </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+   
+    </TABLES>
+</XMLDB>

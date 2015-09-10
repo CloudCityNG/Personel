@@ -1,0 +1,236 @@
+.block_progress .content {
+    text-align: center;
+}
+
+.block_progress table {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.block_progress .progressBarProgressTable {
+    width: 100%;
+    margin: 0 0 5px 0;
+    height: 25px;
+    overflow: hidden;
+}
+
+.block_progress .progressBarProgressTable.noNow {
+    height: 19px;
+}
+
+.block_progress .progressBarCell {
+    height: 19px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    background-color: none;
+    cursor: pointer;
+    border-left: solid 1px #e3e3e3;
+}
+
+.block_progress .progressBarCell#first {
+    border-radius: 3px 0 0 3px;
+    border-left: none;
+}
+
+.block_progress .progressBarCell#last {
+    border-radius: 0 3px 3px 0;
+}
+
+.block_progress .progressBarCell img {
+    width: 100%;
+    height: 15px;
+    margin: 1px 0 0 0;
+    padding: 0;
+}
+
+.block_progress .progressBarCell .smallicon {
+    width: 85%;
+    height: 85%;
+    max-width: 15px;
+    height: auto;
+    max-height: 15px;
+    vertical-align: text-bottom;
+}
+
+.block_progress .progressEventInfo {
+    font-size: x-small;
+    text-align: left;
+    white-space: pre;
+    overflow: hidden;
+    padding: 0;
+}
+
+.block_progress .progressEventInfo img {
+    vertical-align: middle;
+}
+
+.block_progress .moduleIcon {
+    float: left;
+    margin-right: 5px;
+}
+
+.block_progress .progressBarHeader {
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+.progressConfigBox {
+    border:1px dashed #cccccc;
+    padding: 5px;
+    margin:5px 0 !important;
+}
+
+.progressConfigModuleTitle {
+    font-weight: bold;
+}
+
+.progressConfigModuleTitle img {
+    vertical-align: middle;
+}
+
+.block_progress .groupselector {
+    text-align: center;
+}
+
+.progressoverviewmenus {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.progressoverviewmenus form, .progressoverviewmenus select, .progressoverviewmenus div {
+    display: inline;
+}
+
+.progressoverviewmenus select {
+    margin-left: 2px;
+}
+
+.overviewButton {
+    margin: 10px;
+}
+.tooltip { /* hide and position tooltip */
+    top:-10px;
+    background-color:red;
+    color:white;
+    border-radius:5px;
+    opacity:0;
+    position:absolute;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+
+}
+.tooltips {
+    margin-top:10px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+#courseregistration_viewclass{
+  list-style: none;
+  font-size: 9px;
+}
+
+table#GridView1 {
+  border: 1px solid;
+  padding: 0px;
+}
+
+/* .button tipped
+{
+height:10px !important;
+} */
+
+#local_coursereg_second_inner {
+    margin: 14px 0;
+    padding: 10px;
+    border: 1px dashed #CCC;
+    background: #FAFAFA;   
+    clear:both;
+}
+#local_coursereg_second_inner li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 3%;
+    font-size: 14px;
+    font-weight: bold;
+    border-right: 2px solid #EAEAEA;
+    letter-spacing: -1px;
+}
+#local_coursereg_second_inner li:last-child {
+    border-right: none;
+}
+.cl_buttonrow li{
+    
+      list-style: none;
+    display: inline-block;
+  //  padding-right: 25px;
+    font-size: 12px;
+    
+}
+
+.cl_curdrow li{
+    
+     list-style: none;
+    display: inline-flex;
+  //  padding-right: 25px;
+    font-size: 12px;
+    
+}
+
+#cl_insinfo{
+    
+    display: block;
+    
+}
+.first_inner{
+   // float:left;
+    
+}
+ul.cl_curdrow {
+  float: right; 
+}
+
+td.colms_cell.cell {
+   padding: 0 20 0 20px;
+}   
+ 
+    
+ul.third_inner {
+  margin: 0 0 0 0px !important;
+  float:left;
+}
+.first_inner {
+  margin-top: 10px;
+}
+
+span#cl_instructorname {
+  font-size: 14px;
+  padding: 13px;
+}
+
+span#cl_name {
+  font-weight: bold;
+}
+
+span#classes_thirdinner {
+  float: right;
+  font-size: 11px;
+  font-style: italic;
+  padding-top: 18px;
+}
+
+ul.first_innerclassdetail {
+  list-style: none;
+  font-size: 12px;
+  margin-left: 0px;
+}
+

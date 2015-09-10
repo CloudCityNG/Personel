@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/audittrail/db" VERSION="20130107" COMMENT="XMLDB file for Moodle local/audittrail"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+  <TABLE NAME="local_audit_trail" COMMENT="holds list of audit trials(by default it holds the value" NEXT="local_audit_reason"  >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="auditname"/>
+        <FIELD NAME="auditname" TYPE="text"   NOTNULL="true" COMMENT="Name of audit trail" PREVIOUS="id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" NOTNULL="false" COMMENT="description of the audit trail" PREVIOUS="auditname" NEXT="visible"/>
+        <FIELD NAME="visible" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1" PREVIOUS="description"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+  </TABLE>
+  <TABLE NAME="local_audit_reason" COMMENT="used to store reason of audit trail" PREVIOUS="local_audit_trail" NEXT="local_audit_trail_log"  >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="auditid"/>
+	<FIELD NAME="auditid" TYPE="int" LENGTH="10" NOTNULL="true"  NEXT="reason"/>
+        <FIELD NAME="reason" TYPE="text" NOTNULL="true"  PREVIOUS="auditid"  NEXT="description"/>
+	<FIELD NAME="description" TYPE="text" NOTNULL="false" PREVIOUS="reason"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+	<KEY NAME="auditid" TYPE="foreign" FIELDS="auditid" REFTABLE="local_audit_trail" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+  </TABLE>
+  <TABLE NAME="local_audit_trail_log" COMMENT="used story only categories types" PREVIOUS="local_audit_reason"  >
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="auditid"/>
+	<FIELD NAME="auditid" TYPE="int" LENGTH="10" NOTNULL="true"  COMMENT="foreign key (it refer audit_trail table of id field)" PREVIOUS="id" NEXT="reasonid"/>
+	<FIELD NAME="reasonid" TYPE="int" LENGTH="10" NOTNULL="true"  COMMENT="foreign key (it refer audit_reason table of id field)" PREVIOUS="auditid" NEXT="userid"/>
+	<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"  COMMENT="id,which..who is performing audit trail" PREVIOUS="reasonid"  NEXT="roleid"/>
+	<FIELD NAME="roleid" TYPE="int" LENGTH="10" NOTNULL="true"  COMMENT="roleid of the user"  PREVIOUS="userid"  NEXT="time" />
+        <FIELD NAME="time" TYPE="int" LENGTH="20" NOTNULL="true"  PREVIOUS="roleid" NEXT="oldgrade"/>
+        <FIELD NAME="oldgrade" TYPE="int" LENGTH="10" NOTNULL="false"  PREVIOUS="time" NEXT="newgrade"/>
+        <FIELD NAME="newgrade" TYPE="int" LENGTH="10" NOTNULL="false"  PREVIOUS="oldgrade" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+	<KEY NAME="auditid" TYPE="foreign" FIELDS="auditid" REFTABLE="local_audit_trail" REFFIELDS="id" PREVIOUS="primary"/>
+	<KEY NAME="reasonid" TYPE="foreign" FIELDS="auditid" REFTABLE="local_audit_reason" REFFIELDS="id" PREVIOUS="auditid"/>
+      </KEYS>
+  </TABLE>
+  </TABLES>
+</XMLDB>

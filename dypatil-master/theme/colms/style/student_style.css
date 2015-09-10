@@ -1,0 +1,72 @@
+.span3, .span9 {
+margin-left: 10px;
+}
+.ui-tabs{
+    margin-top:0;
+}
+#middle-blocks{
+    padding-top:1px;
+}
+#middle-blocks #title {
+    width:auto;
+}
+#dashboard-one {
+    width:auto;
+	
+}
+#middle-blocks .span4 {
+width: 50%;
+}
+#dashboard-one, #dashboard-two, #dashboard-three, #dashboard-four, #dashboard-five, #dashboard-six{
+    border:none;
+}
+#dashboard-one h2 ,#dashboard-two h2 ,#dashboard-three h2,#dashboard-four h2{
+background-color: #2898D5;
+color:#FFF;
+  line-height: 20px;
+  font-size:14px;
+}
+#fulldashboard {
+    width:100% !important;
+	
+}
+.ui-widget-content{
+    border:none;
+}
+.ui-tabs .ui-tabs-panel{
+    padding:1em 0;
+}
+.breadcrumb-button{
+    float:none;
+    width:100%;
+    margin-top: 10px;
+}
+#academic_status_tabs {
+overflow: auto;
+}
+#region-pre .block .header .title h2, .block h3.main, #region-post .block .header .title h2, .block h3.main{
+    background-color: #0EABB7;
+}
+.row-fluid .span9{
+    background: transparent !important;
+}
+.course_title h2{
+font-size:14px;
+color:0066ab;
+background-color: #ffffff !important;
+}
+
+#dashboard-one .block, #dashboard-two .block, #dashboard-three .block, #dashboard-four .block, #dashboard-five .block, #dashboard-six .block{
+border-radius:0px !important;
+  overflow: auto;
+}
+
+#page-my-index .span4 .content {
+    border: 1px solid #E7D7D7;
+	border-top:none;
+    padding: 20px 14px;
+}
+#page-footer  .span4 .content {
+    border: 0px solid #ACACAC;
+    padding: 4px 14px;
+}

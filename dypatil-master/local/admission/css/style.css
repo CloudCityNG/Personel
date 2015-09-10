@@ -1,0 +1,87 @@
+.statusmessage {
+    width: 65%;
+    background-color: green;
+    text-align: center;
+    margin: 5%;
+    padding: 2%;
+    font-weight: bold;
+    color: white;
+}
+.accept {
+    cursor:pointer;
+}
+.categorypicker {
+    margin:10px;
+}
+.admission {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.selfilterposition {
+    padding: 5px;
+    width: 43%;
+}
+.selfilterposition select {
+    width: 170px;
+    float: right;
+    display: inline-table;
+    margin-right: 17%;
+}
+.line {
+    margin: 10px 0;
+    border: 0;
+    background-image:url('../pix/centre line.png');
+    background-repeat:repeat-x;
+    background-position: bottom;
+    padding-bottom: 10px;
+
+}
+.applyonline {
+    background: #FFF ;
+    background-image: url('../pix/centrebox_bg.png');
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding: 1%;
+    margin-bottom: 20px;
+    list-style:none;
+    margin-left:0px;
+}
+.admissionleft {
+    float:left;
+}
+.admissionright {
+    float: right;
+    margin-top:4%;
+    margin-right: 2%;
+    background-color: #f4611e;
+    background-repeat: no-repeat;
+    width: 93px;
+    text-align: center;
+    border-radius: 10px;
+}
+.admissionright a {
+    color:white;
+    font-weight: bold;
+}
+.admissionclear {
+    clear:both;
+}
+.downloadbutton {
+    float: right;
+    color: white !important;
+    background-color: #f4611e;
+    background-repeat: no-repeat;
+    width: 90px;
+    text-align: center;
+    border-radius: 5px;
+    height: 23px;
+    margin-top: -30px;
+    padding-top: 4px;
+}
+
+.desc {
+    display:none;
+    text-align: justify;
+    margin-left: 0px;
+    margin-top: -10px;
+}

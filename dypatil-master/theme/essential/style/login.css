@@ -1,0 +1,82 @@
+header {
+    display: none;
+}
+#page {
+    padding: 0;
+}
+#page #page-content {
+    margin-top: 0;
+}
+#page #page-content #region-main {
+    margin-bottom: 0;
+    padding: 0;
+}
+.loginbox {
+    width: 36%;
+    margin: 165px auto 0;
+    border: 1px solid #CECECE;
+}
+.loginbox h2 {
+    margin: auto;
+    background: none;
+    border-bottom: none;
+    color: #424244;
+    font-family: Minion Pro Regular;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 10px auto 0;
+}
+.loginbox .subcontent {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+.loginbox .loginform {
+    margin-top: 0;
+}
+.loginbox .loginform .form-label {
+    display: none;
+}
+.loginbox .loginform .form-input {
+    float: left;
+    width: 94%;
+    margin: 0 auto;
+}
+.loginbox .loginform .form-input input {
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+    border-radius: 2px;
+    min-height: 26px;
+}
+.loginbox .rememberpass {
+    float: left;
+}
+.loginbox .rememberpass label{
+    font-size: 11px;
+    padding-left: 0;
+}
+.loginbox #rememberusername{
+    max-height: 11px;
+    vertical-align: middle;
+    margin-top: 1px;
+}
+.loginbox .forgetpass {
+    float: right;
+    font-size: 11px;
+}
+.loginbox .loginsub div.desc{
+    display: none;
+}
+.loginbox #loginbtn{
+    width: 100%;
+    min-height: 40px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: Minion Pro Regular;
+}
+input[type=submit], input[type=submit]:hover {
+    background-color: #A30D1D;
+    border: 1px solid #A30D1D;
+}

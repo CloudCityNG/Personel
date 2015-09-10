@@ -1,0 +1,5 @@
+[19-Sep-2014 07:01:14 America/Chicago] PHP Warning:  session_start() [<a href='function.session-start'>function.session-start</a>]: Cannot send session cache limiter - headers already sent (output started at /home/cobaltlm/public_html/demo/local/resourcecentral/index.php:8) in /home/cobaltlm/public_html/demo/lib/sessionlib.php on line 190
+[19-Sep-2014 07:01:17 America/Chicago] PHP Notice:  Use of undefined constant T - assumed 'T' in /home/cobaltlm/public_html/demo/local/resourcecentral/index.php on line 53
+[19-Sep-2014 07:01:17 America/Chicago] PHP Notice:  Use of undefined constant L - assumed 'L' in /home/cobaltlm/public_html/demo/local/resourcecentral/index.php on line 60
+[19-Sep-2014 07:01:17 America/Chicago] PHP Notice:  Use of undefined constant V - assumed 'V' in /home/cobaltlm/public_html/demo/local/resourcecentral/index.php on line 61
+[19-Sep-2014 07:01:17 America/Chicago] PHP Notice:  Use of undefined constant C - assumed 'C' in /home/cobaltlm/public_html/demo/local/resourcecentral/index.php on line 62

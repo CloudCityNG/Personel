@@ -1,0 +1,314 @@
+/*iphone5 css*/
+@media (min-width : 320px) and (max-width : 568px) {
+	div.pp_pic_holder {
+		left: 45px !important;
+		width: 212px !important;
+	}
+	#description_area_pretty {
+		float: left;
+		width: 150px!important;
+		padding: 10px!important;
+	}
+	.pp_close {
+	margin-right:-70px !important;
+	}
+	.pp_social {
+		display: inline-flex !important;
+	}
+	#storywalldesc {
+	padding:10px !important;
+	}
+	#picture_info {
+		float: left;
+		padding: 0px !important;
+	}
+	
+	#page-mod-storywall-edit .dndupload-arrow {
+	margin-left:0px !important;
+	}
+	#page-mod-storywall-edit .basefieldinput {
+		width: 95% !important;
+	}
+	#page-mod-storywall-edit  textarea#field_9 {
+		width: 95% !important;
+		display: block !important;
+	}
+	#page-mod-storywall-edit  .mceEditor {
+		display: none;
+	}
+	#page-mod-storywall-edit input[id*="url"] {
+		width: 92% !important;
+	}
+	#page-mod-storywall-edit .storywall_select {
+		min-width: 98% !important;
+		margin-left: 2.5% !important;
+	}
+	#page-mod-storywall-edit input[id="field_10_alttext"] {
+		width: 92% !important;
+	}
+	#page-mod-storywall-edit select#field_9_content1 {
+		max-width: 85% !important;
+	}
+	#page-mod-storywall-edit #filesskin {
+		display:none;
+	}
+	.edit_heading {
+		margin-left: 0px !important;
+	}
+	#page-mod-forum-discuss .forum_posting {
+		width: 85% !important;
+	}
+	#page-mod-forum-discuss .side{
+		width: 100% !important;
+	}
+	#page-mod-forum-discuss .forum_posting .radiostars {
+		width: 62%;
+	}
+	#page-mod-forum-discuss .forum_posting .like_unlike {
+		width: 32%;
+	}
+	.path-mod-forum .forumheaderlist .replies a {
+		margin-left: 25%;
+	}
+	.boxwidthwide {
+		width: auto;
+	}
+}
+@media (max-width : 480px) {
+/* Styles 
+	.logininfo {
+		float: right;
+		margin-right: 10%;
+	}
+	.logoutlink {
+		height: 24px !important;
+		width: 100px !important;
+		line-height: 24px;
+	}
+	#loginlink {
+	margin-top: 32px !important;
+	width: 100% !important;
+	}
+	.box_log {
+		width: 100px;
+		height: 24px !important;
+		line-height: 22px;
+	}
+	div.pp_pic_holder {
+		left: 45px !important;
+		width: 212px !important;
+	}
+	#description_area_pretty {
+		float: left;
+		width: 150px!important;
+		padding: 10px!important;
+	}
+	.pp_close {
+	margin-right:-77px !important;
+	}
+	.pp_social {
+		display: inline-flex !important;
+	}
+	#storywalldesc {
+	padding:10px !important;
+	}
+	#page-mod-storywall-edit .filemanager{
+	width:80% !important;
+	}
+	#page-mod-storywall-edit .dndupload-arrow {
+	margin-left:0px !important;
+	}
+	#page-mod-storywall-edit .basefieldinput {
+		width: 75%;
+	}
+	#page-mod-storywall-edit  textarea {
+		height: 39px;
+		width: 75%;
+	}
+	#page-mod-storywall-edit input[id*="url"] {
+		width: 70%;
+	}
+	#page-mod-storywall-edit .storywall_select {
+		min-width: 98%;
+	}
+	#page-mod-storywall-edit input[id="field_10_alttext"] {
+		width: 75%;
+	}
+	#page-mod-storywall-edit select#field_9_content1 {
+		max-width: 83%;
+	}
+	#page-mod-storywall-edit #filesskin {
+		display:none;
+	}
+	#page-mod-storywall-edit .edit_heading {
+		margin-left: -15px;
+	}*/
+}
+/* Large desktop */
+@media (min-width: 1200px) {
+	.row-fluid .span12{
+		width:94%;
+	}
+	.row-fluid .span6 .block{
+		width:228px;
+	}
+}
+ 
+
+/* Smartphones (portrait and landscape) ----------- */
+@media (max-width: 767px) {
+	/* Styles */
+	.custom_footer{
+	display:none;
+	}
+	body{
+		padding:0;
+	}
+	#page-footer .span4 {
+	text-align: center;
+	}
+	#middle-blocks .span4{
+		width:100% !important;
+	}
+	.row-fluid .span6 {
+	width: 100%;
+	}
+	.navbar .nav li.dropdown>.dropdown-toggle .caret{
+		float:right;
+	}
+	.nav-collapse .nav>li{
+		background-color: #EAEAEA;
+	}
+	.navbar .nav>li{
+		background-color: #EAEAEA;
+	}
+	.navbar-inner{
+		max-height: inherit !important; 
+	}
+	.navbar .nav{
+		float:none !important;
+		margin:0 !important;
+	}
+	.datefilterpos,.selfilterpos{
+		width:100% !important;
+		padding:0 !important;
+		float:none !important;
+	}
+	.selfilterpos select{
+		float:none !important;
+	}
+	.selfilterpos .singleselect{
+		margin-left:5% !important;
+	}
+	.datefilterpos input[type=text]{
+		margin:0 !important;
+	}
+	.selfilterpos label,.datefilterpos label{
+		display:none;
+	}
+	.singleselect {
+	display: inline;
+	}
+	.scrollup{
+	bottom: 0 !important;
+	right: 0 !important;
+	width:62px !important;
+	}
+	#page-footer {
+	width:auto !important;
+	}
+	.breadcrumb-button input[type="submit"] {
+	width:100% !important;
+	}
+	.breadcrumb-button {
+	 max-width: 100% !important;
+	}
+	.breadcrumb-button .singlebutton div {
+		margin-right: 0;
+		width: 100%;
+	}
+	#page-mod-forum-view .customtag_search_box {
+		float: left;
+		margin-left: 25%;
+		text-align: right;
+		width: auto;
+	}
+	#page-mod-assign-view .cell.c5 {
+		max-width: 100px;
+	}
+	#loginlink {
+		margin-top: 20px!important;
+		width: 100% !important;
+	}
+	.logininfo {
+		float: right;
+		margin-right: 0 !important;
+	}
+	#course_infotable .first {
+	width: 50% !important;
+	}
+	#region-pre .block, #region-post .block {
+		margin-left: 0px !important; 
+	}
+	#page-my-index .breadcrumb-button{
+		margin-left:0px !important;
+	}
+	#bnavbar ul {
+		padding-left:0px !important;
+	}
+}
+
+@media  (max-width: 1024px)
+and (min-width: 768px) {
+	.custom_footer{
+	display:none;
+	}
+	#loginlink.span4.pull-right {
+	width: 31% !important;
+	margin-top: 100px;
+	}
+	.logininfo {
+		float: right;
+		margin-right: 0 !important;
+	}
+	#middle-blocks .span4{
+		width:100% !important;
+	}
+	.row-fluid .span6 {
+	width: 100%;
+	margin-left:0px;
+	}
+	.breadcrumb-button input[type="submit"] {
+		width: 100% !important;
+	}
+	.breadcrumb-button {
+		 max-width: 100% !important;
+	}
+	.breadcrumb-button .singlebutton div {
+		margin-right: 0;
+		width: 100%;
+	}
+	.row-fluid .span9 {
+		width: 100%;
+	}
+	.selfilterpos .singleselect{
+		margin-left:5% !important;
+	}
+	#region-pre .block, #region-post .block {
+		margin-left: 0px !important; 
+	}
+	#page-my-index .breadcrumb-button{
+		margin-left:0px;
+	}
+	#bnavbar ul {
+		padding-left:0px !important;
+	}
+	#page-mod-forum-discuss .forum_posting {
+		width: 50% !important;
+	}
+	#page-mod-forum-discuss .forum_posting .radiostars {
+		width: 60%;
+	}
+
+}
+

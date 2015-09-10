@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/townhall/db" VERSION="20120123" COMMENT="XMLDB file for Moodle local/townhall"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+<TABLES>
+    <TABLE NAME="local_townhall" COMMENT="Activities posted to townhall" NEXT="local_townhall_topic">
+        <FIELDS>
+                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
+                 <FIELD NAME="userid" TYPE="int"  LENGTH="10" NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="id" NEXT="cmid"/>
+                 <FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="userid" NEXT="modname"/>
+                  <FIELD NAME="modname" TYPE="text"  NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="cmid" NEXT="courseid"/>
+                <FIELD NAME="courseid" TYPE="int"  LENGTH="10"  NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="modname" />
+        </FIELDS>
+        <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        </KEYS>
+    </TABLE>
+    <TABLE NAME="local_townhall_topic" COMMENT="Topics posted to townhall"  PREVIOUS="local_townhall">
+        <FIELDS>
+            <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
+                 <FIELD NAME="userid" TYPE="int"   LENGTH="10" NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="id" NEXT="topic"/>
+                 <FIELD NAME="topic" TYPE="text" NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="userid" NEXT="publish"/>
+                 <FIELD NAME="publish" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="topic" NEXT="description"/>
+                  <FIELD NAME="description" TYPE="text"  NOTNULL="false" UNSIGNED="true"  SEQUENCE="false" PREVIOUS="publish" NEXT="courseid"/>
+                <FIELD NAME="courseid" TYPE="int"  LENGTH="10"  NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="description" />
+     </FIELDS>
+        <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        </KEYS>
+   </TABLE>
+  </TABLES>
+</XMLDB>

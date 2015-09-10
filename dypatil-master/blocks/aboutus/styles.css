@@ -1,0 +1,10 @@
+#elearningplatform p {
+    overflow: auto;
+    color: #333333;
+    font-size: 12px;
+    line-height: 22px;
+}
+#elearningplatform p img {
+    float: right;
+    overflow: auto;
+}

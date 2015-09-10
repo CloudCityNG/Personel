@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="local/cobaltcourses/db" VERSION="20130514" COMMENT="XMLDB file for Moodle local/cobaltcourses">
+    <TABLES>
+      <TABLE NAME="local_cobaltcourses" COMMENT="Cobalt Courses" NEXT="local_course_equivalent">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="fullname"/>
+          <FIELD NAME="fullname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="shortname"/>
+          <FIELD NAME="shortname" TYPE="text" LENGTH="25" NOTNULL="true" SEQUENCE="false" PREVIOUS="fullname" NEXT="departmentid"/>
+          <FIELD NAME="departmentid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="shortname" NEXT="schoolid"/>
+		  <FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="departmentid" NEXT="summary"/>
+          <FIELD NAME="summary" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid" NEXT="coursetype"/>
+          <FIELD NAME="coursetype" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="summary" NEXT="credithours"/>
+          <FIELD NAME="credithours" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="coursetype" NEXT="coursecost"/>
+          <FIELD NAME="coursecost" TYPE="number" DECIMALS="2" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="credithours" NEXT="visible"/>
+          <FIELD NAME="visible" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1" SEQUENCE="false" PREVIOUS="coursecost" NEXT="timecreated"/>
+          <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="visible" NEXT="timemodified"/>
+          <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified"/>
+          <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified"/>
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+	  
+	  <TABLE NAME="local_course_equivalent" COMMENT="Equivalent Courses for Cobalt Courses" PREVIOUS="local_cobaltcourses" NEXT="local_course_prerequisite">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+          <FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="departmentid"/>
+		  <FIELD NAME="departmentid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="schoolid" NEXT="courseid"/>
+          <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="departmentid" NEXT="equivalentdeptid"/>
+          <FIELD NAME="equivalentdeptid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="courseid" NEXT="equivalentcourseid"/>
+		  <FIELD NAME="equivalentcourseid" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="equivalentdeptid" NEXT="timecreated"/>
+          <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="equivalentcourseid" NEXT="usermodified"/>
+		  <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated"/>
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+	  
+	  <TABLE NAME="local_course_prerequisite" COMMENT="Pre-requisite Courses for Cobalt Courses" PREVIOUS="local_course_equivalent">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="schoolid"/>
+          <FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="departmentid"/>
+		  <FIELD NAME="departmentid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="schoolid" NEXT="courseid"/>
+          <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="departmentid" NEXT="predeptid"/>
+          <FIELD NAME="predeptid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="courseid" NEXT="precourseid"/>
+		  <FIELD NAME="precourseid" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="predeptid" NEXT="timecreated"/>
+          <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="precourseid" NEXT="usermodified"/>
+		  <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated"/>
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+    </TABLES>
+  </XMLDB>

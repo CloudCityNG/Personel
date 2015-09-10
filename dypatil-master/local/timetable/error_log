@@ -1,0 +1,134 @@
+[29-Apr-2015 07:23:25 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:23:25 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:23:27 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:23:27 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:23:36 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:23:36 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:24:21 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:24:21 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:24:25 America/Chicago] Default exception handler: Coding error detected, it must be fixed by a programmer: PHP catchable fatal error Debug: Argument 2 passed to has_capability() must be an instance of context, boolean given, called in [dirroot]/local/timetable/index.php on line 12 and defined
+Error code: codingerror
+* line 406 of /lib/setuplib.php: coding_exception thrown
+* line 367 of /lib/accesslib.php: call to default_error_handler()
+* line 12 of /local/timetable/index.php: call to has_capability()
+
+[29-Apr-2015 07:25:15 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:25:15 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:25:19 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:25:19 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:25:21 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:25:22 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:26:42 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:26:42 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[29-Apr-2015 07:26:49 America/Chicago] Default exception handler: Error reading from database Debug: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b O' at line 1
+ select clroom.id , clroom.fullname as classroom , b.fullname as building , fl.fullname as floor * FROM  mdl_local_classroom as clroom 
+           JOIN mdl_local_building as b ON b.id= clroom.buildingid and b.visible=1
+           JOIN mdl_local_floor as fl ON fl.id=clroom.floorid and fl.visible=1 where clroom.id=14
+[array (
+)]
+Error code: dmlreadexception
+* line 425 of /lib/dml/moodle_database.php: dml_read_exception thrown
+* line 1005 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1410 of /lib/dml/moodle_database.php: call to mysqli_native_moodle_database->get_records_sql()
+* line 149 of /local/timetable/events.php: call to moodle_database->get_record_sql()
+
+[29-Apr-2015 07:26:49 America/Chicago] PHP Notice:  Capability "local/assignmentor:view" was not found! This has to be fixed in code.<ul style="text-align: left"><li>line 389 of /lib/accesslib.php: call to debugging()</li><li>line 475 of /blocks/universitystructure/block_universitystructure.php: call to has_capability()</li><li>line 292 of /blocks/moodleblock.class.php: call to block_universitystructure->get_content()</li><li>line 238 of /blocks/moodleblock.class.php: call to block_base->formatted_contents()</li><li>line 951 of /lib/blocklib.php: call to block_base->get_content_for_output()</li><li>line 1003 of /lib/blocklib.php: call to block_manager->create_block_contents()</li><li>line 353 of /lib/blocklib.php: call to block_manager->ensure_content_created()</li><li>line 32 of /theme/colms/layout/settings.php: call to block_manager->region_has_content()</li><li>line 864 of /lib/outputrenderers.php: call to include()</li><li>line 794 of /lib/outputrenderers.php: call to core_renderer->render_page_layout()</li><li>line 2418 of /lib/outputrenderers.php: call t in /home/cobaltlm/public_html/dypatil/lib/weblib.php on line 2837
+[30-May-2015 06:43:20 America/Chicago] PHP Notice:  Undefined variable: output in /home/cobaltlm/public_html/cobaltv1/local/timetable/renderer.php on line 295
+[30-May-2015 06:43:20 America/Chicago] PHP Notice:  Undefined variable: output in /home/cobaltlm/public_html/cobaltv1/local/timetable/renderer.php on line 295

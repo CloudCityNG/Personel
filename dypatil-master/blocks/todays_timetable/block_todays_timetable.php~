@@ -1,0 +1,122 @@
+<?php
+
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Handles displaying the calendar upcoming events block.
+ *
+ * @package    block_calendar_upcoming
+ * @copyright  2004 Eloy Lafuente (stronk7) {@link http://stronk7.com}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class block_todays_timetable extends block_base {
+
+    //Initialisation of block.
+
+    public function init() {
+        $this->title = get_string('pluginname', 'block_todays_timetable');
+    }
+
+    //Return the content of this block.
+
+    public function get_content() {
+
+        if ($this->content !== null) {
+            return $this->content;
+        }
+        global $CFG, $USER, $DB;
+        require_once(dirname(__FILE__) . '/../../config.php');
+        require_once($CFG->dirroot . '/blocks/todays_timetable/lib.php');
+        if(isloggedin())
+        $context = context_user::instance($USER->id);
+        $systemcontext = context_system::instance();
+
+        $this->content = new stdClass;
+        $this->content->text = array();
+
+        //Sub-heading to the block
+        $todaydate = date('Y-M-d');
+        $her = $todaydate . " " . get_string('subheading', 'block_todays_timetable');
+        
+        // only for student
+        if (has_capability('local/clclasses:enrollclass', $context) && !is_siteadmin()) {
+        $this->content->text[] = html_writer::tag('h3', $her, array());    
+            $today = date('Y-m-d');
+            //$query =
+            $users = block_todays_timetable_get_studentclasslist();
+            if (sizeof($users) > 1) {
+                $day = date('D', strtotime($today));
+                $data1 = array();
+                foreach ($users as $user) {
+                    $class_availableweekdays = explode('-', $user->availableweekdays);
+                    foreach ($class_availableweekdays as $class_availableweekday) {
+
+                        $currentday_format = block_todays_timetable_get_dayformat($day);
+                        if ($class_availableweekday == $currentday_format) {
+
+                            $line1 = array();
+                            $classcode = $DB->get_field('local_clclasses', 'shortname', array('id' => $user->classid));
+                            if ($classcode) {
+                                $line1[] = $classcode;
+                            } else {
+                                $line1[] = html_writer::tag('p', get_string('notassigned', 'block_todays_timetable'));
+                            }
+                            $type = $DB->get_field('local_class_scheduletype', 'classtype', array('id' => $user->classtypeid));
+                            if ($type) {
+                                $line1[] = $type;
+                            } else {
+                                $line1[] = html_writer::tag('p', get_string('notassigned', 'block_todays_timetable'));
+                            }
+                            //----------- displaying timings------------------------------------------
+                            if ($user->starttime && $user->endtime) {
+                                $starttime = date("g:i a", strtotime($user->starttime));
+                                $endtime = date("g:i a", strtotime($user->endtime));
+                                $line1[] = $starttime . ' - ' . $endtime;
+                            } else
+                                $line1[] = html_writer::tag('p', get_string('notassigned', 'block_todays_timetable'));
+
+                            //--------------- end of timings--------------------------------------------
+                            $firstname = $DB->get_field('user', 'firstname', array('id' => $user->instructorid));
+                            $lastname = $DB->get_field('user', 'lastname', array('id' => $user->instructorid));
+                            $instructor = $firstname . $lastname;
+                            if ($instructor) {
+                                $line1[] = $instructor;
+                            } else {
+                                $line1[] = html_writer::tag('p', get_string('notassigned', 'block_todays_timetable'));
+                            }
+
+                            $classroom = $DB->get_field('local_classroom', 'fullname', array('id' => $user->classroomid));
+                            if ($classroom) {
+                                $line1[] = $classroom;
+                            } else {
+                                $line1[] = html_writer::tag('p', get_string('notassigned', 'block_todays_timetable'));
+                            }
+
+                            $data1[] = $line1;
+                        }
+                    }
+                } // end of foreach	
+                $table = new html_table();
+                $table->head = array('Class code', 'Class type', 'Timings', 'Instructor', 'Class room');
+                $table->data = $data1;
+                $this->content->text[] = html_writer::table($table);
+            } // end of if 
+        }
+        $this->content->text = implode('', $this->content->text);
+        return $this->content;
+    }
+
+}

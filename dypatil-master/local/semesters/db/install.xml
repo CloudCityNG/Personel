@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="local/semesters/db" VERSION="20130110" COMMENT="XMLDB file for Moodle local/semesters">
+    <TABLES>
+      <TABLE NAME="local_semester" COMMENT="" NEXT="local_school_semester">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="fullname"/>
+          <FIELD NAME="fullname" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="description"/>
+		  <FIELD NAME="description" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="fullname" NEXT="mincredit"/>
+          <FIELD NAME="mincredit" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="description" NEXT="maxcredit"/>
+		  <FIELD NAME="maxcredit" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="mincredit" NEXT="visible"/>
+          <FIELD NAME="visible" TYPE="int" LENGTH="1" NOTNULL="false" DEFAULT="1" SEQUENCE="false" PREVIOUS="maxcredit" NEXT="startdate"/>
+		  <FIELD NAME="startdate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="visible" NEXT="enddate"/>
+		  <FIELD NAME="enddate" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="startdate" NEXT="acdyear"/>
+		  <FIELD NAME="acdyear" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="enddate" NEXT="timecreated"/>
+          <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="acdyear" NEXT="timemodified"/>
+          <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="usermodified"/>
+		  <FIELD NAME="usermodified" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="timemodified" NEXT="sortorder"/>
+		  <FIELD NAME="sortorder" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="usermodified"/>
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+	  
+	  <TABLE NAME="local_school_semester" COMMENT="Semesters are assigned to multiple schools" PREVIOUS="local_semester">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="fullname"/>
+          <FIELD NAME="schoolid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="semesterid"/>
+		  <FIELD NAME="semesterid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="schoolid"/>
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+    </TABLES>
+  </XMLDB>

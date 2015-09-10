@@ -1,0 +1,128 @@
+.path-local-attendance .attbtn {
+    border:1px solid #AAAAAA;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -opera-border-radius: 5px;
+    -khtml-border-radius: 5px;
+}
+
+.path-local-attendance .attcurbtn {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 5px;
+}
+
+.path-local-attendance .attfiltercontrols {
+    margin-bottom: 10px;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+.path-local-attendance .attfiltercontrols #currentdate{
+    display: inline;
+}
+
+.path-local-attendance .attwidth {
+    width:90%;
+    margin: auto;
+}
+
+.path-local-attendance .userwithoutenrol,
+.path-local-attendance .userwithoutenrol a{
+    color: gray;
+}
+
+.path-local-attendance .userwithoutdata,
+.path-local-attendance .userwithoutdata a{
+    color: red;
+}
+
+.path-local-attendance .takelist td {
+    vertical-align: middle;
+}
+
+.path-local-attendance .takelist .userpicture {
+    margin:0 3px;
+    vertical-align:middle;
+}
+
+.path-local-attendance .takegrid input {
+    margin: 0px 3px 0px 6px;
+}
+
+.path-local-attendance .takegrid .fullname {
+    font-size: 0.8em;
+}
+
+.path-local-attendance table.controls {
+    width: 100%;
+    text-align: center;
+}
+
+.path-local-attendance table.controls tr {
+    vertical-align: top;
+}
+
+.path-local-attendance table.controls td.right,
+.path-local-attendance table.controls td.left {
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+}
+
+.path-local-attendance table.controls .right {
+    text-align: right;
+}
+/* for IE7*/
+.path-local-attendance .filtercontrols td {
+    padding:6px;
+}
+
+.path-local-attendance .takecontrols {
+    width: 800px;
+    margin: 0px auto 20px auto;
+}
+.path-local-attendance .takecontrols table{
+    margin: 0px auto;
+}
+.path-local-attendance .takecontrols .c0 {
+    width: 500px;
+    text-align: left;
+}
+.path-local-attendance .takecontrols .c1 {
+    text-align: right;
+}
+
+.path-local-attendance .inline,
+.path-local-attendance .inline form,
+.path-local-attendance .inline div {
+    display: inline;
+}
+
+.path-local-attendance table.userinfobox {
+    border: 1px solid #EEEEEE;
+    padding: 0px;
+}
+.path-local-attendance table.userinfobox td.left {
+    background-color: #EEEEEE;
+    padding: 30px 10px;
+}
+.path-local-attendance table.attlist td.c0 {
+    text-align: right;
+}
+
+#page-local-attendance-preferences .generalbox {
+    text-align: center;
+}
+
+.path-local-attendance .attsessions_manage_table .action-icon img.smallicon {
+    margin-left: 5px;
+}
+#page-local-attendance-sessions input[type="checkbox"] {
+    margin-right: 2px;
+}

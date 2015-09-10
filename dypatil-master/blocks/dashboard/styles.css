@@ -1,0 +1,71 @@
+.block_dashboard{
+    background: #EAEAEA;
+    border: none;
+    box-shadow: none;
+}
+.block_dashboard ul.dashboard {
+    width: 97%;
+    margin-left: auto;
+}
+.block_dashboard ul.dashboard li {
+    display: table-cell;
+}
+.block_dashboard ul.dashboard li.programname,
+.block_dashboard ul.dashboard li.curriculumname,
+.block_dashboard ul.dashboard li.departmentname,
+.block_dashboard ul.dashboard li.classname,
+.block_dashboard ul.dashboard li.coursename,
+.block_dashboard ul.dashboard li.examname {
+    width: 75%;
+    float: left;
+}
+.block_dashboard .dashboard_tablerow {
+    /*background: #EAEAEA;*/
+    margin: 10px auto;
+}
+.block_dashboard .dashboard_table{
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 3px 3px 2px -2px rgba(151, 151, 151, 0.75);
+    -moz-box-shadow: 3px 3px 2px -2px rgba(151, 151, 151, 0.75);
+    box-shadow: 3px 3px 2px -2px rgba(151, 151, 151, 0.75);
+    /*border: 1px solid;*/
+    min-height: 300px;
+    position: relative;
+    font-size: 11px;
+    background: #FFF;
+    /*margin: 0;*/
+}
+.block_dashboard .dashboard_table .dashboard_heading{
+    /*background-image: url([[pix:block_dashboard|programs]]);*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*min-height: 80px;*/
+    text-align: center;
+}
+.block_dashboard .dashboard_table .generaltable {
+    padding: 5px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    border: 1px solid #DFDFDF;
+}
+.block_dashboard .dashboard_table .generaltable,
+.block_dashboard .dashboard_table .generaltable td{
+    background: #f9f9f9;
+}
+.block_dashboard .dashboard_table .footer_notes{
+    position: absolute;
+    width: 92%;
+    bottom: 10px;
+}
+.block_dashboard .addnewbutton a,
+.block_dashboard .addnewbutton a:hover,
+.block_dashboard .addnewbutton a:visited,
+.block_dashboard .addnewbutton a:active {
+    color: #FFFFFF;
+}
+.block_dashboard ul.dashboard li.enrolcount {
+    text-align: right;
+    float: right;
+    width: 25%;
+}

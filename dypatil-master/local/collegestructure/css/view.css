@@ -1,0 +1,85 @@
+#page-local-collegestructure-view .row-fluid .span9{
+    width: 98% !important;
+    background: #FFFFFF !important;
+}
+#page-local-collegestructure-view #region-pre{
+    display: none;
+}
+.menu_list {
+    /*width: 100%;*/
+}
+.menu_head {
+    height:auto !important;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    margin:1px;
+    /*font-weight:bold;*/
+    /*background: #EAEAEA url(pix/t/collapsed.png) center left no-repeat;*/
+    /*border-bottom: 1px solid #F6F6F6;*/
+    margin: 1.5%;
+    overflow: hidden;
+}
+.menu_head .visible{
+    color: #03A420;
+}
+.menu_head:hover{
+    background: #05527F !important;
+    color:#FFFFFF !important;
+}
+.menu_head .color_white{
+    color:#FFFFFF !important;
+}
+.menu_body {
+    display:none;
+}
+.menu_body .summary{
+    width: 90%;
+    text-align: justify;
+    padding: 2%;
+    margin: 0 auto;
+}
+li{display:block}
+.programs_list{
+    width: 49%;
+    float: left;
+}
+.departments_list{
+    width: 49%;
+    float: right;
+}
+.menu_program, .menu_department{
+    background: #58BCF5;
+    border: 2px solid #58BCF5;
+}
+.menu_program:hover, .menu_department:hover{
+    border: 2px solid #58BCF5;
+}
+.menu_curriculum, .menu_instlist, .menu_courselist{
+    background: #85CFF9;
+    border: 2px solid #85CFF9;
+}
+.menu_curriculum:hover, .menu_instlist:hover, .menu_courselist:hover{
+    border: 2px solid #85CFF9;
+}
+.menu_plan{
+    background: #B0E0FC;
+    border: 2px solid #B0E0FC;
+}
+.menu_plan:hover{
+    border: 2px solid #B0E0FC;
+}
+.menu_course, .menu_inst{
+    background: #CFEBFA;
+    border: 2px solid #CFEBFA;
+}
+.menu_course:hover, .menu_inst:hover{
+    border: 2px solid #CFEBFA;
+}
+.menu_class{
+    background: #ECF6FC;
+    border: 2px solid #ECF6FC;
+}
+.menu_class:hover{
+    border: 2px solid #ECF6FC;
+}

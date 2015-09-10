@@ -1,0 +1,204 @@
+/**
+ * Custom CSS
+ * This is the very last piece of CSS loaded, so if something looks weird,
+ * try removing your custom CSS from the theme settings page.
+ */
+.course-content ul.ctopics li.section .content .toggle a {
+  display: block;
+  width: auto;
+  /* padding-top: 6px; */
+  /* padding-bottom: 6px; */
+}
+
+
+
+/*media="screen"*/
+.course-content ul.ctopics li.section .content .toggle, .course-content ul.ctopics li.section .content.sectionhidden {
+border-radius: 0 !important;
+}
+
+ h3 {
+  line-height: 16px;
+}
+
+h3 {
+  font-size: 15px;
+}
+
+h3 {
+  text-align: left;
+}
+
+.path-course-view li.activity>div, .path-site li.activity>div{
+  position: relative;
+  padding: 0 16px 0 0;
+  /*background-color:#e6f3f7;*/
+}
+
+body.format-topcoll .course-content ul.ctopics li.section.main {
+  padding-bottom: 2px;
+}
+
+.course-content ul.ctopics li.section.main .content, .course-content ul.ctopics li.tcsection .content {
+  margin: 0px !important;
+}
+
+.course-content ul.topics {
+  margin: 0px;
+}
+
+.course-content ul.ctopics li.section .content .toggle a h3, .course-content ul.ctopics li.section .content.sectionhidden h3 {
+  margin: 0px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: #fff !important;
+}
+
+.section .activity .activityinstance a, .section .activity .activityinstance div {
+  display: inline-block;
+  color: #079dde !important;
+  font-size:13px;
+}
+
+/*ul.nav.courselcustom,ul.nav.courselcustom_inst {
+  font-size: 72%;
+  text-transform: uppercase;
+
+  /* color: rgb(16, 15, 15) !important; */
+}*/
+/*ul.nav.courselcustom,ul.nav.courselcustom_inst {
+  width: 100%;
+  z-index: 2;
+}*/
+/*ul.nav.courselcustom  li,ul.nav.courselcustom_inst  li{
+  text-align: center;
+  border-right: 2px solid #D6D6D6;
+}
+ul.nav.courselcustom  li{
+    width: 14%;
+}
+ul.nav.courselcustom_inst li{
+  width:12.25%;
+}
+ul.nav.courselcustom li:first-child,ul.nav.courselcustom_inst li:first-child {
+  border-left: 2px solid #D6D6D6;
+}
+.navbar .navbar-inner #custom_menu, .navbar .navbar-inner #custom_menu_activitystream, .navbar .navbar-inner #custom_menu_courses, .navbar .navbar-inner #custom_menu_language, .navbar .navbar-inner #custom_menu_themecolours,.nav-collapse.collapse{
+  width:100%;
+}*/
+.dropdown li {
+border: none !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+/*div#user-area {
+  background-color: #EAEAEA;
+  max-width: 100%;
+  padding: 0 81px;
+}*/
+/*.navbar .navbar-inner .nav > li.dropdown a, .navbar .navbar-inner .nav>li>a{
+  color: #000;
+}*/
+.course-content ul li.section.main{
+  background: none;
+}
+body.format-topcoll .ctopics .section{
+  margin:0;
+}
+h3{
+  /*font-size:12px;*/
+  /*line-height:11px;*/
+  font-weight: normal;
+}
+.bor{
+  display:none;
+}
+li#section-0{
+  display:none;
+}
+#toggle-all .content .sectionbody h4, #toggle-all .content .sectionbody h4 a{
+  text-align:right;
+  font-size:12px;
+  color:#FFF;
+  margin: 0;
+    background-color: #c1d631;
+    padding: 5px 0;
+}
+.fa{
+  padding-right:5px;
+}
+/*#block-region-side-pre .block h2, #block-region-side-post .block h2{*/
+/*  text-indent: 15px;*/
+/*  font-size: 13px;*/
+/*  color:#FFF;*/
+/*}*/
+/*.block{*/
+/*  padding:0;*/
+/*}*/
+/*.block .content {*/
+/*  padding: 4px 10px;*/
+/*  background: #f0f5e4;*/
+/*}*/
+/*.block .header .title h2, .block h3.main{*/
+/*  line-height:30px;*/
+/*  margin-bottom:0;*/
+/*}*/
+ .section li:nth-child(odd){
+  background:#edf7f7 !important;
+}
+.section li:nth-child(even) {
+  background:#dfeef0 !important;
+}
+.path-course-view li.activity>div, .path-site li.activity>div,.path-course-view li.activity>div, .path-site li.activity>div{
+  background:transperant;
+}
+/*.block .header .title{*/
+/*  border:none !important;*/
+/*}*/
+/*.block .header .title{*/
+/*  background-color: #a6cf5b;*/
+/*}*/
+h1.coursetitle {
+  font-size: 21px;
+  /*display: none;*/
+}
+.row-fluid .span6 {
+  width: 49%;
+}
+/*.row-fluid [class*=span]{*/
+/*    margin-left: 1.564103%;*/
+/*}*/
+#custom_menu li a{
+  font-weight: 600;
+}
+.dropdown, .dropup{
+  z-index: 999;
+}
+.path-course-view .completionprogress{
+  display: none;
+}
+/*.block{*/
+/*  margin-bottom: 0;*/
+/*  border: 0;*/
+/*}*/
+/*#block-region-side-pre .block h2, #block-region-side-post .block h2{*/
+/*  text-transform: uppercase;*/
+/*}*/
+/*#region-main{*/
+/*    padding: 0 !important;*/
+/*}*/
+span#specialstring {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-left: -7px;
+    font-weight: normal;
+    font-size: 14px;
+}
+.course-content ul.ctopics li.section .content .toggledsection {
+  padding: 5px;
+}
+#custom_menu_activitystream {
+  display: none !important;
+}

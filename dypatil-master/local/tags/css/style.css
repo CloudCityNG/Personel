@@ -1,0 +1,20 @@
+.custom_tags {
+    padding: 10px;
+}
+
+.course_tags_cloud{
+    margin: 20px;
+}
+
+.hidden_tags{
+    display:none;
+}
+
+.more_tags {
+    background:lightblue;
+    color:navy;
+    font-size:13px;
+    padding:3px;
+    cursor:pointer;
+    margin-left: 5px;
+}
