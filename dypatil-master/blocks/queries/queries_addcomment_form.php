@@ -15,7 +15,7 @@ class queries_addcomment_form extends moodleform {
         //$mform->addElement('html', html_writer:: start_tag('div',array('id'=>'test-popup','class'=>'white-popup mfp-hide')));
         
         $mform->addElement('header', get_string('addacomment','block_queries'),'create a form');
-        $mform->addElement('hidden','queryid',$this->_customdata['queryid']);
+    
         $mform->addElement('text','summery',get_string('summery','block_queries'));
         $mform->setType('summery',PARAM_RAW);
         $mform->addRule('summery', 'empty', 'required', null, 'client');
@@ -31,19 +31,18 @@ class queries_addcomment_form extends moodleform {
 }
 //echo $OUTPUT->header();
 //
-    //$mform = new queries_addcomment_form();
-    //if($formdata2 = $mform->get_data()) {
-    //   $commentrecord =new stdclass();
-    //   $commentrecord->queryid = $queryid;
-    //   $commentrecord->responduser = $USER->id;
-    //   $commentrecord->summery = $formdata2->summery;
-    //   $commentrecord->comment = $formdata2->comment;
-    //   $commentrecord->postedtime = time();
-    //   $DB->insert_record('query_response',$commentrecord);
-    //}
-    //else{
-    //   $mform->display();
-    //}
+//    $mform = new queries_addcomment_form();
+//    if($formdata2 = $mform->get_data()) {
+//       $commentrecord =new stdclass();
+//       $commentrecord->queryid = $queryid;
+//       $commentrecord->responduser = $USER->id;
+//       $commentrecord->comment = $formdata2->comment;
+//       $commentrecord->postedtime = time();
+//       $DB->insert_record('query_response',$commentrecord);
+//    }
+//    else{
+//       $mform->display();
+//    }
 //echo $OUTPUT->footer();
 ?>
 

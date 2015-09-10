@@ -9,3 +9,9 @@
 [[setting:fontfilesheading]]
 
 [[setting:fontfilesbody]]
+
+/* for datable added by anil*/
+ #page-blocks-queries-display_queries .dataTable > tbody > tr {
+     border-bottom: none; 
+     border-top: 1px solid #EAEAEA; 
+ }

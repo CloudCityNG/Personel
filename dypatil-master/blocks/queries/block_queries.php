@@ -13,20 +13,6 @@ defined('MOODLE_INTERNAL') || die();
         return $this->content;
       }
       global $CFG, $USER, $PAGE;
-      
-      function mycommentform($adminqueryid) {
-        $script = html_writer::script('$(document).ready(function() {
-                                    $("#showDialog'.$adminqueryid.'").click(function(){
-                                      $("#basicModal'.$adminqueryid.'").dialog({
-                                        modal: true,
-                                        height: 350,
-                                        width: 400
-                                      });
-                                    });
-                                  });
-                                ');
-        return $script;
-      }
 
       $this->content = new stdClass();
       require_once($CFG->dirroot.'/blocks/queries/queries_form.php');
@@ -79,8 +65,12 @@ defined('MOODLE_INTERNAL') || die();
           $studentlogin[] = $studentrecord->id;
         }
       }
+            //$PAGE->requires->jquery();
+        //$PAGE->requires->jquery_plugin('ui');
+        //$PAGE->requires->js('/blocks/queries/js/dialog.js');
       if(is_siteadmin($USER->id)){
-        $adminqueries = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid = 2 AND userrole = 'admin' ORDER BY 'id' DESC LIMIT 5");
+        $adminqueries = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid = 2 AND userrole = 'admin' ORDER BY 'timecreated' DESC LIMIT 5");
+        //print_object($adminqueries);
         if($adminqueries) {
           $data = array();
           foreach($adminqueries as $adminquery){
@@ -90,25 +80,43 @@ defined('MOODLE_INTERNAL') || die();
             $adminqueryid = $adminquery->id;
             $adm_decription = html_writer:: tag('span',$adminquery->description,array());
             $row[] = html_writer:: tag('p',$adminquery->subject.$adm_decription,array("class"=>"tooltip1"));
-            $row[] =html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid"));
-            //div for display form in popup
-            $popup = html_writer:: start_tag('div',array('id'=>"basicModal$adminqueryid",'style'=>'display:none;'));
-            $actionpage = $CFG->dirroot.'/blocks/queries/sendingemail.php';
-            $mform = new queries_addcomment_form(null,array('queryid'=>$adminqueryid));
-            $popup .= $mform->render();
-            $popup .= html_writer:: end_tag('div');
-            $popup .= mycommentform($adminqueryid);
+            //$row[] = "<input type= 'submit' name='submit' value='submit'>";
+            //$row[] =html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog'.$adminquery->id.'"));
+            $row[] = '<button id="showDialog'.$adminqueryid.'" class="open_popup_link">submit</button>';
+           
+            $description = html_writer:: tag('span',$adminquery->description,array());
             
-            if($formdata = $mform->get_data()) {
-              print_object($formdata);
-              $commentrecord =new stdclass();
-              $commentrecord->queryid = $formdata->queryid;
-              $commentrecord->responduser = $USER->id;
-              $commentrecord->summery = $formdata->summery;
-              $commentrecord->comment = $formdata->comment;
-              $commentrecord->postedtime = time();
-              $DB->insert_record('query_response',$commentrecord);
-            }
+            //$popup = html_writer:: start_tag('div',array('id'=>"basicModal$adminqueryid",'style'=>'display:none;'));
+            //$popup .= html_writer:: tag('label','Summery',array('for'=>'summery'));
+            //$popup .= html_writer:: empty_tag('input',array('type'=>'text','name'=>'summery'));
+            //$popup .= html_writer:: tag('label','Comment',array('for'=>'comment'));
+            //$popup .= html_writer:: tag('textarea','comment',array('rows'=>'3','cols'=>'25'));
+            //$popup .= html_writer:: empty_tag('input',array('type'=>'submit','name'=>'summery','value'=>'submit'));
+            //$popup .= html_writer:: end_tag('div');
+            
+             $popup = html_writer:: start_tag('div',array('id'=>"basicModal$adminqueryid",'style'=>'display:none;'));
+             $mform = new queries_addcomment_form();
+             $popup .= $mform->display();
+             $popup .= html_writer:: end_tag('div');
+      //$PAGE->requires->jquery();
+      //  //$PAGE->requires->jquery_plugin('ui');
+      //  $PAGE->requires->js('/blocks/queries/js/dialog.js');
+//$popup.='<script src="/blocks/queries/js/dialog.js"></script>';
+//$popup.='<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>';
+                    $popup .= html_writer::script('$(document).ready(function() {
+                                            $("#showDialog'.$adminqueryid.'").click(function(){
+                                             alert("Hi");
+                                             console.log("leooffice");
+                                              $("#basicModal'.$adminqueryid.'").dialog({
+                                                modal: true,
+                                                height: 300,
+                                                width: 400
+                                              });
+                                            });
+                                          });
+                                        ');
+                    // print_object($row);
+                    //print_object($popup);
             $row[] = $popup;
             $data[] = $row;
           }
@@ -135,6 +143,7 @@ defined('MOODLE_INTERNAL') || die();
            
             $data[] = $row;
           }
+          //print_object($data);exit;
         }
         $table = new html_table();
         $table->head  = array('Subject','comment');
@@ -172,8 +181,11 @@ defined('MOODLE_INTERNAL') || die();
         $actionpage = $CFG->wwwroot.'/blocks/queries/sendingemail.php';
         $mform= new block_queries_form($actionpage);
         $this->content->text = $mform->render();  //to display form in block
-      }    
+        //$this->content->text = $mform->display();  //to display form in block
+        
+      }
         $this->content->footer = '';
+       	//$this->page->requires->js('/blocks/queries/js/add_comment_form_popup.js');
         // Return the content object
         return $this->content;
     }
