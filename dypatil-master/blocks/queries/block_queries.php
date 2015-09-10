@@ -15,18 +15,18 @@ defined('MOODLE_INTERNAL') || die();
       global $CFG, $USER, $PAGE;
       
       function mycommentform($adminqueryid) {
-          $a = html_writer::script('$(document).ready(function() {
-                                      $("#showDialog'.$adminqueryid.'").click(function(){
-                                        $("#basicModal'.$adminqueryid.'").dialog({
-                                          modal: true,
-                                          height: 400,
-                                          width: 500
-                                        });
+        $script = html_writer::script('$(document).ready(function() {
+                                    $("#showDialog'.$adminqueryid.'").click(function(){
+                                      $("#basicModal'.$adminqueryid.'").dialog({
+                                        modal: true,
+                                        height: 350,
+                                        width: 400
                                       });
                                     });
-                                  ');
-          return $a;
-        }
+                                  });
+                                ');
+        return $script;
+      }
 
       $this->content = new stdClass();
       require_once($CFG->dirroot.'/blocks/queries/queries_form.php');
@@ -93,23 +93,22 @@ defined('MOODLE_INTERNAL') || die();
             $row[] =html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid"));
             //div for display form in popup
             $popup = html_writer:: start_tag('div',array('id'=>"basicModal$adminqueryid",'style'=>'display:none;'));
-            $mform = new queries_addcomment_form();
+            $actionpage = $CFG->dirroot.'/blocks/queries/sendingemail.php';
+            $mform = new queries_addcomment_form(null,array('queryid'=>$adminqueryid));
             $popup .= $mform->render();
             $popup .= html_writer:: end_tag('div');
             $popup .= mycommentform($adminqueryid);
-            //$popup .= html_writer::script('$(document).ready(function() {
-            //                        $("#showDialog'.$adminqueryid.'").click(function(){
-            //                         //alert("Hi");
-            //                         //console.log("leooffice");
-            //                          $("#basicModal'.$adminqueryid.'").dialog({
-            //                            modal: true,
-            //                            height: 400,
-            //                            width: 500
-            //                          });
-            //                        });
-            //                      });
-            //                    ');
-                  
+            
+            if($formdata = $mform->get_data()) {
+              print_object($formdata);
+              $commentrecord =new stdclass();
+              $commentrecord->queryid = $formdata->queryid;
+              $commentrecord->responduser = $USER->id;
+              $commentrecord->summery = $formdata->summery;
+              $commentrecord->comment = $formdata->comment;
+              $commentrecord->postedtime = time();
+              $DB->insert_record('query_response',$commentrecord);
+            }
             $row[] = $popup;
             $data[] = $row;
           }
