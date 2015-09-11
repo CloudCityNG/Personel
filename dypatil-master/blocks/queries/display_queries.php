@@ -1,16 +1,29 @@
 <?php
 require_once(dirname(__FILE__).'/../../config.php');
-global $PAGE, $USER, $DB;
-//function get_required_javascript() {
-//   $this->page->requires->jquery();
-//   $this->page->requires->js('/blocks/queries/js/magnific-popup.js');
-//   //$this->page->requires->js('/blocks/queries/js/responsive.js');
-//   $this->page->requires->js('/blocks/queries/js/add_comment_form_popup.js');
-//}
+global $PAGE, $USER, $DB, $CFG;
+
+require_once($CFG->dirroot.'/blocks/queries/renderer.php');
 $PAGE->requires->jquery();
 //$PAGE->requires->js('/blocks/queries/js/magnific-popup.js');
 $PAGE->requires->js('/blocks/queries/js/responsive.js');
-//$PAGE->requires->js('/blocks/queries/js/add_comment_form_popup.js');
+//$PAGE->requires->js('/blocks/queries/js/commentform_popup.js');
+ function mycommentpopupform($adminqueryid = '') {
+  $script = html_writer::script('$(document).ready(function() {
+                              $("#showDialog'.$adminqueryid.'").click(function(){
+                                $("#basicModal'.$adminqueryid.'").dialog({
+                                  modal: true,
+                                  height: 320,
+                                  width: 400
+                                });
+                              });
+                            });
+         form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
+            event.preventDefault();
+            myformvalidation();
+         });
+     ');
+      return $script;
+   }
 
 $studentid = optional_param('studentid',null,PARAM_INT);
 $PAGE->set_url('/blocks/queries/display_queries.php');
@@ -76,6 +89,7 @@ echo $OUTPUT->header();
            $data = array();
             foreach($instructorresponses as $instructorresponse){
                $row = array();
+               $ins_id = $instructorresponse->id;
                $row[] = $instructorresponse->subject;
                $row[] = $instructorresponse->description;
                $postedby = $instructorresponse->postedby;
@@ -88,29 +102,12 @@ echo $OUTPUT->header();
                }else {
                   $row[] = 'Responded'; 
                }
-               $deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png'));
-               $row[] = html_writer:: tag('a',$deleteicon,array('href'=>$CFG->wwwroot.'/deleterecord_querty.php?id='));
-               $row[] = html_writer:: tag('a','Add comment', array('href'=>$CFG->wwwroot.'/blocks/queries/queries_addcomment_form.php?queryid='.$instructorresponse->id));
-               echo html_writer:: start_tag('div',array('id'=>'basicModal'));
-               echo html_writer:: tag('label','Summery',array('for'=>'summery'));
-               echo html_writer:: empty_tag('input',array('type'=>'text','name'=>'summery'));
-               echo html_writer:: tag('label','Comment',array('for'=>'comment'));
-               echo html_writer:: tag('textarea','comment',array('rows'=>'3','cols'=>'25'));
-               echo html_writer:: empty_tag('input',array('type'=>'submit','name'=>'summery','value'=>'submit'));
-               echo html_writer:: end_tag('div');
-               echo html_writer::script('$(document).ready(function() {
-                                               $("#showDialog'.$instructorresponse->id.'").click(function(){
-                                                alert("Hi");
-                                                console.log("leooffice");
-                                                 $("#basicModal'.$instructorresponse->id.'").dialog({
-                                                   modal: true,
-                                                   height: 300,
-                                                   width: 400
-                                                 });
-                                               });
-                                             });
-                                           ');
-                $row[] = $instructorresponse->userrole;
+               
+               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$ins_id"));
+               $row[] = $instructorresponse->userrole;
+               $popup = commenthtmlform($ins_id);
+               $popup .= mycommentpopupform($ins_id);
+               $row[] = $popup;
                $data[] = $row;
             }
          }
@@ -139,6 +136,7 @@ echo $OUTPUT->header();
          $data = array();
          foreach($registrarresponses as $registrarresponse){
             $row = array();
+            $reg_id = $registrarresponse->id;
             $row[] = $registrarresponse->subject;
             $row[] = $registrarresponse->description;
             $postedby = $registrarresponse->postedby;
@@ -151,10 +149,13 @@ echo $OUTPUT->header();
             }else {
                $row[] = 'Responded'; 
             }
-            $deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png'));
-            $row[] = html_writer:: tag('a',$deleteicon,array('href'=>$CFG->wwwroot.'/deleterecord_querty.php?id='));
-            $row[] = html_writer:: tag('a','Add comment', array('href'=>$CFG->wwwroot.'/blocks/queries/queries_addcommet_form.php?queryid='.$registrarresponse->id));
+            
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$reg_id"));
             $row[] = $registrarresponse->userrole;
+            $popup = commenthtmlform($reg_id);
+            $popup .= mycommentpopupform($reg_id);
+            $row[] = $popup;
+            
             $data[] = $row;
          }
       }
@@ -167,6 +168,7 @@ echo $OUTPUT->header();
             $data = array();
             foreach($adminqueries as $adminquery){
                $row = array();
+               $adminqueryid = $adminquery->id;
                $row[] = $adminquery->subject;
                $row[] = $adminquery->description;
                $postedby = $adminquery->postedby;
@@ -176,13 +178,16 @@ echo $OUTPUT->header();
                $row[] = date("d M, Y h:i a",$adminquery->timecreated);
                if($adminquery->status === 0){
                   $row[] = 'Not Responded'; 
-               }else {
-                   $row[] = 'Responded'; 
+               } else {
+                  $row[] = 'Responded'; 
                }
-               $deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png'));
-               $row[] = html_writer:: tag('a',$deleteicon,array('href'=>$CFG->wwwroot.'/deleterecord_querty.php?id='.$adminquery->id));
-               $row[] = html_writer:: tag('a','Add comment', array('href'=>$CFG->wwwroot.'/blocks/queries/queries_addcomment_form.php'));
-               $row[] = $adminquery->userrole;
+               //$deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png'));
+               //$row[] = html_writer:: tag('a',$deleteicon,array('href'=>$CFG->wwwroot.'/deleterecord_querty.php?id='.$adminquery->id));
+               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid"));
+               $row[] = $adminquery->userrole;               
+               $popup = commenthtmlform($adminqueryid);
+               $popup .= mycommentpopupform($adminqueryid);
+               $row[] = $popup;
                $data[] = $row;
             }                
          }
@@ -192,7 +197,7 @@ echo $OUTPUT->header();
       }
       if(!empty($data)){
          $table = new html_table();
-         $table->head  = array('subject','Description','posted by','postedtime','status','Action', 'Comment','role');
+         $table->head  = array('subject','Description','posted by','postedtime','status','Comment','role');
          $table->width = '100%';
          $table->id    = 'queryresponse';  
          $table->data  = $data;
