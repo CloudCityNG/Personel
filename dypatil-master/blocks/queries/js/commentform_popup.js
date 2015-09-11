@@ -27,3 +27,7 @@ function myformvalidation(){
 			  //alert("hi");
 		   });  
   }
+  
+  //function myfunction(id) {
+  //  $('.view'+id).slideToggle('fast');
+  //}

@@ -124,7 +124,7 @@ defined('MOODLE_INTERNAL') || die();
           }
         }
         $table = new html_table();
-        $table->head  = array('Subject','');
+        $table->head  = array(get_string('subjectt','block_queries'),'');
         $table->width = '100%';
         $table->size = array('90%','10%');
         $table->data  = $data;
@@ -153,7 +153,7 @@ defined('MOODLE_INTERNAL') || die();
           }
         }
         $table = new html_table();
-        $table->head  = array('Subject','');
+        $table->head  = array(get_string('subjectt','block_queries'),'');
         $table->width = '100%'; 
         $table->data  = $data;
         $this->content->text[] = html_writer::table($table);
@@ -180,7 +180,7 @@ defined('MOODLE_INTERNAL') || die();
           }
         }
         $table = new html_table();
-        $table->head  = array('Subject','');
+        $table->head  = array(get_string('subjectt','block_queries'),'');
         $table->width = '100%';
         $table->size = array('95%','5%');
         $table->data  = $data;
@@ -198,7 +198,6 @@ defined('MOODLE_INTERNAL') || die();
         $this->content->footer = '';
         //$this->page->requires->js('/blocks/queries/js/commentform_popup.js');
 
-        
         // Return the content object
         return $this->content;
     }

@@ -47,11 +47,11 @@ echo $OUTPUT->header();
          $row[] = $studentname;
          $row[] = html_writer:: tag('span',date("d/m/Y h:i a",$studentpostedquerie->timecreated),array('class'=>'date'));
          if($studentpostedquerie->status == 0){
-            $row[] = 'Not Responded'; 
+            $row[] = get_string('notresponded','block_queries'); 
          }else {
-             $row[] = 'Responded'; 
+             $row[] = get_string('responded','block_queries'); 
          }
-         $deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png'));
+         $deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png','class'=>'commenticonpostion'));
          $data[] = $row;
       }
       $table = new html_table();
@@ -96,15 +96,15 @@ echo $OUTPUT->header();
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id = $postedby");
                $student = fullname($posteduser);
                $row[] = $student;
-               $row[] = date("d M,Y h:i a",$instructorresponse->timecreated);
+               $row[] = date("d/m/Y h:i a",$instructorresponse->timecreated);
                if($instructorresponse->status === 0){
                   $row[] = 'Not Responded'; 
                }else {
                   $row[] = 'Responded'; 
                }
                
-               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$ins_id"));
-               $row[] = $instructorresponse->userrole;
+               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$ins_id","class"=>"commenticonpostion"));
+               //$row[] = $instructorresponse->userrole;
                $popup = commenthtmlform($ins_id);
                $popup .= mycommentpopupform($ins_id);
                $row[] = $popup;
@@ -143,15 +143,15 @@ echo $OUTPUT->header();
             $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
             $studentname = fullname($posteduser);
             $row[] = $studentname;
-            $row[] = date("d M,Y h:i a",$registrarresponse->timecreated);
+            $row[] = date("d/m/Y h:i a",$registrarresponse->timecreated);
             if($registrarresponse->status === 0){
                $row[] = 'Not Responded'; 
             }else {
                $row[] = 'Responded'; 
             }
             
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$reg_id"));
-            $row[] = $registrarresponse->userrole;
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$reg_id","class"=>"commenticonpostion"));
+            //$row[] = $registrarresponse->userrole;
             $popup = commenthtmlform($reg_id);
             $popup .= mycommentpopupform($reg_id);
             $row[] = $popup;
@@ -175,16 +175,13 @@ echo $OUTPUT->header();
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
                $studentname = fullname($posteduser);
                $row[] = $studentname;
-               $row[] = date("d M, Y h:i a",$adminquery->timecreated);
+               $row[] = date("d/m/y h:i a",$adminquery->timecreated);
                if($adminquery->status === 0){
                   $row[] = 'Not Responded'; 
                } else {
                   $row[] = 'Responded'; 
                }
-               //$deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png'));
-               //$row[] = html_writer:: tag('a',$deleteicon,array('href'=>$CFG->wwwroot.'/deleterecord_querty.php?id='.$adminquery->id));
-               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid"));
-               $row[] = $adminquery->userrole;               
+               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion"));             
                $popup = commenthtmlform($adminqueryid);
                $popup .= mycommentpopupform($adminqueryid);
                $row[] = $popup;
@@ -197,8 +194,11 @@ echo $OUTPUT->header();
       }
       if(!empty($data)){
          $table = new html_table();
-         $table->head  = array('subject','Description','posted by','postedtime','status','Comment','role');
+         $table->head  = array(get_string('subjectt','block_queries'),get_string('descriptionn','block_queries'),
+                               get_string('postedby','block_queries'),get_string('postedtime','block_queries'),
+                               get_string('status','block_queries'),get_string('comment','block_queries'));
          $table->width = '100%';
+         $table->size = array('10%','50%','15%','10%','10%','2%');
          $table->id    = 'queryresponse';  
          $table->data  = $data;
          $string = html_writer:: tag('h3','My Queries',array());
