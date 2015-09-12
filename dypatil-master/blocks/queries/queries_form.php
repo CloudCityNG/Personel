@@ -61,6 +61,5 @@ class block_queries_form extends moodleform {
           
           $this->add_action_buttons(FALSE,get_string('postquery','block_queries'));
           $mform->addElement('html', html_writer:: tag('a',get_string('mypreviewqueries','block_queries'),array('href'=>$CFG->wwwroot.'/blocks/queries/display_queries.php?studentid='.$USER->id,'class'=>'mypreviewqueries')));
-        
      }
 }

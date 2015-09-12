@@ -1,12 +1,12 @@
-function myformvalidation(){
-			//var a =$('[name='summery']').val();
+	function myformvalidation(){
 		var a=document.forms['commentsform']['summery'].value;
-		if (a==null || a==''){
-			alert('Please Fill All Required Field');
+		var b=document.forms['commentsform']['summery'].value;
+		if (a==null || a=='',b==null || b==''){
+			alert('All Fields are Required');
 			return false;
 		}
     }
-	
+	//var a =$('[name='summery']').val();
 	//if( document.commentsform.summery.value == "" ){
 	//	   alert( "Please provide your name!" );
 	//	   document.myForm.Name.focus() ;
@@ -23,28 +23,6 @@ function myformvalidation(){
 		event.preventDefault();
 		myformvalidation();
 	}
-	
-	  // form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
-      //                                  event.preventDefault();
-      //                                  alert("hi");
-      //                                  myformvalidation();
-      //                                  alert("hi my office");
-      //                                 });
-		  
-//		  var a=document.forms['commentsform']['summery'].value;
-			
-//		  function myformvalidation(){
-//            
-//            console.log('this is the myformvalidation declaration');
-//                var a =$('[name='summery']').val();
-//                alert(a);
-//                var b=document.forms['commentsform']['comment'].value;
-//                if (a==null || a=='',b==null || b==''){
-//                  alert('Please Fill All Required Field');
-//                  return false;
-//                }
-//          } mycommentpopupform
-		  
     //code for the display all comments
    function viewresponses(id){
 		$('.student'+id).slideToggle('fast');

@@ -2,31 +2,13 @@
 require_once(dirname(__FILE__).'/../../config.php');
 global $PAGE, $USER, $DB, $CFG;
 
-require_once($CFG->dirroot.'/blocks/queries/renderer.php');
+require_once($CFG->dirroot.'/blocks/queries/commentform.php');
 $PAGE->requires->jquery();
-//$PAGE->requires->js('/blocks/queries/js/magnific-popup.js');
 $PAGE->requires->js('/blocks/queries/js/responsive.js');
-//$PAGE->requires->js('/blocks/queries/js/commentform_popup.js');
+$PAGE->requires->js('/blocks/queries/js/commentform_popup.js');
 
- function mycommentpopupform($adminqueryid = '') {
-  $script = html_writer::script('$(document).ready(function() {
-                              $("#showDialog'.$adminqueryid.'").click(function(){
-                                $("#basicModal'.$adminqueryid.'").dialog({
-                                  modal: true,
-                                  height: 320,
-                                  width: 400
-                                });
-                              });
-                            });
-         form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
-            event.preventDefault();
-            myformvalidation();
-         });
-     ');
-      return $script;
-   }
-   
 $studentid = optional_param('studentid',null,PARAM_INT);
+
 $PAGE->set_url('/blocks/queries/display_queries.php');
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Queries table');
@@ -52,7 +34,6 @@ echo $OUTPUT->header();
          }else {
              $row[] = get_string('responded','block_queries'); 
          }
-         $deleteicon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/grade_incorrect.png','class'=>'commenticonpostion'));
          $data[] = $row;
       }
       $table = new html_table();
@@ -105,10 +86,10 @@ echo $OUTPUT->header();
                   $row[] = get_string('responded','block_queries'); 
                }
                
-               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$ins_id","class"=>"commenticonpostion"));
+               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$ins_id","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($ins_id)"));
                //$row[] = $instructorresponse->userrole;
                $popup = commenthtmlform($ins_id);
-               $popup .= mycommentpopupform($ins_id);
+               //$popup .= mycommentpopupform($ins_id);
                $row[] = $popup;
                $data[] = $row;
             }
@@ -150,10 +131,10 @@ echo $OUTPUT->header();
                $row[] = get_string('responded','block_queries'); 
             }
             
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$reg_id","class"=>"commenticonpostion"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$reg_id","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($reg_id)"));
             //$row[] = $registrarresponse->userrole;
             $popup = commenthtmlform($reg_id);
-            $popup .= mycommentpopupform($reg_id);
+            //$popup .= mycommentpopupform($reg_id);
             $row[] = $popup;
             $data[] = $row;
             
@@ -181,8 +162,6 @@ echo $OUTPUT->header();
                $string1 = html_writer:: tag('h3',get_string('comments','block_queries'),array());
                $string1 .= html_writer::table($table);
             }
-            
-            
          }
       }
       if(is_siteadmin()){
@@ -205,9 +184,9 @@ echo $OUTPUT->header();
                } else {
                   $row[] = get_string('responded','block_queries'); 
                }
-               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion"));             
+               $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($adminqueryid)"));             
                $popup = commenthtmlform($adminqueryid);
-               $popup .= mycommentpopupform($adminqueryid);
+               //$popup .= mycommentpopupform($adminqueryid);
                $row[] = $popup;
                $data[] = $row;
             }                
@@ -216,8 +195,8 @@ echo $OUTPUT->header();
       if(!empty($data)){
          $table = new html_table();
          $table->head  = array(get_string('subjectt','block_queries'),get_string('descriptionn','block_queries'),
-                               get_string('postedby','block_queries'),get_string('postedtime','block_queries'),
-                               get_string('status','block_queries'),get_string('comment','block_queries'));
+                              get_string('postedby','block_queries'),get_string('postedtime','block_queries'),
+                              get_string('status','block_queries'),get_string('comment','block_queries'));
          $table->width = '100%';
          $table->size = array('20%','40%','15%','10%','10%','2%');
          $table->id    = 'queryresponse';  
