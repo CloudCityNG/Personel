@@ -1,7 +1,8 @@
 function myformvalidation(){
-            alert('hi leooffice');
+            //alert('hi leooffice');
             console.log('sadasdasdads');
-			    //var a =$('[name='summery']').val();
+			//var a =$('[name='summery']').val();
+			var a=document.forms['commentsform']['summery'].value;
 			alert(a);
             var b=document.forms['commentsform']['comment'].value;
             if (a==null || a=='',b==null || b==''){
@@ -9,25 +10,36 @@ function myformvalidation(){
               return false;
             }
           };
+//		  function myformvalidation(){
+//            
+//            console.log('this is the myformvalidation declaration');
+//                var a =$('[name='summery']').val();
+//                alert(a);
+//                var b=document.forms['commentsform']['comment'].value;
+//                if (a==null || a=='',b==null || b==''){
+//                  alert('Please Fill All Required Field');
+//                  return false;
+//                }
+//          } mycommentpopupform
 		  
-  function mycommentpopupform($adminqueryid = '') {
-	$(document).ready(function() {
-								$("#showDialog'.$adminqueryid.'").click(function(){
-								  $("#basicModal'.$adminqueryid.'").dialog({
-									modal: true,
-									height: 320,
-									width: 400
-								  });
-								});
-							  });
-	form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
-			  event.preventDefault();
-			  alert("hi");
-			  myformvalidation();
-			  //alert("hi");
-		   });  
-  }
-  
-  //function myfunction(id) {
-  //  $('.view'+id).slideToggle('fast');
-  //}
+	function mycommentpopupform(queryid){
+		
+		$('#basicModal'+queryid).dialog({
+		   modal: true,
+		   height: 320,
+		   width: 400 
+		});
+		event.preventDefault();
+		myformvalidation();
+		alert("hi my office");
+	}
+	
+
+   function viewresponses(id){
+		$('.student'+id).slideToggle('fast');
+		if($('.student'+id).css('display') != 'none') {
+			$(this).find('.dataTables_wrapper').css('display', 'block');
+		} else {
+			$(this).find('.dataTables_wrapper').css('display', 'none');
+		}
+    }

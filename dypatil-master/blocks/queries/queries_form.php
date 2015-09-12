@@ -39,6 +39,7 @@ class block_queries_form extends moodleform {
                          WHERE cxt.instanceid = $course->id AND ra.roleid = 9 AND cxt.contextlevel = 50";
                $registrars =  $DB->get_records_sql($sql);
                foreach($registrars as $registrar){
+                    print_object($registrar);
                     $registrarfullname = fullname($registrar);
                     $registraroptions[$registrar->id.',registrar'] = $registrarfullname;
                } 

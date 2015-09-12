@@ -7,6 +7,7 @@ $PAGE->requires->jquery();
 //$PAGE->requires->js('/blocks/queries/js/magnific-popup.js');
 $PAGE->requires->js('/blocks/queries/js/responsive.js');
 //$PAGE->requires->js('/blocks/queries/js/commentform_popup.js');
+
  function mycommentpopupform($adminqueryid = '') {
   $script = html_writer::script('$(document).ready(function() {
                               $("#showDialog'.$adminqueryid.'").click(function(){
@@ -24,7 +25,7 @@ $PAGE->requires->js('/blocks/queries/js/responsive.js');
      ');
       return $script;
    }
-
+   
 $studentid = optional_param('studentid',null,PARAM_INT);
 $PAGE->set_url('/blocks/queries/display_queries.php');
 $PAGE->set_context(context_system::instance());
@@ -60,7 +61,7 @@ echo $OUTPUT->header();
       $table->size= array('15%','34%','20%','16%','15%');
       $table->id    = 'queryresponse';  
       $table->data  = $data;
-      $string = html_writer:: tag('h3','My Queries',array());
+      $string = html_writer:: tag('h3',get_string('myqueries','block_queries'),array());
       $string .= html_writer::table($table);
       $string .= html_writer:: tag('a',get_string('backtohome','block_queries'),array('href'=>$CFG->wwwroot.'/index.php','class'=>'backtohome'));
       echo $string;
@@ -94,13 +95,14 @@ echo $OUTPUT->header();
                $row[] = $instructorresponse->description;
                $postedby = $instructorresponse->postedby;
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id = $postedby");
-               $student = fullname($posteduser);
+               //$student = fullname($posteduser);
+               $student = $posteduser->firstname;
                $row[] = $student;
-               $row[] = date("d/m/Y h:i a",$instructorresponse->timecreated);
+               $row[] = date("d/m/y h:i a",$instructorresponse->timecreated);
                if($instructorresponse->status === 0){
-                  $row[] = 'Not Responded'; 
+                  $row[] = get_string('notresponded','block_queries'); 
                }else {
-                  $row[] = 'Responded'; 
+                  $row[] = get_string('responded','block_queries'); 
                }
                
                $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$ins_id","class"=>"commenticonpostion"));
@@ -112,20 +114,17 @@ echo $OUTPUT->header();
             }
          }
       }
-      //else{
-      //    $string = html_writer:: tag('h4','You do not have queries',array());
-      //}
       //for login user is a registrar
       $allregistrars = array();
       foreach($courses as $course){
           // to get registrars in course level
-          $sql = "SELECT u.id, u.email, u.firstname, u.lastname, ra.roleid, cxt.instanceid AS courseid
-                    FROM {context} AS cxt
-                    JOIN {role_assignments} AS ra
-                    ON cxt.id = ra.contextid 
-                    JOIN {user} AS u
-                    ON ra.userid = u.id
-                    WHERE cxt.instanceid = $course->id AND ra.roleid = 9 AND cxt.contextlevel = 50 AND u.id =$USER->id";
+         $sql = "SELECT u.id, u.email, u.firstname, u.lastname, ra.roleid, cxt.instanceid AS courseid
+                 FROM {context} AS cxt
+                 JOIN {role_assignments} AS ra
+                 ON cxt.id = ra.contextid 
+                 JOIN {user} AS u
+                 ON ra.userid = u.id
+                 WHERE cxt.instanceid = $course->id AND ra.roleid = 9 AND cxt.contextlevel = 50 AND u.id =$USER->id";
          $registrars =  $DB->get_record_sql($sql);
          if($registrars){
             $allregistrars[] = $registrars->id;
@@ -141,13 +140,14 @@ echo $OUTPUT->header();
             $row[] = $registrarresponse->description;
             $postedby = $registrarresponse->postedby;
             $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
-            $studentname = fullname($posteduser);
+            //$studentname = fullname($posteduser);
+            $studentname = $posteduser->firstname;
             $row[] = $studentname;
-            $row[] = date("d/m/Y h:i a",$registrarresponse->timecreated);
-            if($registrarresponse->status === 0){
-               $row[] = 'Not Responded'; 
+            $row[] = date("d/m/y h:i a",$registrarresponse->timecreated);
+            if($registrarresponse->status == 0){
+               $row[] = get_string('notresponded','block_queries'); 
             }else {
-               $row[] = 'Responded'; 
+               $row[] = get_string('responded','block_queries'); 
             }
             
             $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$reg_id","class"=>"commenticonpostion"));
@@ -155,13 +155,36 @@ echo $OUTPUT->header();
             $popup = commenthtmlform($reg_id);
             $popup .= mycommentpopupform($reg_id);
             $row[] = $popup;
-            
             $data[] = $row;
+            
+            // code for display coments in toggle
+            $queryresponses = $DB->get_records_sql("SELECT * FROM {query_response} WHERE queryid =$reg_id");
+            if($queryresponses){
+               $commentsdata = array(); 
+               foreach($queryresponses as $queryresponse){
+                  $commentsrow = array();
+                  $commentsrow[] = $queryresponse->summery;
+                  $commentsrow[] = $queryresponse->comment;
+                  $responduserid = $queryresponse->responduser;
+                  $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
+                  $commentsrow[] = $respondusername->firstname;
+                  $commentsrow[] = time("d/m/y h:i a",$queryresponse->postedtime);
+                  
+                  $commentsdata[] = $commentsrow;
+               }
+               $table = new html_table();
+               $table->head  = array(get_string('summery','block_queries'),get_string('comment','block_queries'),
+                                     get_string('postedby','block_queries'),get_string('postedtime','block_queries'));
+               $table->width = '100%';
+               $table->size = array('30%','50%','10%','10%');  
+               $table->data  = $commentsdata;
+               $string1 = html_writer:: tag('h3',get_string('comments','block_queries'),array());
+               $string1 .= html_writer::table($table);
+            }
+            
+            
          }
       }
-      //else{
-      //    $string = html_writer:: tag('h4','You do not have queries',array());
-      //}
       if(is_siteadmin()){
            $adminqueries = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid = 2 AND userrole = 'admin'");
          if(!empty($adminqueries)){
@@ -173,13 +196,14 @@ echo $OUTPUT->header();
                $row[] = $adminquery->description;
                $postedby = $adminquery->postedby;
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
-               $studentname = fullname($posteduser);
+               //$studentname = fullname($posteduser);
+               $studentname = $posteduser->firstname;
                $row[] = $studentname;
                $row[] = date("d/m/y h:i a",$adminquery->timecreated);
-               if($adminquery->status === 0){
-                  $row[] = 'Not Responded'; 
+               if($adminquery->status == 0){
+                  $row[] = get_string('notresponded','block_queries');  
                } else {
-                  $row[] = 'Responded'; 
+                  $row[] = get_string('responded','block_queries'); 
                }
                $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion"));             
                $popup = commenthtmlform($adminqueryid);
@@ -188,9 +212,6 @@ echo $OUTPUT->header();
                $data[] = $row;
             }                
          }
-         //else {
-         //    $string = html_writer:: tag('h4','You do not have queries',array());
-         //}
       }
       if(!empty($data)){
          $table = new html_table();
@@ -198,22 +219,15 @@ echo $OUTPUT->header();
                                get_string('postedby','block_queries'),get_string('postedtime','block_queries'),
                                get_string('status','block_queries'),get_string('comment','block_queries'));
          $table->width = '100%';
-         $table->size = array('10%','50%','15%','10%','10%','2%');
+         $table->size = array('20%','40%','15%','10%','10%','2%');
          $table->id    = 'queryresponse';  
          $table->data  = $data;
-         $string = html_writer:: tag('h3','My Queries',array());
+         $string = html_writer:: tag('h3',get_string('myqueries','block_queries'),array());
          $string .= html_writer::table($table);
          echo $string;
       }
       else {
-         echo $string = html_writer:: tag('h4','You do not have queries',array()); 
+         echo $string = html_writer:: tag('h4',get_string('noqueries','block_queries'),array()); 
       }
    }
-//   echo "<div>You can click the button to show the basic jQuery UI dialog box.</div>
-//		 <input type='button' value='Show basic dialog!' id='showDialog' />";
-//   echo "<div id='basicModal' title='Basic dialog'>
-//         <p>This is the default dialog which is useful for displaying i.</p>
-//         </div>";
-
-  
 echo $OUTPUT->footer();

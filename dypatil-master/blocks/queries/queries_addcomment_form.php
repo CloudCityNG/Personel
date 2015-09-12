@@ -18,7 +18,7 @@ class queries_addcomment_form extends moodleform {
         $mform->addElement('hidden','queryid',$this->_customdata['queryid']);
         $mform->addElement('text','summery',get_string('summery','block_queries'));
         $mform->setType('summery',PARAM_RAW);
-        $mform->addRule('summery', 'empty', 'required', null, 'client');
+        $mform->addRule('summery', 'empty', 'required', null,'client');
         
         $mform->addElement('textarea','comment',get_string('comment','block_queries'));
         $mform->setType('comment',PARAM_RAW);

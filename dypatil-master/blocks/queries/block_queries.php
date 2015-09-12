@@ -13,65 +13,79 @@ defined('MOODLE_INTERNAL') || die();
         return $this->content;
       }
       global $CFG, $USER, $PAGE;
-      require_once($CFG->dirroot.'/blocks/queries/renderer.php');
-       //var a=document.forms['commentsform']['summery'].value;
-      $a = html_writer::script("
-          function myformvalidation(){
-            alert('hi leooffice');
-            console.log('sadasdasdads');
-          };    
-        "); 
-  
-            //   var a =$('[name='summery']').val();
-            //
-            //alert(a);
-            //
-            //var b=document.forms['commentsform']['comment'].value;
-            //if (a==null || a=='',b==null || b==''){
-            //  alert('Please Fill All Required Field');
-            //  return false;
-            //}
-  
-      function mycommentpopupform($adminqueryid = '') {
-        $script = html_writer::script('$(document).ready(function() {
-                                    $("#showDialog'.$adminqueryid.'").click(function(){
-                                      $("#basicModal'.$adminqueryid.'").dialog({
-                                        modal: true,
-                                        height: 320,
-                                        width: 400
-                                      });
-                                    });
-                                  });
-                     form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
-                                        event.preventDefault();
-                                        alert("hi");
-                                        myformvalidation();
-                                        //alert("hi");
-                                       });
-                    ');
-        return $script;
-      }
+      require_once($CFG->dirroot.'/blocks/queries/commentform.php');
+    
+      //$this->page->requires->js();
       
+      // var a=document.forms['commentsform']['summery'].value;
+      
+        //html_writer::script("
+        //  function myformvalidation(){
+        //     
+        //     console.log('this is the myformvalidation declaration');
+        //         var a =$('[name='summery']').val();
+        //         alert(a);
+        //         var b=document.forms['commentsform']['comment'].value;
+        //         if (a==null || a=='',b==null || b==''){
+        //           alert('Please Fill All Required Field');
+        //           return false;
+        //         }
+        //   }    
+        //");
+       
+       
+      //alert('hi leooffice');
+  
+        //   var a =$('[name='summery']').val();
+        //
+        //alert(a);
+        //
+        //var b=document.forms['commentsform']['comment'].value;
+        //if (a==null || a=='',b==null || b==''){
+        //  alert('Please Fill All Required Field');
+        //  return false;
+        //}
+  
+      //function mycommentpopupform($adminqueryid = '') { 
+      //  $script = html_writer::script('$(document).ready(function() {
+      //                              $("#showDialog'.$adminqueryid.'").click(function(){
+      //                                $("#basicModal'.$adminqueryid.'").dialog({
+      //                                  modal: true,
+      //                                  height: 320,
+      //                                  width: 400
+      //                                });
+      //                              });
+      //                            });
+      //               form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
+      //                                  event.preventDefault();
+      //                                  alert("hi");
+      //                                  myformvalidation();
+      //                                  alert("hi my office");
+      //                                 });
+      //              ');
+      //  return $script;
+      //}
+ 
       $this->content = new stdClass();
       require_once($CFG->dirroot.'/blocks/queries/queries_form.php');
       require_once($CFG->dirroot.'/blocks/queries/queries_addcomment_form.php');
       //require_once($CFG->dirroot.'/blocks/queries/renderer.php');
       function get_required_javascript() {
           $PAGE->requires->jquery();
+          //$PAGE->requires->js('/blocks/queries/js/commentform_popup.js');
       }
-      
       $courses = enrol_get_users_courses($USER->id);
       //print_object($courses);
       $instructorlogin = array();
       foreach($courses as $course) {
         $sql="SELECT u.id, u.email, u.firstname, u.lastname
-             FROM {context} AS cxt
-             JOIN {role_assignments} AS ra
-             ON cxt.id = ra.contextid 
-             JOIN {user} AS u
-             ON ra.userid = u.id
-             WHERE cxt.instanceid = $course->id AND ra.roleid = 10 AND cxt.contextlevel = 50 AND u.id = $USER->id";
-         $instructor =  $DB->get_record_sql($sql);
+            FROM {context} AS cxt
+            JOIN {role_assignments} AS ra
+            ON cxt.id = ra.contextid 
+            JOIN {user} AS u
+            ON ra.userid = u.id
+            WHERE cxt.instanceid = $course->id AND ra.roleid = 10 AND cxt.contextlevel = 50 AND u.id = $USER->id";
+        $instructor =  $DB->get_record_sql($sql);
         if($instructor) {
           $instructorlogin[] = $instructor->id;
         }
@@ -115,10 +129,10 @@ defined('MOODLE_INTERNAL') || die();
             $adminqueryid = $adminquery->id;
             $adm_decription = html_writer:: tag('span',$adminquery->description,array());
             $row[] = html_writer:: tag('p',$adminquery->subject.$adm_decription,array("class"=>"tooltip1"));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","onclick"=>"mycommentpopupform($adminqueryid)"));
             $popup = commenthtmlform($adminqueryid);
-            $popup .= mycommentpopupform($adminqueryid);
-    
+            //$popup .= mycommentpopupform($adminqueryid);
+           
             $row[] = $popup;
             $data[] = $row;
           }
@@ -146,6 +160,7 @@ defined('MOODLE_INTERNAL') || die();
             
             $popup = commenthtmlform($instructorid);
             $popup .= mycommentpopupform($instructorid);
+            $popup .= $a;
             
             $row[] = $popup;
            
@@ -174,6 +189,7 @@ defined('MOODLE_INTERNAL') || die();
             
             $popup = commenthtmlform($registrarid);
             $popup .= mycommentpopupform($registrarid);
+            $popup .= $a;
             
              $row[] = $popup;
             $data[] = $row;
@@ -196,7 +212,7 @@ defined('MOODLE_INTERNAL') || die();
       }
       
         $this->content->footer = '';
-        //$this->page->requires->js('/blocks/queries/js/commentform_popup.js');
+        $this->page->requires->js('/blocks/queries/js/commentform_popup.js');
 
         // Return the content object
         return $this->content;
