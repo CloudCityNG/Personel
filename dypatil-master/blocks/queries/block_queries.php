@@ -129,11 +129,9 @@ defined('MOODLE_INTERNAL') || die();
             $adminqueryid = $adminquery->id;
             $adm_decription = html_writer:: tag('span',$adminquery->description,array());
             $row[] = html_writer:: tag('p',$adminquery->subject.$adm_decription,array("class"=>"tooltip1"));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","onclick"=>"mycommentpopupform($adminqueryid)"));
-            $popup = commenthtmlform($adminqueryid);
-            //$popup .= mycommentpopupform($adminqueryid);
-           
-            $row[] = $popup;
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($adminqueryid)"));
+            $row[] = commenthtmlform($adminqueryid);
+
             $data[] = $row;
           }
         }
@@ -156,12 +154,9 @@ defined('MOODLE_INTERNAL') || die();
             $instructorid = $instructorquery->id;
             $ins_decription = html_writer:: tag('span',$instructorquery->description,array());
             $row[] = html_writer:: tag('p',$instructorquery->subject.$ins_decription,array('class'=>'tooltip1'));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$instructorid"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$instructorid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($instructorid)"));
             
-            $popup = commenthtmlform($instructorid);
-            $popup .= mycommentpopupform($instructorid);
-            $popup .= $a;
-            
+            $popup = commenthtmlform($instructorid);  
             $row[] = $popup;
            
             $data[] = $row;
@@ -185,12 +180,10 @@ defined('MOODLE_INTERNAL') || die();
             $registrarid = $registrarquery->id;
             $reg_decription = html_writer:: tag('span',$registrarquery->description,array());
             $row[] = html_writer:: tag('p',$registrarquery->subject.$reg_decription,array('class'=>'tooltip1'));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$registrarid"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$registrarid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($registrarid)"));
             
             $popup = commenthtmlform($registrarid);
-            $popup .= mycommentpopupform($registrarid);
-            $popup .= $a;
-            
+                       
              $row[] = $popup;
             $data[] = $row;
           }
