@@ -120,5 +120,8 @@ p.tooltip1:hover span {
 .commenticonpostion {
     float: right;
 }
+.iconclass:hover {
+    cursor: pointer;
+}
  
  

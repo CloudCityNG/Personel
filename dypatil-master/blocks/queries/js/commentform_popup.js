@@ -1,12 +1,28 @@
 function myformvalidation(){
-            alert('hi leooffice');
 			//var a =$('[name='summery']').val();
-		if( document.commentsform.summery.value == "" ){
-		   alert( "Please provide your name!" );
-		   document.myForm.Name.focus() ;
-		   return false;
+		var a=document.forms['commentsform']['summery'].value;
+		if (a==null || a==''){
+			alert('Please Fill All Required Field');
+			return false;
 		}
     }
+	
+	//if( document.commentsform.summery.value == "" ){
+	//	   alert( "Please provide your name!" );
+	//	   document.myForm.Name.focus() ;
+	//	   return false;
+	//	}
+	
+	function mycommentpopupform(queryid){
+		
+		$('#basicModal'+queryid).dialog({
+		   modal: true,
+		   height: 320,
+		   width: 400 
+		});
+		event.preventDefault();
+		myformvalidation();
+	}
 	
 	  // form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
       //                                  event.preventDefault();
@@ -29,18 +45,6 @@ function myformvalidation(){
 //                }
 //          } mycommentpopupform
 		  
-	function mycommentpopupform(queryid){
-		
-		$('#basicModal'+queryid).dialog({
-		   modal: true,
-		   height: 320,
-		   width: 400 
-		});
-		event.preventDefault();
-		myformvalidation();
-		alert("hi my office");
-	}
-	
     //code for the display all comments
    function viewresponses(id){
 		$('.student'+id).slideToggle('fast');

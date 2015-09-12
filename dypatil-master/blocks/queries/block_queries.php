@@ -13,69 +13,15 @@ defined('MOODLE_INTERNAL') || die();
         return $this->content;
       }
       global $CFG, $USER, $PAGE;
-      require_once($CFG->dirroot.'/blocks/queries/commentform.php');
-    
-      //$this->page->requires->js();
-      
-      // var a=document.forms['commentsform']['summery'].value;
-      
-        //html_writer::script("
-        //  function myformvalidation(){
-        //     
-        //     console.log('this is the myformvalidation declaration');
-        //         var a =$('[name='summery']').val();
-        //         alert(a);
-        //         var b=document.forms['commentsform']['comment'].value;
-        //         if (a==null || a=='',b==null || b==''){
-        //           alert('Please Fill All Required Field');
-        //           return false;
-        //         }
-        //   }    
-        //");
-       
-       
-      //alert('hi leooffice');
-  
-        //   var a =$('[name='summery']').val();
-        //
-        //alert(a);
-        //
-        //var b=document.forms['commentsform']['comment'].value;
-        //if (a==null || a=='',b==null || b==''){
-        //  alert('Please Fill All Required Field');
-        //  return false;
-        //}
-  
-      //function mycommentpopupform($adminqueryid = '') { 
-      //  $script = html_writer::script('$(document).ready(function() {
-      //                              $("#showDialog'.$adminqueryid.'").click(function(){
-      //                                $("#basicModal'.$adminqueryid.'").dialog({
-      //                                  modal: true,
-      //                                  height: 320,
-      //                                  width: 400
-      //                                });
-      //                              });
-      //                            });
-      //               form = $("#basicModal'.$adminqueryid.'").find( "form" ).on( "submit", function( event ) {                                     
-      //                                  event.preventDefault();
-      //                                  alert("hi");
-      //                                  myformvalidation();
-      //                                  alert("hi my office");
-      //                                 });
-      //              ');
-      //  return $script;
-      //}
- 
       $this->content = new stdClass();
       require_once($CFG->dirroot.'/blocks/queries/queries_form.php');
       require_once($CFG->dirroot.'/blocks/queries/queries_addcomment_form.php');
-      //require_once($CFG->dirroot.'/blocks/queries/renderer.php');
+       require_once($CFG->dirroot.'/blocks/queries/commentform.php');
       function get_required_javascript() {
           $PAGE->requires->jquery();
           //$PAGE->requires->js('/blocks/queries/js/commentform_popup.js');
       }
       $courses = enrol_get_users_courses($USER->id);
-      //print_object($courses);
       $instructorlogin = array();
       foreach($courses as $course) {
         $sql="SELECT u.id, u.email, u.firstname, u.lastname
@@ -129,7 +75,7 @@ defined('MOODLE_INTERNAL') || die();
             $adminqueryid = $adminquery->id;
             $adm_decription = html_writer:: tag('span',$adminquery->description,array());
             $row[] = html_writer:: tag('p',$adminquery->subject.$adm_decription,array("class"=>"tooltip1"));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($adminqueryid)"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($adminqueryid)",'class'=>'iconclass'));
             $row[] = commenthtmlform($adminqueryid);
 
             $data[] = $row;
@@ -154,7 +100,7 @@ defined('MOODLE_INTERNAL') || die();
             $instructorid = $instructorquery->id;
             $ins_decription = html_writer:: tag('span',$instructorquery->description,array());
             $row[] = html_writer:: tag('p',$instructorquery->subject.$ins_decription,array('class'=>'tooltip1'));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$instructorid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($instructorid)"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$instructorid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($instructorid)",'class'=>'iconclass'));
             
             $popup = commenthtmlform($instructorid);  
             $row[] = $popup;
@@ -180,7 +126,7 @@ defined('MOODLE_INTERNAL') || die();
             $registrarid = $registrarquery->id;
             $reg_decription = html_writer:: tag('span',$registrarquery->description,array());
             $row[] = html_writer:: tag('p',$registrarquery->subject.$reg_decription,array('class'=>'tooltip1'));
-            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$registrarid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($registrarid)"));
+            $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$registrarid",'title'=>get_string('addacomment','block_queries'),"onclick"=>"mycommentpopupform($registrarid)",'class'=>'iconclass'));
             
             $popup = commenthtmlform($registrarid);
                        
@@ -193,6 +139,7 @@ defined('MOODLE_INTERNAL') || die();
         $table->width = '100%';
         $table->size = array('95%','5%');
         $table->data  = $data;
+        $this->content->text[] = html_writer:: tag('h5','Ask a Question',array());
         $this->content->text[] = html_writer::table($table);
         $this->content->text[] = html_writer:: tag('a',get_string('mypreviewqueries','block_queries'),array('href'=>$CFG->wwwroot.'/blocks/queries/display_queries.php'));
         $this->content->text = implode('',$this->content->text);

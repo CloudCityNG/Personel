@@ -24,7 +24,7 @@
         $popup .= html_writer:: end_tag('div');
         
         $popup .= html_writer:: start_tag('div',array('class'=>'submitbutton'));
-        $popup .= html_writer:: empty_tag('input',array('type'=>'submit','name'=>'summery','value'=>'submit'));
+        $popup .= html_writer:: empty_tag('input',array('type'=>'submit','name'=>'summery','value'=>'submit',"id"=>"commentsubmit$loginuserid"));
         $popup .= html_writer:: end_tag('div');
         $popup .= html_writer:: end_tag('form');
         

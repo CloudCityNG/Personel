@@ -11,7 +11,7 @@ class block_queries_form extends moodleform {
         $mform->addElement('header', 'general', get_string('askaquestion', 'block_queries'));
          
           $courses = enrol_get_users_courses($USER->id);
-             foreach($courses as $course){
+          foreach($courses as $course){
             // to get instructors in course level
                $sql="SELECT u.id, u.email, u.firstname, u.lastname
                     FROM {context} AS cxt
@@ -20,8 +20,8 @@ class block_queries_form extends moodleform {
                     JOIN {user} AS u
                     ON ra.userid = u.id
                     WHERE cxt.instanceid = $course->id AND ra.roleid = 10 AND cxt.contextlevel = 50";
-                 $instructors =  $DB->get_records_sql($sql);
-                  $instructors12=array();
+               $instructors =  $DB->get_records_sql($sql);
+               $instructors12=array();
                foreach($instructors as $instructor){
                     $fullname = fullname($instructor);
                     $instructors12[$instructor->id.',instructor'] = $fullname;
@@ -51,16 +51,16 @@ class block_queries_form extends moodleform {
           $mform->addElement('selectgroups', 'usertype', get_string('usertype','block_queries'), $options);
           $mform->addRule('usertype', get_string('required'), 'required', null, 'client');
        
-     $adminoption[$record->id] = $record->firstname;
-     $mform->addElement('text','subject',get_string('subject','block_queries')); 
-     $mform->setType('subject',PARAM_RAW);
-     $mform->addRule('subject', get_string('required'), 'required', null, 'client');
-     
-     $mform->addElement('textarea', 'description', get_string('description', 'block_queries'),'wrap="virtual" rows="3" cols="25"');
-     $mform->addRule('description', get_string('required'), 'required', null, 'client');
-     
-     $this->add_action_buttons(FALSE,get_string('postquery','block_queries'));
-     $mform->addElement('html', html_writer:: tag('a',get_string('mypreviewqueries','block_queries'),array('href'=>$CFG->wwwroot.'/blocks/queries/display_queries.php?studentid='.$USER->id,'class'=>'mypreviewqueries')));
+          $adminoption[$record->id] = $record->firstname;
+          $mform->addElement('text','subject',get_string('subject','block_queries')); 
+          $mform->setType('subject',PARAM_RAW);
+          $mform->addRule('subject', get_string('required'), 'required', null, 'client');
+          
+          $mform->addElement('textarea', 'description', get_string('description', 'block_queries'),'wrap="virtual" rows="3" cols="25"');
+          $mform->addRule('description', get_string('required'), 'required', null, 'client');
+          
+          $this->add_action_buttons(FALSE,get_string('postquery','block_queries'));
+          $mform->addElement('html', html_writer:: tag('a',get_string('mypreviewqueries','block_queries'),array('href'=>$CFG->wwwroot.'/blocks/queries/display_queries.php?studentid='.$USER->id,'class'=>'mypreviewqueries')));
         
      }
 }
