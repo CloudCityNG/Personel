@@ -39,7 +39,7 @@ defined('MOODLE_INTERNAL') || die();
           $instructorlogin[] = $instructor->id;
         }
       }
-    /************Query for wheather login user registrar or not*************/
+     /************Query for wheather login user registrar or not*************/
       $registrarlogin = array();
       foreach($courses as $course) {
         $sql="SELECT u.id, u.email, u.firstname, u.lastname

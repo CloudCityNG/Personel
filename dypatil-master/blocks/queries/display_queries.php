@@ -34,10 +34,42 @@ echo $OUTPUT->header();
          }else {
              $row[] = get_string('responded','block_queries'); 
          }
+         $row[] = get_string('view','block_queries');
          $data[] = $row;
+          /********* code for display comments in toggle-started here************/
+             $queryresponses = $DB->get_records_sql("SELECT * FROM {query_response} WHERE queryid =$studentpostedquerie->id");
+               if($queryresponses){
+                  $commentsdata = array(); 
+                  foreach($queryresponses as $queryresponse){
+                     $commentsrow = array();
+                     $commentsrow[] = $queryresponse->summary;
+                     $commentsrow[] = $queryresponse->comment;
+                     $responduserid = $queryresponse->responduser;
+                     $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
+                     $commentsrow[] = $respondusername->firstname;
+                     $commentsrow[] = date("d/m/y h:i a",$queryresponse->postedtime);
+                     
+                     $commentsdata[] = $commentsrow;
+                  }
+                  $table = new html_table();
+                  $table->head  = array(get_string('summary','block_queries'),get_string('comment','block_queries'),
+                                        get_string('postedby','block_queries'),get_string('postedtime','block_queries'));
+                  $table->width = '100%';
+                  $table->size = array('30%','42%','13%','15%');  
+                  $table->data  = $commentsdata;
+                  $string1 = html_writer:: tag('h3',get_string('comments','block_queries'),array());
+                  $string1 .= html_writer::table($table);
+                  echo $string1;
+               }
+          
+          /********* code for display comments in toggle-ended here************/
+         
+         
       }
       $table = new html_table();
-      $table->head  = array('subject','Description','posted by','postedtime','status');
+      $table->head  = array(get_string('subjectt','block_queries'),get_string('descriptionn','block_queries'),
+                            get_string('postedby','block_queries'),get_string('postedtime','block_queries'),
+                            get_string('status','block_queries'));
       $table->width = '100%';
       $table->size= array('20%','36%','20%','12%','12%');
       $table->id    = 'queryresponse';  
@@ -80,7 +112,7 @@ echo $OUTPUT->header();
                $student = $posteduser->firstname;
                $row[] = $student;
                $row[] = date("d/m/y h:i a",$instructorresponse->timecreated);
-               if($instructorresponse->status === 0){
+               if($instructorresponse->status == 0){
                   $row[] = get_string('notresponded','block_queries'); 
                }else {
                   $row[] = get_string('responded','block_queries'); 
@@ -91,6 +123,33 @@ echo $OUTPUT->header();
                $popup = commenthtmlform($ins_id);
                $row[] = $popup;
                $data[] = $row;
+               
+                  /********* code for display comments in toggle-started here************/
+               $queryresponses = $DB->get_records_sql("SELECT * FROM {query_response} WHERE queryid =$ins_id");
+               if($queryresponses){
+                  $commentsdata = array(); 
+                  foreach($queryresponses as $queryresponse){
+                     $commentsrow = array();
+                     $commentsrow[] = $queryresponse->summary;
+                     $commentsrow[] = $queryresponse->comment;
+                     $responduserid = $queryresponse->responduser;
+                     $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
+                     $commentsrow[] = $respondusername->firstname;
+                     $commentsrow[] = date("d/m/y h:i a",$queryresponse->postedtime);
+                     
+                     $commentsdata[] = $commentsrow;
+                  }
+                  $table = new html_table();
+                  $table->head  = array(get_string('summary','block_queries'),get_string('comment','block_queries'),
+                                        get_string('postedby','block_queries'),get_string('postedtime','block_queries'));
+                  $table->width = '100%';
+                  $table->size = array('30%','42%','13%','15%');  
+                  $table->data  = $commentsdata;
+                  $string1 = html_writer:: tag('h3',get_string('comments','block_queries'),array());
+                  $string1 .= html_writer::table($table);
+                  echo $string1;
+               }
+               /********* code for display comments in toggle-ended here************/
             }
          }
       }
@@ -135,30 +194,32 @@ echo $OUTPUT->header();
             $row[] = $popup;
             $data[] = $row;
             
-            // code for display coments in toggle
+            /********* code for display comments in toggle-started here************/
             $queryresponses = $DB->get_records_sql("SELECT * FROM {query_response} WHERE queryid =$reg_id");
             if($queryresponses){
                $commentsdata = array(); 
                foreach($queryresponses as $queryresponse){
                   $commentsrow = array();
-                  $commentsrow[] = $queryresponse->summery;
+                  $commentsrow[] = $queryresponse->summary;
                   $commentsrow[] = $queryresponse->comment;
                   $responduserid = $queryresponse->responduser;
                   $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                   $commentsrow[] = $respondusername->firstname;
-                  $commentsrow[] = time("d/m/y h:i a",$queryresponse->postedtime);
+                  $commentsrow[] = date("d/m/y h:i a",$queryresponse->postedtime);
                   
                   $commentsdata[] = $commentsrow;
                }
                $table = new html_table();
-               $table->head  = array(get_string('summery','block_queries'),get_string('comment','block_queries'),
+               $table->head  = array(get_string('summary','block_queries'),get_string('comment','block_queries'),
                                      get_string('postedby','block_queries'),get_string('postedtime','block_queries'));
                $table->width = '100%';
-               $table->size = array('30%','50%','10%','10%');  
+               $table->size = array('30%','42%','13%','15%');   
                $table->data  = $commentsdata;
                $string1 = html_writer:: tag('h3',get_string('comments','block_queries'),array());
                $string1 .= html_writer::table($table);
+               echo $string1;
             }
+            /********* code for display comments in toggle-started here************/
          }
       }
       if(is_siteadmin()){
@@ -183,9 +244,35 @@ echo $OUTPUT->header();
                }
                $row[] = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/feedback_add.gif',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($adminqueryid)"));             
                $popup = commenthtmlform($adminqueryid);
-               //$popup .= mycommentpopupform($adminqueryid);
                $row[] = $popup;
                $data[] = $row;
+               
+               /********* code for display comments in toggle-started here************/
+               $queryresponses = $DB->get_records_sql("SELECT * FROM {query_response} WHERE queryid =$adminqueryid");
+               if($queryresponses){
+                  $commentsdata = array(); 
+                  foreach($queryresponses as $queryresponse){
+                     $commentsrow = array();
+                     $commentsrow[] = $queryresponse->summary;
+                     $commentsrow[] = $queryresponse->comment;
+                     $responduserid = $queryresponse->responduser;
+                     $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
+                     $commentsrow[] = $respondusername->firstname;
+                     $commentsrow[] = date("d/m/y h:i a",$queryresponse->postedtime);
+                     
+                     $commentsdata[] = $commentsrow;
+                  }
+                  $table = new html_table();
+                  $table->head  = array(get_string('summary','block_queries'),get_string('comment','block_queries'),
+                                        get_string('postedby','block_queries'),get_string('postedtime','block_queries'));
+                  $table->width = '100%';
+                  $table->size = array('30%','42%','13%','15%');  
+                  $table->data  = $commentsdata;
+                  $string1 = html_writer:: tag('h3',get_string('comments','block_queries'),array());
+                  $string1 .= html_writer::table($table);
+                  echo $string1;
+               }
+               /********* code for display comments in toggle-started here************/
             }                
          }
       }
