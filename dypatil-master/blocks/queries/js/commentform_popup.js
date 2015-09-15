@@ -1,28 +1,18 @@
-	function myformvalidation(){
-		var a=document.forms['commentsform']['summery'].value;
-		var b=document.forms['commentsform']['summery'].value;
-		if (a==null || a=='',b==null || b==''){
-			alert('All Fields are Required');
-			return false;
-		}
-    }
-	//var a =$('[name='summery']').val();
-	//if( document.commentsform.summery.value == "" ){
-	//	   alert( "Please provide your name!" );
-	//	   document.myForm.Name.focus() ;
-	//	   return false;
-	//	}
-	
+
 	function mycommentpopupform(queryid){
-		
 		$('#basicModal'+queryid).dialog({
 		   modal: true,
 		   height: 320,
-		   width: 400 
+		   width: 370 
 		});
-		event.preventDefault();
-		myformvalidation();
 	}
+	//var a = form.summery.value;
+	//var a =$("[name='summery']").val();
+	//var a=document.forms['myForm']['summery'].value;
+	//var a = document.getElementById("comment").value;
+	//var a = $["#summery"].val();
+	//var a = $('#summery' );
+
     //code for the display all comments
    function viewresponses(id){
 		$('.student'+id).slideToggle('fast');

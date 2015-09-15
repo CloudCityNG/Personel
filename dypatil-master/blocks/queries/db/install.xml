@@ -21,11 +21,11 @@
     </TABLE>
     <TABLE  NAME="query_response" COMMENT="Stores all the responses of the queries.">
       <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" NEXT="responduser" SEQUENCE="true"/>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" NEXT="queryid" SEQUENCE="true"/>
         <FIELD NAME="queryid" TYPE="int" LENGTH="10" NOTNULL="true" PREVIOUS="id" NEXT="responduser" SEQUENCE="false"/>
-        <FIELD NAME="responduser" TYPE="int"   LENGTH="10" NOTNULL="true" PREVIOUS="queryid" NEXT="comment"  SEQUENCE="false"/>
-        <FIELD NAME="summery" TYPE="text"   LENGTH="5000" NOTNULL="true" PREVIOUS="queryid" NEXT="comment"  SEQUENCE="false"/>
-        <FIELD NAME="comment" TYPE="text" LENGTH="50000" NOTNULL="true" PREVIOUS="summery" NEXT="postedtime"  SEQUENCE="false"/>
+        <FIELD NAME="responduser" TYPE="int"   LENGTH="10" NOTNULL="true" PREVIOUS="queryid" NEXT="summary"  SEQUENCE="false"/>
+        <FIELD NAME="summary" TYPE="text"   LENGTH="5000" NOTNULL="true" PREVIOUS="responduser" NEXT="comment"  SEQUENCE="false"/>
+        <FIELD NAME="comment" TYPE="text" LENGTH="50000" NOTNULL="true" PREVIOUS="summary" NEXT="postedtime"  SEQUENCE="false"/>
         <FIELD NAME="postedtime" TYPE="int" LENGTH="15" NOTNULL="true" PREVIOUS="comment" SEQUENCE="false"/>
       </FIELDS>
       <KEYS>
