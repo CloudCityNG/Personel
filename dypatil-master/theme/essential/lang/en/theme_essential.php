@@ -614,18 +614,14 @@ $string['standardview'] = 'Standard View';
 //added by anil for header links
 //***********for admin links****************//
 $string['grades'] = 'Grades';
-
     $string['gradeletter'] = 'Grade Letter';
     $string['examtype'] = 'Exam Type';
     $string['modeofexam'] = 'Mode of Exam';
-    
 $string['departments'] = 'Departments';
     $string['addeditdepartments'] = 'Add/edit departments';
     $string['courses'] = 'Courses';
     $string['instructor'] = 'Instructor';
-    
 $string['programs'] = 'Programs';
-
     $string['addeditprograms'] = 'Add/edit programs';
     $string['curriculums'] = 'Curriculums';
         $string['addeditcurriculums'] = 'Add/edit Curriculums';

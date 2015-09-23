@@ -28,3 +28,8 @@
       right: 0% !important;
       min-width: 225px;
 }
+/*code for departments responsive dropdown */
+/*.navbar .nav>li>.dropdown-menu.pull-right:after, .navbar .pull-right>li>.dropdown-menu:after {
+    left: auto;
+    right: 140px;
+}*/
