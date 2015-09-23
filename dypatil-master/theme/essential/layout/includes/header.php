@@ -27,6 +27,7 @@
 echo $OUTPUT->doctype();
 
 require_once($OUTPUT->get_include_file('pagesettings'));
+
 ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?> class="no-js">
 <head>
@@ -187,6 +188,176 @@ require_once($OUTPUT->get_include_file('pagesettings'));
                             <?php } ?>
                             <div id="custom_menu">
                                 <?php echo $OUTPUT->custom_menu(); ?>
+                                <!--*********code added by anil*************-->
+                                <?php
+                                //print_object($OUTPUT->custom_menu());
+                                global $USER, $CFG;
+                                 require_once($CFG->dirroot .'/blocks/ranking/lib.php');
+                                 //require_once($CFG->dirroot .'/local/academiccalendar/lib.php');
+                                function is_instructor($userid) {
+                                  return user_has_role_assignment($userid, 10);
+                                }
+                                 $icon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/navigationitem.png'));
+                                 //**********************for siteadmin login************************//
+                                if(is_siteadmin($USER->id)) {
+                                echo html_writer:: start_tag('ul',array('class'=>'nav'));
+                                
+                                echo html_writer:: start_tag('li',array('class'=>'firstul dropdown'));
+                                    echo html_writer:: tag('a',get_string('grades','theme_essential'),array('href'=>$CFG->wwwroot.'/#','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('gradeletter','theme_essential'),array('href'=>$CFG->wwwroot.'/local/gradeletter/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('examtype','theme_essential'),array('href'=>$CFG->wwwroot.'/local/examtype/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('modeofexam','theme_essential'),array('href'=>$CFG->wwwroot.'/local/lecturetype/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                        echo html_writer:: end_tag('ul');
+                                    echo html_writer:: end_tag('li');
+                                    
+                                    echo html_writer:: start_tag('li',array('class'=>'firstul dropdown'));
+                                    echo html_writer:: tag('a',get_string('departments','theme_essential'),array('href'=>$CFG->wwwroot.'/#','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('addeditdepartments','theme_essential'),array('href'=>$CFG->wwwroot.'/local/departments/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('courses','theme_essential'),array('href'=>$CFG->wwwroot.'/local/cobaltcourses/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('instructor','theme_essential'),array('href'=>$CFG->wwwroot.'/local/departments/display_instructor.php','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                        echo html_writer:: end_tag('ul');
+                                    echo html_writer:: end_tag('li');
+                                    
+                                    echo html_writer:: start_tag('li',array('class'=>'firstul dropdown'));
+                                    echo html_writer:: tag('a',get_string('programs','theme_essential'),array('href'=>$CFG->wwwroot.'/#','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('addeditprograms','theme_essential'),array('href'=>$CFG->wwwroot.'/local/programs/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                                            echo html_writer:: tag('a',$icon.get_string('curriculums','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdowmlinks'));
+                                                echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu'));
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('addeditcurriculums','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('manageplans','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                echo html_writer:: end_tag('ul');
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                                            echo html_writer:: tag('a',$icon.get_string('modules','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdowmlinks'));
+                                                echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu'));
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('addeditmodules','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                echo html_writer:: end_tag('ul');
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                                            echo html_writer:: tag('a',$icon.get_string('admissions','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdowmlinks'));
+                                                echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu'));
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('approveapplicants','theme_essential'),array('href'=>$CFG->wwwroot.'/local/admission/viewapplicant.php','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('enrollstudent','theme_essential'),array('href'=>$CFG->wwwroot.'/local/admission/uploaduser.php','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('addnewapplicants','theme_essential'),array('href'=>$CFG->wwwroot.'/local/admission/uploadapplicant.php','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                echo html_writer:: end_tag('ul');
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: end_tag('li');
+                                        echo html_writer:: end_tag('ul');
+                                    echo html_writer:: end_tag('li');
+                                    
+                                    echo html_writer:: start_tag('li',array('class'=>'firstul dropdown'));
+                                    echo html_writer:: tag('a',get_string('semisters','theme_essential'),array('href'=>$CFG->wwwroot.'/#','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('addeditsemisters','theme_essential'),array('href'=>$CFG->wwwroot.'/local/semesters/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                                            echo html_writer:: tag('a',$icon.get_string('academiccalender','theme_essential'),array('href'=>$CFG->wwwroot.'/local/examtype/','class'=>'dropdowmlinks'));
+                                                echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu'));
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('addeditacademiccalender','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('registrationevent','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                    echo html_writer:: start_tag('li',array());
+                                                    echo html_writer:: tag('a',$icon.get_string('adddropevent','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                                                    echo html_writer:: end_tag('li');
+                                                echo html_writer:: end_tag('ul');
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('Timetable','theme_essential'),array('href'=>$CFG->wwwroot.'/local/lecturetype/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('courseregistration','theme_essential'),array('href'=>$CFG->wwwroot.'/local/lecturetype/','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                        echo html_writer:: end_tag('ul');
+                                    echo html_writer:: end_tag('li');
+                                    echo html_writer:: start_tag('li',array('class'=>'firstul'));
+                                    echo html_writer:: tag('a',get_string('managebatches','theme_essential'),array('href'=>$CFG->wwwroot.'/#','style'=>'color:#ffffff;margin-right:10px;'));
+                                    echo html_writer:: end_tag('li');
+                                    
+                                echo html_writer:: end_tag('ul');
+                                }
+                                elseif(is_student($USER->id)){   /***********for student login***************/
+                                        echo html_writer:: start_tag('ul',array('class'=>'nav'));
+                                        echo html_writer:: start_tag('li',array('class'=>'firstul'));
+                                        echo html_writer:: tag('a',get_string('mycurriculum','theme_essential'),array('href'=>$CFG->wwwroot.'/local/courseregistration/mycurplans.php','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: end_tag('li');
+                                        echo html_writer:: start_tag('li',array('class'=>'firstul'));
+                                        echo html_writer:: tag('a',get_string('currentclasses','theme_essential'),array('href'=>$CFG->wwwroot.'/local/courseregistration/myclasses.php','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: end_tag('li');
+                                        echo html_writer:: start_tag('li',array('class'=>'firstul'));
+                                        echo html_writer:: tag('a',get_string('timetable','theme_essential'),array('href'=>$CFG->wwwroot.'/local/timetable/calendarview.php','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: end_tag('li');
+                                        echo html_writer:: start_tag('li',array('class'=>'firstul'));
+                                        echo html_writer:: tag('a',get_string('scheduledexams','theme_essential'),array('href'=>$CFG->wwwroot.'/local/scheduleexam/','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: end_tag('li');
+                                        echo html_writer:: start_tag('li',array('class'=>'firstul'));
+                                        echo html_writer:: tag('a',get_string('transcript','theme_essential'),array('href'=>$CFG->wwwroot.'/local/myacademics/transcript.php','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: end_tag('li');
+                                        echo html_writer:: start_tag('li',array('class'=>'firstul dropdown'));
+                                        echo html_writer:: tag('a',get_string('myrequests','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdown-toggle'));
+                                       
+                                            echo html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                                        
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('idcard','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/request_id.php','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('profilechangerequest','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/request_profile.php','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('transcript','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/request_transcript.php','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            echo html_writer:: start_tag('li',array());
+                                            echo html_writer:: tag('a',$icon.get_string('courseexemption','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/course_exem.php','class'=>'dropdowmlinks'));
+                                            echo html_writer:: end_tag('li');
+                                            
+                                            echo html_writer:: end_tag('ul');
+                                           
+                                        echo html_writer:: end_tag('li');
+                                        echo html_writer:: end_tag('ul');
+                                }
+                                elseif(is_instructor($USER->id)){
+                                    echo html_writer:: start_tag('div',array('style'=>'margin-top:5%;'));
+                                        echo html_writer:: tag('a',get_string('mycurriculum','theme_essential'),array('href'=>$CFG->dirroot.'/comment/','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: tag('a',get_string('currentclasses','theme_essential'),array('href'=>$CFG->dirroot.'/comment/','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: tag('a',get_string('timetable','theme_essential'),array('href'=>$CFG->dirroot.'/comment/','style'=>'color:#ffffff;margin-right:10px;'));
+                                        echo html_writer:: tag('a',get_string('transcript','theme_essential'),array('href'=>$CFG->dirroot.'/comment/','style'=>'color:#ffffff;margin-right:10px;'));
+                                    echo html_writer:: end_tag('div');
+                                }
+                                ?>
                             </div>
                             <div id="custom_menu_activitystream">
                                 <?php echo $OUTPUT->custom_menu_activitystream(); ?>
