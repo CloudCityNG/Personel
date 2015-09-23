@@ -17,7 +17,6 @@ defined('MOODLE_INTERNAL') || die();
       if ($this->content !== null) {
         return $this->content;
       }
-    
       global $CFG, $USER, $PAGE;
       $this->content = new stdClass();
       require_once($CFG->dirroot.'/blocks/queries/commentform.php');
@@ -69,10 +68,9 @@ defined('MOODLE_INTERNAL') || die();
           $studentlogin[] = $studentrecord->id;
         }
       }
-      
-      /************for admin login*************/
+      /*********************for admin login**************************/
       if(is_siteadmin($USER->id)){
-        $adminqueries = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid = 2 AND userrole = 'admin' ORDER BY id DESC LIMIT 5");
+        $adminqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = 2 AND userrole = 'admin' ORDER BY id DESC LIMIT 5");
         if($adminqueries) {
             $data = array();
             foreach($adminqueries as $adminquery){
@@ -86,7 +84,7 @@ defined('MOODLE_INTERNAL') || die();
             }
           
           $table = new html_table();
-          $table->head  = array(get_string('subjectt','block_queries'),'');
+          $table->head  = array(get_string('subjectt','block_queries'),get_string('comment','block_queries'));
           $table->width = '100%';
           $table->size = array('90%','10%');
           $table->data  = $data;
@@ -96,11 +94,10 @@ defined('MOODLE_INTERNAL') || die();
         }
         else {
           $this->content->text = html_writer:: tag('p',get_string('noprevioussubjects','block_queries'),array());
-          
         }
-      }    /****************for Instructor login*******************/
+      }  /**********************for Instructor login*************************/
       elseif(!empty($instructorlogin)){
-        $instructorqueries = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid =$USER->id AND userrole = 'instructor' ORDER BY id DESC LIMIT 5");
+        $instructorqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid =$USER->id AND userrole = 'instructor' ORDER BY id DESC LIMIT 5");
        
         if($instructorqueries){
           $data = array();
@@ -117,7 +114,7 @@ defined('MOODLE_INTERNAL') || die();
             $data[] = $row;
           }
           $table = new html_table();
-          $table->head  = array(get_string('subjectt','block_queries'),'');
+         $table->head  = array(get_string('subjectt','block_queries'),get_string('comment','block_queries'));
           $table->width = '100%'; 
           $table->data  = $data;
           $this->content->text[] = html_writer::table($table);
@@ -127,10 +124,9 @@ defined('MOODLE_INTERNAL') || die();
         else {
           $this->content->text = html_writer:: tag('p',get_string('noprevioussubjects','block_queries'),array());
         }
-      }     /*******************for Registrar login**********************/
-      elseif(!empty($registrarlogin)){
-        $registrarqueries = $DB->get_records_sql("SELECT * FROM {queries} WHERE userid =$USER->id AND userrole = 'registrar' ORDER BY id DESC LIMIT 5");
-        //print_object($instructorqueries);
+      }  /************************for Registrar login****************************/
+      elseif(!empty($registrarlogin)) {
+        $registrarqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid =$USER->id AND userrole = 'registrar' ORDER BY id DESC LIMIT 5");
         if($registrarqueries){
           $data = array();
           foreach($registrarqueries as $registrarquery){
@@ -146,7 +142,7 @@ defined('MOODLE_INTERNAL') || die();
             $data[] = $row;
           }
           $table = new html_table();
-          $table->head  = array(get_string('subjectt','block_queries'),'');
+          $table->head  = array(get_string('subjectt','block_queries'),get_string('comment','block_queries'));
           $table->width = '100%';
           $table->size = array('95%','5%');
           $table->data  = $data;
@@ -158,7 +154,7 @@ defined('MOODLE_INTERNAL') || die();
         else {
           $this->content->text = html_writer:: tag('p',get_string('noprevioussubjects','block_queries'),array());
         }
-      }       /*******************for student login**********************/
+      }  /**********************for student login**************************/
       elseif(!empty($studentlogin)){
         $formdata = new stdClass();
         $actionpage = $CFG->wwwroot.'/blocks/queries/sendingemail.php';

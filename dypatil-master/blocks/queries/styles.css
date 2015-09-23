@@ -1,5 +1,24 @@
+.moodleform_selector{
+    width: 76.3%;    
+}
+.moodleform_label{
+    font-size: small;
+    width: 150px !important;
+    margin-top: 43px;
+}
+.moodleform_info{
+    width: auto !important;
+}
+.moodleform_button {
+    background-color: #7bbdd7 !important;
+    background-image: none !important;
+    text-shadow: none !important;
+    border: 1px solid #7bbdd7 !important;
+    color: #FFF !important;
+}
 .block_queries .mform .fitem div.fitemtitle {
     width: 30%;
+    line-height: 0;
 }
 .block_queries #id_subject{
        width: 71%;
@@ -32,7 +51,6 @@
 .block_queries div.editor_atto_toolbar div.atto_group {
          margin: 2px 0 0 2px !important;
 
-}
 }
 .block_queries #id_descriptioneditable{
     min-height: 87px !important;
@@ -122,6 +140,7 @@ p.tooltip1:hover span {
 }
 .commenticonpostion {
     float: right;
+    cursor: pointer;
 }
 .iconclass:hover {
     cursor: pointer;
@@ -133,5 +152,83 @@ p.tooltip1:hover span {
     margin-left: 23%;
     margin-top: 5%;
 }
+#toggle{
+	display:none;
+}
+.toggle_style{
+    margin-top: 30px;
+    margin-left: 42px;
+}
+.comment_summary{
+    margin-left: 35px;
+}
+.toggle_comment{
+    margin-left: 35px;
+    text-align: justify;
+}
+.sp{
+	display: inline-flex;
+    list-style-type: none;
+    margin: 1px;
+     width: 100%;
+}
+.sp .li{
+    padding: 0px 20px;
+    width: 11%;
+    text-align: center;
+}
+.sp .lides{
+    padding: 0px 10px;
+    width: 35%;
+    text-align: center;
+}
+.sp .liadmin{
+    padding: 0px 10px;
+    width: 12.5%;
+    text-align: -webkit-right;
+}
+.sp .lidesadmin{
+    padding: 0px 10px;
+    width: 25%;
+    text-align: center;
+}
+.sp .listu{
+    padding: 0px 20px;
+    width: 11%;
+    text-align: center;
+}
+.sp .lidate{
+    padding: 0px 20px;
+    width: 21%;
+    text-align: center;
+}
+.togglediv{
+    border: 1px solid #EDEDED;
+    box-shadow: 2px 2px 2px #AFAFAF;
+    background-color: #FCFCFC;
+    width: 800px;
+    border-radius: 3px;
+}
+.toggledate{
+   display: flex;
+}
+.toggledate .postedtime{
+    margin-left: 0px;
+    width: 20%;
+    text-align: right;
+    font-size: 75%;
+}
+.toggledate .posted_by{
+    width: 80%;
+    text-align: right;
+    font-size: 75%;
+}
  
- 
+#mform1 .moodleform_div #fitem_id_usertype .fitemtitle{
+    width: 100%;
+    display: inline;
+}
+#fitem_id_submitbutton .felement input[type=submit]{
+    font-size: 12px;
+    padding: 0px 16px;
+}

@@ -15,30 +15,16 @@
       color:#fff;
       margin-right:10px;
 }
-.semdropdowm {
+.sem_dropdowm {
       min-width: 190px;
 }
-/*.navbarlinks li.firstul{
-      display: inline;
+.subulright{
+      left:100% !important;
+      right: 0% !important;
+      min-width: 190px;
 }
-.myrequests {
-      color: #fff !important;
-}*/
-/*.dropdownul{
-      display: none;
-      list-style-type: none;
-}*/
-/*.myrequests:hover + ul.dropdownul {
-  position: absolute;
-  display: block;
-  border:1px solid #424244;
-  margin-left: 70%;
-  border-radius: 6px;
-  padding: 8px 10px;
-  background-color: #fff;
-  min-width: 30%;
-}*/
-/*.dropdowmlinks {
-  color:#4c78c8;
-  margin-right:10px;
-}*/
+.subulrightacademic_cal {
+      left:100% !important;
+      right: 0% !important;
+      min-width: 225px;
+}

@@ -21,9 +21,9 @@ if($commentformdata = data_submitted()) {
         $toupdate = new stdclass();
         $toupdate->id = $commentformdata->queryid;
         $toupdate->status = 1;
-        $queryresponse=$DB->insert_record('query_response',$commentdata);
-        $update = $DB->update_record('queries',$toupdate); 
-        $queryrecord = $DB->get_record_sql("SELECT * FROM {queries} WHERE id=$commentformdata->queryid");
+        $queryresponse=$DB->insert_record('block_query_response',$commentdata);
+        $update = $DB->update_record('block_queries',$toupdate); 
+        $queryrecord = $DB->get_record_sql("SELECT * FROM {block_queries} WHERE id=$commentformdata->queryid");
         $touser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$queryrecord->postedby");
         
         /*************to send email to student***************/

@@ -20,9 +20,9 @@ echo $OUTPUT->header();
       $toinsertrecord->status = 0;
       $toinsertrecord->timecreated = time();
       //print_object($toinsertrecord);
-      $DB->insert_record('queries',$toinsertrecord);
+      $DB->insert_record('block_queries',$toinsertrecord);
       //send email code
-      //$sendingdata = $DB->get_record_sql("SELECT * FROM {queries} WHERE id = $useridandtype[0]");
+      //$sendingdata = $DB->get_record_sql("SELECT * FROM {block_queries} WHERE id = $useridandtype[0]");
       $tosenduser = $toinsertrecord->userid;
       $toUser = $DB->get_record_sql("SELECT * FROM {user} WHERE id = $tosenduser");
       //for email body

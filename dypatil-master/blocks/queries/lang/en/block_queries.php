@@ -7,8 +7,10 @@ $string['instructor'] = 'Instructor';
 $string['admin'] = 'Site Admin';
 $string['registrar'] = 'Registrar';
 $string['description'] = '<small>Description</small>';
-$string['postquery'] = 'Post my Query';
-$string['usertype'] = '<small>Usertype</small>';
+$string['nocomments'] = 'No comments to display';
+$string['time'] = 'Time';
+$string['postquery'] = 'Post Query';
+$string['usertype'] = '<small>Select a user to ask a question</small>';
 $string['addacomment'] = 'Add a Comment';  
 $string['summary'] = 'Summary';
 $string['subjectt'] = 'Subject'; 
@@ -24,8 +26,9 @@ $string['noqueries'] = 'You do not have queries';
 $string['notresponded'] = '<small>Not Responded</small>';
 $string['responded'] = '<small>Responded</small>';
 $string['backtohome'] = 'Back to home';
-$string['mypreviewqueries'] = 'My Previous Queries';
-
+$string['mypreviewqueries'] = 'My Queries';
+$string['viewcomment'] = 'View';
+$string['postedto'] = 'posted to';
 $string['emailtext'] = 'Hi {$a->fullname}, <br><br>
                         {a->description}';
 $string['emailhtmlbody'] = '<div style="margin:auto;">
@@ -43,7 +46,6 @@ $string['replytostudenthtml'] = '<div style="margin:auto;">
                                 <p style="margin-left:2%;">{$a->summary}.</p>
                                 <p style="margin-left:2%;">{$a->comment}.</p>
                                 </div>';
-
-
+$string['askaquestion_help'] = 'You can ask a question here to your higher authorities.';
 
 

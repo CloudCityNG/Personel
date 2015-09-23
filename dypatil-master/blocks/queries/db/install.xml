@@ -4,7 +4,7 @@
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="queries" COMMENT="Default queries for block_queries, please edit me">
+    <TABLE NAME="block_queries" COMMENT="Default queries for block_queries, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" NEXT="usertype" SEQUENCE="true"/>
         <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" PREVIOUS="id" NEXT="subject"  SEQUENCE="false"/>
@@ -19,7 +19,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE  NAME="query_response" COMMENT="Stores all the responses of the queries.">
+    <TABLE  NAME="block_query_response" COMMENT="Stores all the responses of the queries.">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" NEXT="queryid" SEQUENCE="true"/>
         <FIELD NAME="queryid" TYPE="int" LENGTH="10" NOTNULL="true" PREVIOUS="id" NEXT="responduser" SEQUENCE="false"/>
