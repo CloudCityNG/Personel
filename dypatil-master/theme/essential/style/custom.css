@@ -10,8 +10,35 @@
 
 [[setting:fontfilesbody]]
 
-/* for datable added by anil*/
- #page-blocks-queries-display_queries .dataTable > tbody > tr {
-     border-bottom: none; 
-     border-top: 1px solid #EAEAEA; 
- }
+/*code added by anil for navbar links*/
+.navbarlinks{
+      color:#fff;
+      margin-right:10px;
+}
+.semdropdowm {
+      min-width: 190px;
+}
+/*.navbarlinks li.firstul{
+      display: inline;
+}
+.myrequests {
+      color: #fff !important;
+}*/
+/*.dropdownul{
+      display: none;
+      list-style-type: none;
+}*/
+/*.myrequests:hover + ul.dropdownul {
+  position: absolute;
+  display: block;
+  border:1px solid #424244;
+  margin-left: 70%;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background-color: #fff;
+  min-width: 30%;
+}*/
+/*.dropdowmlinks {
+  color:#4c78c8;
+  margin-right:10px;
+}*/

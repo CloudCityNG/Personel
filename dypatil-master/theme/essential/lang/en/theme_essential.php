@@ -610,3 +610,72 @@ $string['hideblocks'] = 'Hide Blocks';
 $string['showblocks'] = 'Show Blocks';
 $string['fullscreen'] = 'Full Screen';
 $string['standardview'] = 'Standard View';
+
+//added by anil for header links
+//***********for admin links****************//
+$string['grades'] = 'Grades';
+
+    $string['gradeletter'] = 'Grade Letter';
+    $string['examtype'] = 'Exam Type';
+    $string['modeofexam'] = 'Mode of Exam';
+    
+$string['departments'] = 'Departments';
+    $string['addeditdepartments'] = 'Add/edit departments';
+    $string['courses'] = 'Courses';
+    $string['instructor'] = 'Instructor';
+    
+$string['programs'] = 'Programs';
+
+    $string['addeditprograms'] = 'Add/edit programs';
+    $string['curriculums'] = 'Curriculums';
+        $string['addeditcurriculums'] = 'Add/edit Curriculums';
+        $string['manageplans'] = 'Manage Plan';
+    $string['modules'] = 'Modules';
+        $string['addeditmodules'] = 'Add/edit modules';
+    $string['admissions'] = 'Admissions';
+        $string['approveapplicants'] = 'Approve applicants';
+        $string['enrollstudent'] = 'Enroll student';
+        $string['addnewapplicants'] = 'Add New Applicants';
+$string['semesters'] = 'Semesters';
+    $string['addeditsemisters'] = 'Add/edit semisters';
+    $string['academiccalender'] = 'Academic Calender';
+        $string['addeditacademiccalender'] = 'Add/edit academiccalender';
+        $string['registrationevent'] = 'Registration event';
+        $string['adddropevent'] = 'Add/drop event';
+    $string['Timetable'] = 'Timetable';
+        $string['addedittimeintervals'] = 'Add/edit timeintervals';
+        $string['addeditclasstypes'] = 'Add/edit classtypes';
+        $string['addeditscheduleclass'] = 'Add/edit scheduleclass';
+        $string['calendarview'] = 'Calendarview';
+    $string['courseregistration'] = 'Course Registration';
+        $string['approveenrolledcourses'] = 'Approve Enrolled Courses';
+        $string['approveadddropcourses'] = 'Approve Add/Drop Courses'; 
+//$string['resourcemanagement'] = 'Resource Management';
+//    $string['managebuildings'] = 'Manage Buildings';
+//    $string['managefloors'] = 'Manage Floors';
+//    $string['manageclassrooms'] = 'Manage Classrooms';
+//    $string['manageresorces'] = 'Manage Resorces';
+//$string['manageusers'] = 'Manage Users';
+//    $string['adduser'] = 'Add User';
+//    $string['viewusers'] = 'View Users';
+//    $string['managemanageacademicadvisors'] = 'Manage Aanageacademic Advisors';
+//$string['myprofile'] = 'My Profile';
+//    $string['viewprofile'] = 'View Profile';
+//    $string['editprofile'] = 'Edit Profile';
+//    $string['changepassword'] = 'Change Password';
+$string['managebatches'] = 'Manage Batches';
+    $string['addeditbatches'] = 'Add/edit Batches';
+    $string['uploadnewstudentstobatches'] = 'Upload new Students To Batches';
+    $string['uploadexiststudentstobatches'] = 'Upload Exist Students To Batches';
+
+//***************for student links***************//
+$string['mycurriculum'] = 'My Curriculum';
+$string['currentclasses'] = 'Current Classes';
+$string['timetable'] = 'Time Table';
+$string['scheduledexams'] = 'Scheduled Exams';
+$string['transcript'] = 'Transcript';
+$string['myrequests'] = 'My Requests';
+
+$string['idcard'] = 'Id Card';
+$string['profilechangerequest'] = 'Profile Change Request';
+$string['courseexemption'] = 'Course Exemption';

@@ -113,7 +113,6 @@ class theme_essential_core_renderer extends core_renderer {
      */
     public function custom_menu($custommenuitems = '') {
         global $CFG;
-
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
             $custommenuitems = $CFG->custommenuitems;
         }
@@ -185,7 +184,11 @@ class theme_essential_core_renderer extends core_renderer {
                 $url = '#';
             }
             $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
+            //code added by anil
+            //global $CFG;
+            //$content .= html_writer::link($CFG->wwwroot.'/#','myoffice', array('title' => 'leooffice'));
         }
+        //print_object();
         return $content;
     }
 
