@@ -10,9 +10,11 @@
 
 [[setting:fontfilesbody]]
 
-/*code added by anil for navbar links*/
+
+
+/*code added by anil for headerpart links*/
 .navbarlinks{
-      color:#fff;
+      color:#fff !important;
       margin-right:10px;
 }
 .sem_dropdowm {
@@ -22,14 +24,11 @@
       left:100% !important;
       right: 0% !important;
       min-width: 190px;
+      border-radius: 0 6px 6px 6px !important;
 }
 .subulrightacademic_cal {
       left:100% !important;
       right: 0% !important;
       min-width: 225px;
+      border-radius: 0 6px 6px 6px !important;
 }
-/*code for departments responsive dropdown */
-/*.navbar .nav>li>.dropdown-menu.pull-right:after, .navbar .pull-right>li>.dropdown-menu:after {
-    left: auto;
-    right: 140px;
-}*/
