@@ -1,5 +1,6 @@
 .moodleform_selector{
-    width: 76.3%;    
+    width: 76.3%;
+    margin-top: 8%;
 }
 .moodleform_label{
     font-size: small;
@@ -84,19 +85,17 @@
 p.tooltip1:hover span {
   display: block;
   position: absolute;
-  background-color: #35132C;
- /* background-color: #E7E7E7;*/
-  /*border: 1px solid #82152C;*/
+  background-color: #E7E7E7;
+  border: 1px solid #82152C;
   width: 70%;
   z-index: 1; /*for div over content*/
   min-width: 100%;
   min-height: 70px;
   height: auto;
   margin-left: 50%;
-  /*margin-top: 10px;*/
-  color: #FFFFFF;
+  color: #424244;
   padding: 2px 5px;
-  border-radius: 5%;
+  border-radius: 6%;
  }
  .comment_icon {
      float: left;
@@ -139,7 +138,7 @@ p.tooltip1:hover span {
     margin-bottom: 5%;
 }
 .commenticonpostion {
-    float: right;
+    /*float: right;*/
     cursor: pointer;
 }
 .iconclass:hover {
@@ -185,7 +184,8 @@ p.tooltip1:hover span {
 .sp .liadmin{
     padding: 0px 10px;
     width: 12.5%;
-    text-align: -webkit-right;
+    /*text-align: -webkit-right;*/
+    text-align: center;
 }
 .sp .lidesadmin{
     padding: 0px 10px;
@@ -231,4 +231,20 @@ p.tooltip1:hover span {
 #fitem_id_submitbutton .felement input[type=submit]{
     font-size: 12px;
     padding: 0px 16px;
+}
+ /**********added by anil***************/
+.block_queries .content {
+     margin-left: 3%;
+ }
+.block_queries .helpbutton{  
+    margin-left: 3%;
+}
+.block_queries .icon {  
+    text-align: center !important;
+}
+#page-my-index .block_queries .clearfix legend {
+    display: none;
+}
+#page-my-index .block_queries .fitemtitle {
+    display: none !important;
 }

@@ -19,7 +19,7 @@ echo $OUTPUT->header();
       // display records for student 
    if(!empty($studentid)){
       
-      $studentpostedqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE postedby = $studentid");
+      $studentpostedqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE postedby = $studentid ORDER BY id DESC");
       $data = array();
       foreach($studentpostedqueries as $studentpostedquerie){
          $row = array();
@@ -48,24 +48,25 @@ echo $OUTPUT->header();
          <div class="toggle_style"><span style="display:none;"  class="toggle'.$studentpostedquerie->id.'">';
              
          /********* code for display comments in toggle-starts here************/
-          $queryresponses = $DB->get_records('block_query_response',array('queryid' => $studentpostedquerie->id));
-          if($queryresponses){
+          
+          $queryresponses = $DB->get_records_sql("SELECT * FROM {block_query_response} WHERE queryid=$studentpostedquerie->id ORDER BY id DESC");
+            if($queryresponses){
                   foreach($queryresponses as $queryresponse){
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>comment_summary));
+                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>togglediv));
-                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>toggle_comment));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>toggledate));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>posted_by));
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
                         
                      $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>postedtime));
+                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     
@@ -106,28 +107,13 @@ echo $OUTPUT->header();
       //end of script------------------------------------
    }
    else{
-      $courses = enrol_get_users_courses($USER->id);
-      //for login user is a instructor
-      $allinstructors = array();
-      foreach($courses as $course){
-         $sql="SELECT u.id, u.email, u.firstname, u.lastname, ra.roleid, cxt.instanceid AS courseid
-               FROM {context} AS cxt
-               JOIN {role_assignments} AS ra
-               ON cxt.id = ra.contextid 
-               JOIN {user} AS u
-               ON ra.userid = u.id
-               WHERE cxt.instanceid = $course->id AND ra.roleid = 10 AND cxt.contextlevel = 50 AND u.id = $USER->id";
-         $instructors =  $DB->get_record_sql($sql);
-         if($instructors){
-            $allinstructors[] = $instructors->id;
-         }        
-      }
-      if(!empty($allinstructors)) {
+      $courses = enrol_get_users_courses($USER->id);  
+      //call function for check login user instructor or not
+       $instructorlogin = block_queries_getrole_user($courses,'instructor');
+       
+      if(!empty($instructorlogin)) {
          $registrarid = $USER->id;
-           $instructorresponses = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = $registrarid AND userrole = 'instructor'");
-         if(!empty($allinstructors)) {
-           $registrarid = $USER->id;
-           $instructorresponses = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = $registrarid AND userrole = 'instructor'");
+         $instructorresponses = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = $registrarid AND userrole = 'instructor' ORDER BY id DESC");
          if(!empty($instructorresponses)){
             $data = array();
             foreach($instructorresponses as $instructorresponse){
@@ -159,25 +145,26 @@ echo $OUTPUT->header();
                </ul></p>
                <div class="toggle_style"><span style="display:none;"  class="toggle'.$instructorresponse->id.'">';
              
-			   /********* code for display comments in toggle-started here************/
-               $queryresponses = $DB->get_records('block_query_response',array('queryid' => $instructorresponse->id));
-          if($queryresponses){
+               /********* code for display comments in toggle-started here************/
+               
+               $queryresponses = $DB->get_records_sql("SELECT * FROM {block_query_response} WHERE queryid=$ins_id ORDER BY id DESC");
+               if($queryresponses){
                   foreach($queryresponses as $queryresponse){
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>comment_summary));
+                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>togglediv));
-                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>toggle_comment));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>toggledate));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>posted_by));
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
                         
                      $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>postedtime));
+                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     
@@ -191,28 +178,17 @@ echo $OUTPUT->header();
                $test.='</span></div></div>';
                $row[]=$test;
                $data[]=$row;     
-			}
+            }
          }
       }
-   }
       //for login user is a registrar
-      $allregistrars = array();
-      foreach($courses as $course){
-          // to get registrars in course level
-         $sql = "SELECT u.id, u.email, u.firstname, u.lastname, ra.roleid, cxt.instanceid AS courseid
-                 FROM {context} AS cxt
-                 JOIN {role_assignments} AS ra
-                 ON cxt.id = ra.contextid 
-                 JOIN {user} AS u
-                 ON ra.userid = u.id
-                 WHERE cxt.instanceid = $course->id AND ra.roleid = 9 AND cxt.contextlevel = 50 AND u.id =$USER->id";
-         $registrars =  $DB->get_record_sql($sql);
-         if($registrars){
-            $allregistrars[] = $registrars->id;
-         }
-      }
-      if(!empty($allregistrars)){
-         $registrarresponses = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = $USER->id AND userrole = 'registrar'");
+      
+      $courses = enrol_get_users_courses($USER->id);
+      
+      $registrarlogin = block_queries_getrole_user($courses,'registrar');
+      
+      if(!empty($registrarlogin)){
+         $registrarresponses = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = $USER->id AND userrole = 'registrar' ORDER BY id DESC");
          $data = array();
          foreach($registrarresponses as $registrarresponse){
             $row = array();
@@ -238,26 +214,27 @@ echo $OUTPUT->header();
             <li class="liadmin">'.$studentname.'</li>
             <li class="liadmin">'.$date_registrar.'</li>
             <li class="liadmin">'.$ifelse_registrar.'</li>
-            <li class="liadmin">'.$click_registrar.$popup_registrar.'</li>
+            <li class="liadmin icon">'.$click_registrar.$popup_registrar.'</li>
             <li class="liadmin">'.$comment_registrar.'</li>
             </ul></p>
             <div class="toggle_style"><span style="display:none;"  class="toggle'.$registrarresponse->id.'">';
             /********* code for display comments in toggle-started here************/
-           $queryresponses = $DB->get_records('block_query_response',array('queryid' => $registrarresponse->id));
+           
+           $queryresponses = $DB->get_records_sql("SELECT * FROM {block_query_response} WHERE queryid=$reg_id ORDER BY id DESC");
           if($queryresponses){
                   foreach($queryresponses as $queryresponse){
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>comment_summary));
+                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>togglediv));
-                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>toggle_comment));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>toggledate));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>posted_by));
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
                         
                      $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
                      $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>postedtime));
@@ -277,7 +254,7 @@ echo $OUTPUT->header();
          }
       }
       if(is_siteadmin()){
-           $adminqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = 2 AND userrole = 'admin'");
+           $adminqueries = $DB->get_records_sql("SELECT * FROM {block_queries} WHERE userid = 2 AND userrole = 'admin' ORDER BY id DESC");
          if(!empty($adminqueries)){
             $data = array();
             foreach($adminqueries as $adminquery){
@@ -310,30 +287,29 @@ echo $OUTPUT->header();
                <div class="toggle_style"><span style="display:none;"  class="toggle'.$adminquery->id.'">';
                
                /********* code for display comments in toggle-started here************/
-               $queryresponses = $DB->get_records('block_query_response',array('queryid' => $adminquery->id));
-          if($queryresponses){
+               $queryresponses = $DB->get_records_sql("SELECT * FROM {block_query_response} WHERE queryid=$adminqueryid ORDER BY id DESC");
+               if($queryresponses){
                   foreach($queryresponses as $queryresponse){
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>comment_summary));
+                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>togglediv));
-                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>toggle_comment));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>toggledate));
+                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>posted_by));
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
                         
                      $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>postedtime));
+                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     
                   }
-               }
-               //else condition if no comments are there to display----------
+               }   //else condition if no comments are there to display----------
                else{
                   $test .= html_writer:: tag('p',get_string('nocomments','block_queries'));
                }           
@@ -357,7 +333,7 @@ echo $OUTPUT->header();
                       <li class="liadmin">'.get_string('viewcomment', 'block_queries').'</li>
 					 </ul>');
       $table_ins->width = '100%';
-      //$table->id    = 'queryresponse';
+      $table_ins->id    = 'queryresponse';
       $table_ins->data  = $data;
       $string = html_writer:: tag('h3',get_string('myqueries','block_queries'),array());
       $string .= html_writer::table($table_ins);

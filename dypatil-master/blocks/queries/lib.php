@@ -72,10 +72,10 @@ function   blockqueries_tablecontent($sql){
             }
           
           $table = new html_table();
-          $table->head  = array(get_string('subjectt','block_queries'),'');
+          $table->head  = array(get_string('subjectt','block_queries'),get_string('comment','block_queries'));
           $table->width = '100%';
           $table->size = array('95%','5%');
-          $table->align = array('left','left');
+          $table->align = array('left','center');
           $table->data  = $data;
          
           $blockqueries_displaycontent[] = html_writer::table($table);

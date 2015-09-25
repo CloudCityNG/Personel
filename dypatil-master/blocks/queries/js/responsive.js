@@ -1,8 +1,9 @@
 
 $(document).ready(function() {
                         $("#queryresponse").dataTable({
-                         searching: true,
-                          responsive: true,
+                        searching: true,
+                        responsive: true,
+                        "ordering": false,
 			  "fnDrawCallback": function(oSettings) {
                                         //if ( 5> oSettings.fnRecordsDisplay()) {
                                         //   $("#support_courses_paginate").show();
