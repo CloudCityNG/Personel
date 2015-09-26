@@ -1,6 +1,16 @@
 .moodleform_selector{
-    width: 76.3%;
+    width: 50%;
     margin-top: 8%;
+}
+.block_queries .moodleform_textarea {
+    width: 65%;
+}
+.block_queries .moodleform_subject{
+       width: 65%;
+}
+.block_queries #fitem_id_submitbutton {
+    margin-top: 10%;
+    margin-left: 42% !important;
 }
 .moodleform_label{
     font-size: small;
@@ -20,9 +30,6 @@
 .block_queries .mform .fitem div.fitemtitle {
     width: 30%;
     line-height: 0;
-}
-.block_queries #id_subject{
-       width: 71%;
 }
 .block_queries .mform .fitem {
     margin-top: -5%;
@@ -87,12 +94,13 @@ p.tooltip1:hover span {
   position: absolute;
   background-color: #E7E7E7;
   border: 1px solid #82152C;
-  width: 70%;
+  /*width: 70%;*/
   z-index: 1; /*for div over content*/
-  min-width: 100%;
+  min-width: 80%;
   min-height: 70px;
   height: auto;
-  margin-left: 50%;
+  margin-left: 35%;
+  margin-top: -6%;
   color: #424244;
   padding: 2px 5px;
   border-radius: 6%;
@@ -117,7 +125,10 @@ p.tooltip1:hover span {
   margin: 20px auto;
 }
 .summarylabel {
-    width: 100%;
+   margin-right: 2%;
+}
+.textboxsummery {
+    width:23%;
 }
 .summarytextbox {
     margin-left: 5%;
@@ -144,12 +155,9 @@ p.tooltip1:hover span {
 .iconclass:hover {
     cursor: pointer;
 }
-.summarylabel{
-    margin-right: 25px;
-}
 #submitbutton {
-    margin-left: 23%;
-    margin-top: 5%;
+    margin-left: 28%;
+    margin-top: 2%;
 }
 #toggle{
 	display:none;
@@ -159,11 +167,12 @@ p.tooltip1:hover span {
     margin-left: 42px;
 }
 .comment_summary{
-    margin-left: 35px;
+    margin-left: 10px;
 }
 .toggle_comment{
     margin-left: 35px;
     text-align: justify;
+    margin-right: 35px;
 }
 .sp{
 	display: inline-flex;
@@ -203,25 +212,18 @@ p.tooltip1:hover span {
     text-align: center;
 }
 .togglediv{
-    border: 1px solid #EDEDED;
-    box-shadow: 2px 2px 2px #AFAFAF;
     background-color: #FCFCFC;
-    width: 800px;
+    width: 1125px;
     border-radius: 3px;
+    padding-top:8px;
+    margin-top: 10px;
 }
 .toggledate{
    display: flex;
 }
-.toggledate .postedtime{
-    margin-left: 0px;
-    width: 20%;
-    text-align: right;
+.posted_by{
     font-size: 75%;
-}
-.toggledate .posted_by{
-    width: 80%;
-    text-align: right;
-    font-size: 75%;
+    margin-left: 12px;
 }
  
 #mform1 .moodleform_div #fitem_id_usertype .fitemtitle{
@@ -248,3 +250,100 @@ p.tooltip1:hover span {
 #page-my-index .block_queries .fitemtitle {
     display: none !important;
 }
+/*for in popup title*/
+#page-my-index .ui-dialog .ui-dialog-title {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    color: #727272;
+}
+#page-blocks-queries-display_queries .ui-dialog .ui-dialog-title {
+     font-weight: 600;
+     font-size: 20px;
+     text-align: center;
+      color: #727272;
+}
+/*code for popup close button position adjustment*/
+#page-blocks-queries-display_queries .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    margin-top: 1%;
+    margin-right: 2%; 
+    width: 3%;
+    height: 15px;
+    border: none;
+    box-shadow: none;
+}
+#page-my-index .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    margin-top: 1%;
+    margin-right: 2%; 
+    width: 3%;
+    height: 15px;
+    border: none;
+    box-shadow: none;
+}
+/*code for popup close text*/
+#page-blocks-queries-display_queries  .ui-dialog .ui-button .ui-button-text{
+    display: none;
+}
+#page-my-index .ui-dialog .ui-button .ui-button-text{
+    display: none;
+}
+#page-my-index .ui-dialog {
+    z-index: 300;
+    border-radius: 1%;
+    /*position: absolute;*/
+    height: auto;
+    width: 86% !important;
+    top: 30% !important;
+    left: 6% !important;
+    /*display: block;*/
+}
+#page-blocks-queries-display_queries .ui-dialog{
+    z-index: 300;
+    border-radius: 1%;
+    /*position: absolute;*/
+    height: auto;
+    width: 86% !important;
+    top: 30% !important;
+    left: 6% !important;
+   /* display: block;*/
+}
+
+#page-my-index .commentformfields {
+    margin-left: 4%;
+    margin-top: 3%;
+}
+#page-blocks-queries-display_queries .commentformfields {
+    margin-left: 4%;
+    margin-top: 3%;
+}
+
+.querydetailsforcomment {
+    margin-bottom: 4%;
+    /*background-color: #f8f8f8;
+    -webkit-box-shadow: 6px 6px 5px -1px #a896a8;
+    -moz-box-shadow: 6px 6px 5px -1px #a896a8;
+    box-shadow: 6px 6px 5px -1px #a896a8;*/
+    /*width: 90%;*/
+    margin: auto;
+    /*border-radius: 1%*/
+}
+.popupsubjectpara {
+    padding-top: 1%;
+}
+.querydata {
+    margin-left: 2%;
+    padding-top: 2%;
+    padding-left: 2%;
+}
+.querycontent {
+    margin-left: 2%;
+}
+.postedusername {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.postedtime {
+    margin-left:1%;
+}
+
+

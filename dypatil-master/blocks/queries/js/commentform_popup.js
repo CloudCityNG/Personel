@@ -1,17 +1,11 @@
 
 	function mycommentpopupform(queryid){
 		$('#basicModal'+queryid).dialog({
+		   title: 'Post Comment',
 		   modal: true,
-		   height: 320,
-		   width: 370 
+		   width: 550 
 		});
 	}
-	//var a = form.summery.value;
-	//var a =$("[name='summery']").val();
-	//var a=document.forms['myForm']['summery'].value;
-	//var a = document.getElementById("comment").value;
-	//var a = $["#summery"].val();
-	//var a = $('#summery' );
 
     //code for the display all comments
    function viewresponses(id){

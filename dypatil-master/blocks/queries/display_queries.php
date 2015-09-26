@@ -153,18 +153,20 @@ echo $OUTPUT->header();
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
+                    
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments = html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
+                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
+                     
+                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
+                     $time = html_writer:: tag('span','('.date("d/m/y h:i a",$queryresponse->postedtime).')',array());
+                     $comments .= html_writer:: tag('p',$respondusername->firstname.$time,array('class'=>'posted_by'));
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                     $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
-                        
-                     $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
+                     
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     
@@ -226,20 +228,28 @@ echo $OUTPUT->header();
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     
+                     $comments = html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
+                     
+                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
+                     
+                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
+                     $time= html_writer:: tag('span','('.date("d/m/y h:i a",$queryresponse->postedtime).')',array());
+                     $comments .= html_writer:: tag('p',$respondusername->firstname.$time,array('class'=>'posted_by'));
+                     
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                     $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
-                        
-                     $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>postedtime));
+                                          
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
+                     
+                     
+                     $responduserid = $queryresponse->responduser;
+                     $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                     
                   }
                }
@@ -293,18 +303,25 @@ echo $OUTPUT->header();
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     
+                     $comments = html_writer:: start_tag('div',array( 'class'=>'togglediv'));
+                     $comments .= html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
+                     
+                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
+                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
+                     $time= html_writer:: tag('span','('.date("d/m/y h:i a",$queryresponse->postedtime).')',array());
+                     $comments .= html_writer:: tag('p',$respondusername->firstname.$time,array('class'=>'posted_by'));
+                     
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                     $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
+                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
+                     //$comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
                         
-                     $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
+                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
+                     //$comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     

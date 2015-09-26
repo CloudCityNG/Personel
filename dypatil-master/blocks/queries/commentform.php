@@ -1,6 +1,6 @@
 <?php 
  function commenthtmlform($loginuserid) {
-  global $CFG;
+  global $CFG, $DB;
   $popup ='';
 
   $popup .="<script type='text/javascript'>
@@ -24,14 +24,27 @@
   $actionpage = $CFG->wwwroot.'/blocks/queries/comment_emailtostudent.php';
   $popup .= '<form name="myForm'.$loginuserid.'" method="post" action="'.$actionpage.'">';
   $popup .= "<div>";
+  $result = $DB->get_record('block_queries',array('id'=>$loginuserid));
+  $postedby = $result->postedby;
+  $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id = $postedby");
+  $firstname ="<span class='postedusername'>".fullname($posteduser)."</span>";
+  $postedtime ="<span class='postedtime'>".date("d/m/y h:i a",$result->timecreated)."</span>";
+  $popup .="<div class='querydetailsforcomment'><div class='querydata'>";
+  $popup .= "<span><b>".get_string('postedby','block_queries').":</b>".$firstname." <b>".get_string('on','block_queries')."</b>".$postedtime."</span><br>";
+  $popup .= "<p class='popupsubjectpara'><b>".get_string('subjectt','block_queries').":</b>&nbsp;&nbsp; ".$result->subject."</p>";
+  $popup .= "<p><b>".get_string('descriptionn','block_queries').":</b></p>";
+  $popup .= "<p class='querycontent'>".$result->description."</p>";
+  $popup .= "</div></div>";
+  $popup .=  "<div class='commentformfields'>";
   $popup .= "<input type='hidden' name='queryid' value='$loginuserid'>";
   $popup .= "<label for='summary' class='summarylabel'>Summary<span style='color:red;'>*</span></label>";
-  $popup .= "<input type='text' name='summary' id='summarytextbox$loginuserid'>";
+  $popup .= "<input type='text' name='summary' id='summarytextbox$loginuserid' class='textboxsummery'>";
   $popup .= "<div>";
   $popup .= "<label for='comment' class='summarylabel'>Comment<span style='color:red;'>*</span></label>";
-  $popup .= "<textarea name='comment' id='comments$loginuserid' rows='3' cols='24'></textarea>";
+  $popup .= "<textarea name='comment' id='comments$loginuserid' rows='3' cols='30'></textarea>";
   $popup .=  "<div id='submitbutton'>";
   $popup .= "<input type='submit' name='submit' id='submit$loginuserid' value='submit'>";
+  $popup .=  "</div>";
   $popup .=  "</div>";
   $popup .= "</form>";
   $popup .= "</div>";

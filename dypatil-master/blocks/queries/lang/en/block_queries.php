@@ -47,5 +47,6 @@ $string['replytostudenthtml'] = '<div style="margin:auto;">
                                 <p style="margin-left:2%;">{$a->comment}.</p>
                                 </div>';
 $string['askaquestion_help'] = 'You can ask a question here to your higher authorities.';
+$string['on'] = 'On';
 
 
