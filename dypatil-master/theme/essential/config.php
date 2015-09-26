@@ -58,7 +58,9 @@ $THEME->sheets[] = 'datatables.responsive';
 $THEME->sheets[] = 'datepicker';
 $THEME->sheets[] = 'universitystructure';
 $THEME->sheets[] = 'TableTools';
+$THEME->sheets[] = 'zoom';
 $THEME->sheets[] = 'cobalt29';
+$THEME->sheets[] = 'cobalt29_media';
 
 $THEME->supportscssoptimisation = false;
 
@@ -73,7 +75,7 @@ $THEME->plugins_exclude_sheets = array('mod' => array('quiz'));
 
 $addregions = array();
 if (get_config('theme_essential', 'frontpagemiddleblocks') > 0) {
-    $addregions = array('home-left', 'home-middle', 'home-right');
+    $addregions = array('home-centerleft', 'home-centerright', 'home-middle', 'home-right');
 }
 
 //frontpage moddle content region

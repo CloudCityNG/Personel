@@ -69,10 +69,10 @@ if ($enable1alert || $enable2alert || $enable3alert) {
 <?php } ?>
 
 <div id="page" class="container-fluid">
-    <div id="page-navbar" class="clearfix row-fluid">
-        <div class="breadcrumb-nav pull-<?php echo ($left) ? 'left' : 'right'; ?>"><?php echo $OUTPUT->navbar(); ?></div>
-        <nav class="breadcrumb-button pull-<?php echo ($left) ? 'right' : 'left'; ?>"><?php echo $OUTPUT->page_heading_button(); ?></nav>
-    </div>
+<!--    <div id="page-navbar" class="clearfix row-fluid">
+        <div class="breadcrumb-nav pull-<?php /*echo ($left) ? 'left' : 'right';*/ ?>"><?php /*echo $OUTPUT->navbar();*/ ?></div>
+        <nav class="breadcrumb-button pull-<?php /*echo ($left) ? 'right' : 'left';*/ ?>"><?php /*echo $OUTPUT->page_heading_button();*/ ?></nav>
+    </div>-->
     <section role="main-content">
         <!-- Start Main Regions -->
 
@@ -88,14 +88,14 @@ if ($enable1alert || $enable2alert || $enable3alert) {
                         
                         <?php } ?>
                         <?php
-                        if(isloggedin()){
-                            if(has_capability('local/collegestructure:manage', context_system::instance())){
-                                //registrar also for admin
-                                echo $OUTPUT->heading('Office of the Registrar');
-                            } else {
-                                echo $OUTPUT->heading('My Dashboard');
-                            }
-                        }
+                        //if(isloggedin()){
+                        //    if(has_capability('local/collegestructure:manage', context_system::instance())){
+                        //        //registrar also for admin
+                        //        echo $OUTPUT->heading('Office of the Registrar');
+                        //    } else {
+                        //        echo $OUTPUT->heading('My Dashboard');
+                        //    }
+                        //}
                         // Start Middle Blocks 
                         $frontpagemiddleblocks = $OUTPUT->get_setting('frontpagemiddleblocks');
                         

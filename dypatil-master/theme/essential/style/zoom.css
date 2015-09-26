@@ -1,0 +1,52 @@
+/*set fullscreen */
+.fullin .container {
+	width: 95%;
+}
+
+.sbll {
+	display: none;
+}
+
+.fullin .sbll {
+	display: inherit;
+}
+
+.fullin .hbll {
+	display: none;
+}
+
+#block-region-side-pre, #block-region-side-post {
+	-webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.zoomin #block-region-side-pre {
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden;
+    margin-left: 0;
+    display: none;
+}
+.zoomin #region-main, .zoomin #region-bs-main-and-pre {
+    width: 100% !important;
+    margin-left: 0px;
+}
+
+.sbl {
+	display: none;
+}
+
+.zoomin .sbl {
+	display: inherit;
+}
+
+.zoomin .hbl {
+	display: none;
+}
+a.moodlezoom, a.moodlezoom:hover {
+	background-color: #000000 !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}

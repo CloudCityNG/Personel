@@ -49,7 +49,7 @@ $footerregion = essential_has_footer_region(); // In pagesettings.php.
                         <section id="region-main" class="span9 pull-right">
                     <?php }
                             if ($COURSE->id > 1) {
-                                echo $OUTPUT->heading(format_string($COURSE->shortname.': '.$COURSE->fullname), 1, 'coursetitle');
+                                echo $OUTPUT->heading(format_string($COURSE->fullname), 1, 'coursetitle');
                                 echo $OUTPUT->box($COURSE->summary);
                                 echo '<div class="bor"></div>';
                             } ?>

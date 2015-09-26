@@ -65,7 +65,8 @@ if (empty($PAGE->layout_options['nofooter'])) { ?>
     </footer>
     <a href="#top" class="back-to-top" ><i class="fa fa-angle-up "></i></a>
 <?php } ?>
-
+<script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.10/jquery.popupoverlay.js"></script>
+<script src="<?php echo $CFG->wwwroot ?>/theme/essential/jquery/custom_zoom.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function () {
             <?php

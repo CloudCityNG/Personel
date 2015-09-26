@@ -145,6 +145,30 @@ function theme_essential_send_unmodified($lastmodified, $etag) {
     die;
 }
 
+function theme_essential_initialise_zoom(moodle_page $page) {
+    user_preference_allow_ajax_update('theme_essential_zoom', PARAM_TEXT);
+    $page->requires->yui_module('moodle-theme_essential-zoom', 'M.theme_essential.zoom.init', array());
+}
+
+/**
+ * Get the user preference for the zoom function.
+ */
+function theme_essential_get_zoom() {
+    return get_user_preferences('theme_essential_zoom', '');
+}
+
+function theme_essential_initialise_full(moodle_page $page) {
+    user_preference_allow_ajax_update('theme_essential_full', PARAM_TEXT);
+    $page->requires->yui_module('moodle-theme_essential-full', 'M.theme_essential.full.init', array());
+}
+
+/**
+ * Get the user preference for the zoom function.
+ */
+function theme_essential_get_full() {
+    return get_user_preferences('theme_essential_full', '');
+}
+
 function theme_essential_send_cached_css($path, $filename, $lastmodified, $etag) {
     global $CFG;
     require_once($CFG->dirroot . '/lib/configonlylib.php'); // For min_enable_zlib_compression().

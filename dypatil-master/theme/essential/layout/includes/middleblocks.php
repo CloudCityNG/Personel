@@ -27,7 +27,8 @@
 
 <div class="row-fluid" id="middle-blocks">
     <?php
-        echo $OUTPUT->blocks('home-left', 'span12 center');
+        echo $OUTPUT->blocks('home-centerleft', 'span8 pull-left desktop-first-column');
+        echo $OUTPUT->blocks('home-centerright', 'span4 pull-right');
         echo $OUTPUT->blocks('home-middle', 'span6 pull-left desktop-first-column');
         echo $OUTPUT->blocks('home-right', 'span6 pull-right');
     ?>

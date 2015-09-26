@@ -144,12 +144,12 @@ li#section-0{
 /*  line-height:30px;*/
 /*  margin-bottom:0;*/
 /*}*/
- .section li:nth-child(odd){
-  background:#edf7f7 !important;
-}
-.section li:nth-child(even) {
-  background:#dfeef0 !important;
-}
+/* .section li:nth-child(odd){*/
+/*  background:#edf7f7 !important;*/
+/*}*/
+/*.section li:nth-child(even) {*/
+/*  background:#dfeef0 !important;*/
+/*}*/
 .path-course-view li.activity>div, .path-site li.activity>div,.path-course-view li.activity>div, .path-site li.activity>div{
   background:transperant;
 }

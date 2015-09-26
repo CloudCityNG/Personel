@@ -9,26 +9,43 @@
 [[setting:fontfilesheading]]
 
 [[setting:fontfilesbody]]
+#page-site-index .block_news_items .content ul li{
+    padding: 0px;
+}
+#page-site-index .block_news_items .content ul li .info a {
+    font-weight: bold ;
+    color:#000000;
+    font-size: 16px;
+}
+#page-site-index .message1
+{
+     color: #000000;
+}
 
-
-
+/*By Vinod for topmenu*/
+.navbar .navbar-inner #custom_menu_topmenu {
+    display: inline-block;
+}
+#custom_menu_topmenu .nav > li.dropdown a.navbarlinks, #custom_menu_topmenu .nav > li > a.navbarlinks {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 /*code added by anil for headerpart links*/
-.navbarlinks{
-      color:#fff !important;
-      margin-right:10px;
+a.navbarlinks:hover{
+    background-color: #212121;
 }
 .sem_dropdowm {
-      min-width: 190px;
+    min-width: 190px;
 }
 .subulright{
-      left:100% !important;
-      right: 0% !important;
-      min-width: 190px;
-      border-radius: 0 6px 6px 6px !important;
+    left:100% !important;
+    right: 0% !important;
+    min-width: 190px;
+    border-radius: 0 6px 6px 6px !important;
 }
 .subulrightacademic_cal {
-      left:100% !important;
-      right: 0% !important;
-      min-width: 225px;
-      border-radius: 0 6px 6px 6px !important;
+    left:100% !important;
+    right: 0% !important;
+    min-width: 225px;
+    border-radius: 0 6px 6px 6px !important;
 }

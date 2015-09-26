@@ -75,8 +75,68 @@ header {
     margin-top: 10px;
     font-size: 18px;
     font-family: Minion Pro Regular;
+    color: #FFF;
 }
 input[type=submit], input[type=submit]:hover {
     background-color: #A30D1D;
     border: 1px solid #A30D1D;
+}
+
+/*@media (max-width: 1280px) and (min-width: 1021px){
+    .loginbox {
+        width: 50%;
+        margin: 60px auto 0;
+    }
+}*/
+@media (max-width: 1020px) and (min-width: 891px){
+    .loginbox {
+        width: 50%;
+        margin: 10% auto 0;
+    }
+}
+
+@media (max-width: 890px) and (min-width: 768px){
+    .loginbox {
+        width: 50%;
+        margin: 10% auto 0;
+    }
+}
+
+@media (max-width: 767px){
+    header {
+        display: block;
+        border-bottom: 2px solid #9F1C33;
+    }
+    #page-header a.logo {
+        width: 60%;
+        float: left;
+    }
+    nav[role="navigation"] {
+        display: none;
+    }
+    #page-login-index .left_image {
+        display: none;
+    }
+    .loginbox {
+        width: 40%;
+        margin: 100px auto 0;
+    }
+}
+
+@media (max-width: 630px){
+    .loginbox {
+        width: 60%;
+        margin: 100px auto 0;
+    }
+}
+
+@media (max-width: 480px){
+    #page-header a.logo {
+        width: 40%;
+        float: left;
+    }
+    .loginbox {
+        width: 80%;
+        margin: 50px auto 0;
+    }
 }

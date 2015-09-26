@@ -32,7 +32,7 @@ require_once($OUTPUT->get_include_file('header'));
         <!-- Start Main Regions -->
         <div id="page-content" class="row-fluid">
             <section id="region-main" class="span12">
-                <div class="span3" >
+                <div class="span3 left_image" >
                     <?php
                         $src = $OUTPUT->pix_url('left_bar', 'theme');
                     ?>

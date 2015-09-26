@@ -1,0 +1,21 @@
+@media (max-width: 979px){
+    .navbar-inner .nav-collapse {
+        margin-left: 10px;
+    }
+    .nav-collapse .dropdown-menu a, .nav-collapse .nav>li>a {
+        font-weight: normal;
+    }
+    .nav-collapse .nav > li a:hover, .nav-collapse .dropdown-menu a:hover, .nav-collapse .nav > li a:focus, .nav-collapse .dropdown-menu a:focus {
+        color: #fff;
+    }
+}
+
+/*--Mobile Phones--*/
+@media (max-width: 480px){
+    #middle-blocks .block {
+        overflow-x: auto;
+    }
+    .nav-collapse .dropdown-menu a, .nav-collapse .nav>li>a {
+        font-weight: normal;
+    }
+}
