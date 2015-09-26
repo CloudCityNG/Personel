@@ -113,7 +113,6 @@ class theme_essential_core_renderer extends core_renderer {
      */
     public function custom_menu($custommenuitems = '') {
         global $CFG;
-
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
             $custommenuitems = $CFG->custommenuitems;
         }
@@ -457,16 +456,16 @@ class theme_essential_core_renderer extends core_renderer {
                     }
                     $senderpicture = new user_picture($message->from);
                     $senderpicture->link = false;
-                    $senderpicture->size = 24;
+                    $senderpicture->size = 36;
 
                     $messagecontent = html_writer::start_div('message ' . $addclass);
                     $messagecontent .= html_writer::start_span('msg-picture') . $this->render($senderpicture) . html_writer::end_span();
                     $messagecontent .= html_writer::start_span('msg-body');
-                    $messagecontent .= html_writer::span($message->from->firstname, 'msg-sender');                    
                     $messagecontent .= html_writer::start_span('msg-time');
                     $messagecontent .= html_writer::tag('i', '', array('class' => 'fa fa-comments' . $iconadd));
                     $messagecontent .= $this->get_time_difference($message->date);
                     $messagecontent .= html_writer::end_span();
+                    $messagecontent .= html_writer::span($message->from->firstname, 'msg-sender');
                     //$messagecontent .= html_writer::span($message->text, 'msg-text');
                     $messagecontent .= html_writer::end_span();
                     $messagecontent .= html_writer::end_div();
@@ -837,7 +836,7 @@ class theme_essential_core_renderer extends core_renderer {
             $caret = '<i class="fa fa-caret-right"></i>';
             $userclass = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown');
 
-            $usermenu .= html_writer::link($userurl, $userpic . /*'<div>'.*/$USER->firstname . $caret/*.'</div>'*/, $userclass);
+            $usermenu .= html_writer::link($userurl, $userpic . $USER->firstname . $caret, $userclass);
 
             // Start dropdown menu items
             $usermenu .= html_writer::start_tag('ul', array('class' => 'dropdown-menu pull-right'));
@@ -1575,7 +1574,6 @@ class theme_essential_core_renderer extends core_renderer {
                     $title = '<a class="brand" href="' . $url . '">' . '<img src="'.$home_icon.'" alt="'.$title.'" />' . '</a>';
                     break;
             }
-            $title = '';
         } else if ($location === 'header') {
             switch ($this->get_setting('headertitle')) {
                 case 0:
@@ -1763,5 +1761,208 @@ class theme_essential_core_renderer extends core_renderer {
             return $properties;
         }
     }
+    //*****************code added by anil -started here*****************//
+    public function is_student($userid) {
+        return user_has_role_assignment($userid, 5);
+    }
+    public function is_instructor($userid) {
+        return user_has_role_assignment($userid, 10);
+    }
+    public function admin_headerlinks() {
+        global $CFG;
+        $icon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/navigationitem.png'));
+        $links=html_writer:: start_tag('ul',array('class'=>'nav'));                
+        $links.= html_writer:: start_tag('li',array('class'=>'dropdown'));
+            $links.= html_writer:: tag('a',get_string('grades','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'navbarlinks','data-toggle'=>'dropdown'));
+                $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('gradeletter','theme_essential'),array('href'=>$CFG->wwwroot.'/local/gradeletter/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('examtype','theme_essential'),array('href'=>$CFG->wwwroot.'/local/examtype/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('modeofexam','theme_essential'),array('href'=>$CFG->wwwroot.'/local/lecturetype/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                $links.= html_writer:: end_tag('ul');
+            $links.= html_writer:: end_tag('li');
+            
+            $links.= html_writer:: start_tag('li',array('class'=>'dropdown'));
+            $links.= html_writer:: tag('a',get_string('departments','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'navbarlinks','data-toggle'=>'dropdown'));
+                $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('addeditdepartments','theme_essential'),array('href'=>$CFG->wwwroot.'/local/departments/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('courses','theme_essential'),array('href'=>$CFG->wwwroot.'/local/cobaltcourses/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('instructor','theme_essential'),array('href'=>$CFG->wwwroot.'/local/departments/display_instructor.php','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                $links.= html_writer:: end_tag('ul');
+            $links.= html_writer:: end_tag('li');
+            
+            $links.= html_writer:: start_tag('li',array('class'=>'dropdown'));
+            $links.= html_writer:: tag('a',get_string('programs','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'navbarlinks','data-toggle'=>'dropdown'));
+                $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('addeditprograms','theme_essential'),array('href'=>$CFG->wwwroot.'/local/programs/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                    $links.= html_writer:: tag('a',$icon.get_string('curriculums','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdowmlinks dropdown-toggle','data-toggle'=>'dropdown'));
+                        $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu subulright'));
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addeditcurriculums','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('manageplans','theme_essential'),array('href'=>$CFG->wwwroot.'/local/curriculum/','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                        $links.= html_writer:: end_tag('ul');
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                    $links.= html_writer:: tag('a',$icon.get_string('modules','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdowmlinks dropdown-toggle','data-toggle'=>'dropdown'));
+                        $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu subulright'));
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addeditmodules','theme_essential'),array('href'=>$CFG->wwwroot.'/local/modules/','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                        $links.= html_writer:: end_tag('ul');
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                    $links.= html_writer:: tag('a',$icon.get_string('admissions','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdowmlinks dropdown-toggle','data-toggle'=>'dropdown'));
+                        $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu subulright'));
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('approveapplicants','theme_essential'),array('href'=>$CFG->wwwroot.'/local/admission/viewapplicant.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('enrollstudent','theme_essential'),array('href'=>$CFG->wwwroot.'/local/admission/uploaduser.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addnewapplicants','theme_essential'),array('href'=>$CFG->wwwroot.'/local/admission/uploadapplicant.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                        $links.= html_writer:: end_tag('ul');
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: end_tag('li');
+                $links.= html_writer:: end_tag('ul');
+            $links.= html_writer:: end_tag('li');
+            
+            $links.= html_writer:: start_tag('li',array('class'=>'dropdown'));
+            $links.= html_writer:: tag('a',get_string('semesters','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'navbarlinks','data-toggle'=>'dropdown'));
+                $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right sem_dropdowm'));
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('addeditsemisters','theme_essential'),array('href'=>$CFG->wwwroot.'/local/semesters/','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                    $links.= html_writer:: tag('a',$icon.get_string('academiccalender','theme_essential'),array('href'=>$CFG->wwwroot.'/local/examtype/','class'=>'dropdowmlinks dropdown-toggle','data-toggle'=>'dropdown'));
+                        $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu subulrightacademic_cal'));
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addeditacademiccalender','theme_essential'),array('href'=>$CFG->wwwroot.'/local/academiccalendar/index.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('registrationevent','theme_essential'),array('href'=>$CFG->wwwroot.'/local/academiccalendar/edit_event.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('adddropevent','theme_essential'),array('href'=>$CFG->wwwroot.'/local/academiccalendar/edit_event.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                        $links.= html_writer:: end_tag('ul');
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                    $links.= html_writer:: tag('a',$icon.get_string('Timetable','theme_essential'),array('href'=>$CFG->wwwroot.'/local/lecturetype/','class'=>'dropdowmlinks dropdown-toggle','data-toggle'=>'dropdown'));
+                         $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu subulright'));
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addedittimeintervals','theme_essential'),array('href'=>$CFG->wwwroot.'/local/timetable/','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addeditclasstypes','theme_essential'),array('href'=>$CFG->wwwroot.'/local/timetable/classtype.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('addeditscheduleclass','theme_essential'),array('href'=>$CFG->wwwroot.'/local/timetable/scheduleclassview.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('calendarview','theme_essential'),array('href'=>$CFG->wwwroot.'/local/timetable/calendarview.php','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                        $links.= html_writer:: end_tag('ul');
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array('class'=>'dropdown-submenu preferences'));
+                    $links.= html_writer:: tag('a',$icon.get_string('courseregistration','theme_essential'),array('href'=>$CFG->wwwroot.'/local/lecturetype/','class'=>'dropdowmlinks dropdown-toggle','data-toggle'=>'dropdown'));
+                        $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu subulrightacademic_cal'));
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('approveenrolledcourses','theme_essential'),array('href'=>$CFG->wwwroot.'/local/courseregistration/registrar.php?current=pending','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                            $links.= html_writer:: start_tag('li',array());
+                            $links.= html_writer:: tag('a',$icon.get_string('approveadddropcourses','theme_essential'),array('href'=>$CFG->wwwroot.'/local/adddrop/registrar.php?current=pending','class'=>'dropdowmlinks'));
+                            $links.= html_writer:: end_tag('li');
+                        $links.= html_writer:: end_tag('ul');
+                    $links.= html_writer:: end_tag('li');
+                $links.= html_writer:: end_tag('ul');
+            $links.= html_writer:: end_tag('li');
+            $links.= html_writer:: start_tag('li',array('class'=>'dropdown'));
+            $links.= html_writer:: tag('a',get_string('managebatches','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'navbarlinks','data-toggle'=>'dropdown'));
+                $links.= html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('addeditbatches','theme_essential'),array('href'=>$CFG->wwwroot.'/local/batches/index.php','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('uploadnewstudentstobatches','theme_essential'),array('href'=>$CFG->wwwroot.'/local/batches/bulk_enroll.php?mode=new','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                    $links.= html_writer:: start_tag('li',array());
+                    $links.= html_writer:: tag('a',$icon.get_string('uploadexiststudentstobatches','theme_essential'),array('href'=>$CFG->wwwroot.'/local/batches/bulk_enroll.php?mode=exists','class'=>'dropdowmlinks'));
+                    $links.= html_writer:: end_tag('li');
+                $links.= html_writer:: end_tag('ul');
+            $links.= html_writer:: end_tag('li');
+            
+        $links.= html_writer:: end_tag('ul');
+        return $links;
+    }
+    public function student_headerlinks() {
+        global $CFG;
+        $icon = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/i/navigationitem.png'));
+        $studentlinks= html_writer:: start_tag('ul',array('class'=>'nav'));
+        $studentlinks .= html_writer:: start_tag('li',array());
+        $studentlinks .= html_writer:: tag('a',get_string('mycurriculum','theme_essential'),array('href'=>$CFG->wwwroot.'/local/courseregistration/mycurplans.php','class'=>'navbarlinks'));
+        $studentlinks .= html_writer:: end_tag('li');
+        $studentlinks .= html_writer:: start_tag('li',array());
+        $studentlinks .= html_writer:: tag('a',get_string('currentclasses','theme_essential'),array('href'=>$CFG->wwwroot.'/local/courseregistration/myclasses.php','class'=>'navbarlinks'));
+        $studentlinks .= html_writer:: end_tag('li');
+        $studentlinks .= html_writer:: start_tag('li',array());
+        $studentlinks .= html_writer:: tag('a',get_string('timetable','theme_essential'),array('href'=>$CFG->wwwroot.'/local/timetable/calendarview.php','class'=>'navbarlinks'));
+        $studentlinks .= html_writer:: end_tag('li');
+        $studentlinks .= html_writer:: start_tag('li',array());
+        $studentlinks .= html_writer:: tag('a',get_string('scheduledexams','theme_essential'),array('href'=>$CFG->wwwroot.'/local/scheduleexam/','class'=>'navbarlinks'));
+        $studentlinks .= html_writer:: end_tag('li');
+        $studentlinks .= html_writer:: start_tag('li',array());
+        $studentlinks .= html_writer:: tag('a',get_string('transcript','theme_essential'),array('href'=>$CFG->wwwroot.'/local/myacademics/transcript.php','class'=>'navbarlinks'));
+        $studentlinks .= html_writer:: end_tag('li');
+        $studentlinks .= html_writer:: start_tag('li',array('class'=>'dropdown'));
+        $studentlinks .= html_writer:: tag('a',get_string('myrequests','theme_essential'),array('href'=>$CFG->wwwroot.'/#','class'=>'dropdown-toggle navbarlinks','data-toggle'=>'dropdown'));
+            $studentlinks .= html_writer:: start_tag('ul',array('class'=>'dropdown-menu pull-right'));
+                $studentlinks .= html_writer:: start_tag('li',array());
+                $studentlinks .= html_writer:: tag('a',$icon.get_string('idcard','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/request_id.php','class'=>'dropdowmlinks'));
+                $studentlinks .= html_writer:: end_tag('li');
+                $studentlinks .= html_writer:: start_tag('li',array());
+                $studentlinks .= html_writer:: tag('a',$icon.get_string('profilechangerequest','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/request_profile.php','class'=>'dropdowmlinks'));
+                $studentlinks .= html_writer:: end_tag('li');
+                $studentlinks .= html_writer:: start_tag('li',array());
+                $studentlinks .= html_writer:: tag('a',$icon.get_string('transcript','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/request_transcript.php','class'=>'dropdowmlinks'));
+                $studentlinks .= html_writer:: end_tag('li');
+                $studentlinks .= html_writer:: start_tag('li',array());
+                $studentlinks .= html_writer:: tag('a',$icon.get_string('courseexemption','theme_essential'),array('href'=>$CFG->wwwroot.'/local/request/course_exem.php','class'=>'dropdowmlinks'));
+                $studentlinks .= html_writer:: end_tag('li');
+            $studentlinks .= html_writer:: end_tag('ul');
+        $studentlinks .= html_writer:: end_tag('li');
+        $studentlinks .= html_writer:: end_tag('ul');
+        return $studentlinks;
+    }
+    public function instructor_headerlinks() {
+        global $CFG;
+        $instructorlinks = '';
+        $instructorlinks.= html_writer:: start_tag('div',array('style'=>'margin-top:5%;'));
+            $instructorlinks.= html_writer:: tag('a',get_string('mycurriculum','theme_essential'),array('href'=>$CFG->wwwroot.'/comment/','class'=>'navbarlinks'));
+            $instructorlinks.= html_writer:: tag('a',get_string('currentclasses','theme_essential'),array('href'=>$CFG->wwwroot.'/comment/','class'=>'navbarlinks'));
+            $instructorlinks.= html_writer:: tag('a',get_string('timetable','theme_essential'),array('href'=>$CFG->wwwroot.'/comment/','class'=>'navbarlinks'));
+            $instructorlinks.= html_writer:: tag('a',get_string('transcript','theme_essential'),array('href'=>$CFG->wwwroot.'/comment/','class'=>'navbarlinks'));
+        $instructorlinks.= html_writer:: end_tag('div');
+       return $instructorlinks;
+    }
+   //*****************code added by anil -ended here*****************//
 
 }
