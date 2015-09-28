@@ -80,31 +80,6 @@
 .date {
      font-size: 80%;
 }
-.tooltip1 {
- position: relative;
- width: 90%;
-  float: left;
-}
-.tooltip1 span {
-  display: none;
-  color: #FFFFFF;
- }
-p.tooltip1:hover span {
-  display: block;
-  position: absolute;
-  background-color: #E7E7E7;
-  border: 1px solid #82152C;
-  /*width: 70%;*/
-  z-index: 1; /*for div over content*/
-  min-width: 80%;
-  min-height: 70px;
-  height: auto;
-  margin-left: 35%;
-  margin-top: -6%;
-  color: #424244;
-  padding: 2px 5px;
-  border-radius: 6%;
- }
  .comment_icon {
      float: left;
      width: 8%;
@@ -163,18 +138,34 @@ p.tooltip1:hover span {
 	display:none;
 }
 .toggle_style{
-    margin-top: 30px;
-    margin-left: 42px;
+    margin-left: 2%;
+    background-color: #E0F9EA;
 }
 .comment_summary{
-    margin-left: 10px;
+    margin-left: 1%;
+}
+.profilepicture {
+    width: 4%;
+    float: left;
+}
+.horizontalline {
+    border: 1px dotted #727272;
+    border-style: none none dotted; 
+}
+.informationdiv {
+   text-align: end;
+}
+.detailsspan {
+    margin-right: 1%;
+    margin-left: 1%;
 }
 .toggle_comment{
-    margin-left: 35px;
+    margin-left: 3%;
     text-align: justify;
-    margin-right: 35px;
+    margin-right: 3%;
+    padding-bottom: 1%;
 }
-.sp{
+/*.sp{
 	display: inline-flex;
     list-style-type: none;
     margin: 1px;
@@ -193,7 +184,6 @@ p.tooltip1:hover span {
 .sp .liadmin{
     padding: 0px 10px;
     width: 12.5%;
-    /*text-align: -webkit-right;*/
     text-align: center;
 }
 .sp .lidesadmin{
@@ -210,16 +200,13 @@ p.tooltip1:hover span {
     padding: 0px 20px;
     width: 21%;
     text-align: center;
-}
+}*/
 .togglediv{
-    background-color: #FCFCFC;
+    background-color: #E0F9EA;
     width: 1125px;
     border-radius: 3px;
     padding-top:8px;
     margin-top: 10px;
-}
-.toggledate{
-   display: flex;
 }
 .posted_by{
     font-size: 75%;
@@ -307,7 +294,6 @@ p.tooltip1:hover span {
     left: 6% !important;
    /* display: block;*/
 }
-
 #page-my-index .commentformfields {
     margin-left: 4%;
     margin-top: 3%;
@@ -319,13 +305,7 @@ p.tooltip1:hover span {
 
 .querydetailsforcomment {
     margin-bottom: 4%;
-    /*background-color: #f8f8f8;
-    -webkit-box-shadow: 6px 6px 5px -1px #a896a8;
-    -moz-box-shadow: 6px 6px 5px -1px #a896a8;
-    box-shadow: 6px 6px 5px -1px #a896a8;*/
-    /*width: 90%;*/
     margin: auto;
-    /*border-radius: 1%*/
 }
 .popupsubjectpara {
     padding-top: 1%;
@@ -345,5 +325,8 @@ p.tooltip1:hover span {
 .postedtime {
     margin-left:1%;
 }
+
+
+
 
 

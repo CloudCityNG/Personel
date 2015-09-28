@@ -9,7 +9,6 @@ $capabilities = array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
-			'student' => CAP_ALLOW,
 			'manager' => CAP_ALLOW
         ),
 

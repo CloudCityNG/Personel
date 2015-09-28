@@ -63,8 +63,7 @@ function   blockqueries_tablecontent($sql){
             foreach($querieslists as $querieslist){
               $row = array();
               $adminqueryid = $querieslist->id;
-              $adm_decription = html_writer:: tag('span',$querieslist->description,array());
-              $row[] = html_writer:: tag('p',$querieslist->subject.$adm_decription,array("class"=>"tooltip1"));
+              $row[] = html_writer:: tag('p',$querieslist->subject,array());
               $comment_image = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$adminqueryid",'title'=>get_string('addacomment','block_queries'),'onclick'=>"mycommentpopupform($adminqueryid)",'class'=>'iconclass'));
               $comment_popup = commenthtmlform($adminqueryid);
               $row[] = $comment_image.$comment_popup;

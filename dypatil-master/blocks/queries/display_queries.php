@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/../../config.php');
-global $PAGE, $USER, $DB, $CFG;
+global $PAGE, $USER, $DB, $CFG, $OUTPUT;
 require_once($CFG->dirroot.'/blocks/queries/lib.php');
 require_once($CFG->dirroot.'/blocks/queries/commentform.php');
 $PAGE->requires->jquery();
@@ -34,17 +34,17 @@ echo $OUTPUT->header();
             $ifelse_student = get_string('responded','block_queries'); 
          }
          //here we are calling js fuction to get the toggle
-         $comment='<a href="javascript:void(0)" class="show"  onclick="view('.$studentpostedquerie->id.')">View comments</a>';
+         $comment='<a href="javascript:void(0)" onclick="view('.$studentpostedquerie->id.')">View comments</a>';
          
          //here we are showing the table content in a list-----------------
-         $test='<div><p><ul class="sp">
-         <li class="li">'.$studentpostedquerie->subject.'</li>
-         <li class="lides">'.$studentpostedquerie->description.'</li>
-         <li class="listu">'.$postedto.'</li>
-         <li class="lidate">'.$date_student.'</li>
-         <li class="li">'.$ifelse_student.'</li>
-         <li class="li">'.$comment.'</li>
-         </ul></p>
+         $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
+         $test='<div>
+         <div class="profilepicture">'.$profilepicture.'</div>
+         <p class="subjectclass"><b>'.$studentpostedquerie->subject.'</b><br><b>Posted to: </b>'.$postedto.' - '.$date_student.'</p>
+         <hr class="horizontalline"><p><b>Description: </b></p>
+         <p class="comment_summary">'.$studentpostedquerie->description.'</p>
+         <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_student.''.$click.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
+         </div>
          <div class="toggle_style"><span style="display:none;"  class="toggle'.$studentpostedquerie->id.'">';
              
          /********* code for display comments in toggle-starts here************/
@@ -56,17 +56,17 @@ echo $OUTPUT->header();
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
                      $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
+                     $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
+                     $date = html_writer:: tag('span',date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname.'-'.$date,array('class'=>'posted_by'));
+                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
+                     
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                     $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
-                        
-                     $postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     $comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     
@@ -74,7 +74,7 @@ echo $OUTPUT->header();
                }
                //else condition if no comments are there to display----------
                else{
-                  $test .= html_writer:: tag('p',get_string('nocomments','block_queries'));
+                  $test .= html_writer:: tag('p',get_string('nocomments','block_queries'),array('class'=>'nocomments'));
                }        
          /********* code for display comments in toggle-ended here************/
          $test.='</span></div></div>'; 
@@ -83,14 +83,7 @@ echo $OUTPUT->header();
       }
       $table = new html_table();
       //table head-------
-      $table->head = array('<ul class="sp">
-					 <li class="li">'.get_string('subjectt', 'block_queries').'</li>
-					 <li class="lides">'.get_string('descriptionn', 'block_queries').'</li>
-					 <li class="listu">'.get_string('postedto', 'block_queries').'</li>
-					 <li class="lidate">'.get_string('postedtime', 'block_queries').'</li>
-					 <li class="li">'.get_string('status', 'block_queries').'</li>
-					  <li class="li">'.get_string('viewcomment', 'block_queries').'</li>
-					 </ul>');
+      $table->head = array('');
       $table->width = '100%';
       $table->id    = 'queryresponse';
       $table->data  = $data;
@@ -131,18 +124,18 @@ echo $OUTPUT->header();
                $click= html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$ins_id","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($ins_id)"));
                $popup = commenthtmlform($ins_id);
                //here we are calling js fuction to get the toggle
-               $comment='<a href="javascript:void(0)" class="show"  onclick="view('.$instructorresponse->id.')">View comments</a>';
+               $comment='<a href="javascript:void(0)" onclick="view('.$instructorresponse->id.')">View comments</a>';
                
                //here we are showing the table content in a list-----------------
-               $test='<div><p><ul class="sp">
-               <li class="liadmin">'.$instructorresponse->subject.'</li>
-               <li class="lidesadmin">'.$instructorresponse->description.'</li>
-               <li class="liadmin">'.$student.'</li>
-               <li class="liadmin">'.$date_instructor.'</li>
-               <li class="liadmin">'.$ifelse_instructor.'</li>
-               <li class="liadmin">'.$click.$popup.'</li>
-               <li class="liadmin">'.$comment.'</li>
-               </ul></p>
+                              
+               $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
+               $test='<div>
+               <div class="profilepicture">'.$profilepicture.'</div>
+               <p class="subjectclass"><b>'.$instructorresponse->subject.'</b><br>by '.$student.' - '.$date_instructor.'</p>
+               <hr class="horizontalline"><p><b>Description: </b></p>
+               <p class="comment_summary">'.$instructorresponse->description.'</p>
+               <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_instructor.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
+               </div>
                <div class="toggle_style"><span style="display:none;"  class="toggle'.$instructorresponse->id.'">';
              
                /********* code for display comments in toggle-started here************/
@@ -157,17 +150,11 @@ echo $OUTPUT->header();
                      
                      $comments = html_writer:: start_tag('div',array( 'class'=>'togglediv'));
                      $comments .= html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
-                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     
-                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
                      $time = html_writer:: tag('span','('.date("d/m/y h:i a",$queryresponse->postedtime).')',array());
                      $comments .= html_writer:: tag('p',$respondusername->firstname.$time,array('class'=>'posted_by'));
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
-                     
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                     
-                     $comments .= html_writer:: end_tag('div',array());
+               
                      $test .=$comments;
                     
                   }
@@ -207,19 +194,19 @@ echo $OUTPUT->header();
             $click_registrar = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$reg_id","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($reg_id)"));
             $popup_registrar = commenthtmlform($reg_id);
             //here we are calling js fuction to get the toggle
-            $comment_registrar='<a href="javascript:void(0)" class="show"  onclick="view('.$registrarresponse->id.')">View comments</a>';
+            $comment_registrar='<a href="javascript:void(0)" onclick="view('.$registrarresponse->id.')">View comments</a>';
             
-            //here we are showing the table content in a list-----------------
-            $test='<div><p><ul class="sp">
-            <li class="liadmin">'.$registrarresponse->subject.'</li>
-            <li class="lidesadmin">'.$registrarresponse->description.'</li>
-            <li class="liadmin">'.$studentname.'</li>
-            <li class="liadmin">'.$date_registrar.'</li>
-            <li class="liadmin">'.$ifelse_registrar.'</li>
-            <li class="liadmin icon">'.$click_registrar.$popup_registrar.'</li>
-            <li class="liadmin">'.$comment_registrar.'</li>
-            </ul></p>
-            <div class="toggle_style"><span style="display:none;"  class="toggle'.$registrarresponse->id.'">';
+            $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
+            $test='<div>
+               <div class="profilepicture">'.$profilepicture.'</div>
+               <p class="subjectclass"><b>'.$registrarresponse->subject.'</b><br>by '.$studentname.' - '.$date_registrar.'</p>
+               <hr class="horizontalline"><p><b>Description: </b></p>
+               <p class="comment_summary">'.$registrarresponse->description.'</p>
+               <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_registrar.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_registrar.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment_registrar.'</div>
+               </div>
+               <div class="toggle_style"><span style="display:none;"  class="toggle'.$registrarresponse->id.'">';
+            
+            
             /********* code for display comments in toggle-started here************/
            
            $queryresponses = $DB->get_records_sql("SELECT * FROM {block_query_response} WHERE queryid=$reg_id ORDER BY id DESC");
@@ -241,13 +228,8 @@ echo $OUTPUT->header();
                      
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
-                     
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                                          
-                     $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
-                     
-                     
+                  
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                     
@@ -272,7 +254,7 @@ echo $OUTPUT->header();
                $adminqueryid = $adminquery->id;
                $postedby = $adminquery->postedby;
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
-               $studentname = $posteduser->firstname;
+               $studentname = html_writer:: tag('a',$posteduser->firstname,array('href'=>$CFG->wwwroot.'/user/profile.php?id='.$posteduser->id));
                $date_admin = date("d/m/y h:i a",$adminquery->timecreated);
                if($adminquery->status == 0){
                   $ifelse_admin = get_string('notresponded','block_queries');  
@@ -282,18 +264,17 @@ echo $OUTPUT->header();
                $click_admin = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($adminqueryid)"));             
                $popup_admin = commenthtmlform($adminqueryid);
                //here we are calling js fuction to get the toggle
-               $comment='<a href="javascript:void(0)" class="show"  onclick="view('.$adminquery->id.')">View comments</a>';
+               $comment='<a href="javascript:void(0)" onclick="view('.$adminquery->id.')">View comments</a>';
                
                //here we are showing the table content in a list-----------------
-               $test='<div><p><ul class="sp">
-               <li class="liadmin">'.$adminquery->subject.'</li>
-               <li class="lidesadmin">'.$adminquery->description.'</li>
-               <li class="liadmin">'.$studentname.'</li>
-               <li class="liadmin">'.$date_admin.'</li>
-               <li class="liadmin">'.$ifelse_admin.'</li>
-               <li class="liadmin">'.$click_admin.$popup_admin.'</li>
-               <li class="liadmin">'.$comment.'</li>
-               </ul></p>
+               $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
+               $test='<div>
+               <div class="profilepicture">'.$profilepicture.'</div>
+               <p class="subjectclass"><b>'.$adminquery->subject.'</b><br>by '.$studentname.' - '.$date_admin.'</p>
+               <hr class="horizontalline"><p><b>Description: </b></p>
+               <p class="comment_summary">'.$adminquery->description.'</p>
+               <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_admin.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_admin.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
+               </div>
                <div class="toggle_style"><span style="display:none;"  class="toggle'.$adminquery->id.'">';
                
                /********* code for display comments in toggle-started here************/
@@ -303,25 +284,13 @@ echo $OUTPUT->header();
                      $responduserid = $queryresponse->responduser;
                      $respondusername = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$responduserid");
                      
-                     
-                     
                      $comments = html_writer:: start_tag('div',array( 'class'=>'togglediv'));
                      $comments .= html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      
-                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
                      $time= html_writer:: tag('span','('.date("d/m/y h:i a",$queryresponse->postedtime).')',array());
                      $comments .= html_writer:: tag('p',$respondusername->firstname.$time,array('class'=>'posted_by'));
                      
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
-                     $comments .= html_writer:: end_tag('div',array());
-                     
-                     $comments .= html_writer:: start_tag('div',array( 'class'=>'toggledate'));
-                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     //$comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname,array('class'=>'posted_by'));
-                        
-                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     //$comments .= html_writer:: tag('p',$postedtime .' : '.date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
                     
@@ -340,15 +309,7 @@ echo $OUTPUT->header();
       if(!empty($data)){
          $table_ins = new html_table();
          //table head-------
-         $table_ins->head = array('<ul class="sp">
-					 <li class="liadmin">'.get_string('subjectt', 'block_queries').'</li>
-					 <li class="lidesadmin">'.get_string('descriptionn', 'block_queries').'</li>
-					 <li class="liadmin">'.get_string('postedby', 'block_queries').'</li>
-					 <li class="liadmin">'.get_string('postedtime', 'block_queries').'</li>
-					 <li class="liadmin">'.get_string('status', 'block_queries').'</li>
-					  <li class="liadmin">'.get_string('comment', 'block_queries').'</li>
-                      <li class="liadmin">'.get_string('viewcomment', 'block_queries').'</li>
-					 </ul>');
+      $table_ins->head = array('');
       $table_ins->width = '100%';
       $table_ins->id    = 'queryresponse';
       $table_ins->data  = $data;
