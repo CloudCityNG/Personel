@@ -40,8 +40,8 @@ echo $OUTPUT->header();
          $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
          $test='<div>
          <div class="profilepicture">'.$profilepicture.'</div>
-         <p class="subjectclass"><b>'.$studentpostedquerie->subject.'</b><br><b>Posted to: </b>'.$postedto.' - '.$date_student.'</p>
-         <hr class="horizontalline"><p><b>Description: </b></p>
+         <p class="subjectclass"><b>'.$studentpostedquerie->subject.'</b><br><b>'.get_string('postedto','block_queries').': </b>'.$postedto.' - '.$date_student.'</p>
+         <hr class="horizontalline">
          <p class="comment_summary">'.$studentpostedquerie->description.'</p>
          <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_student.''.$click.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
          </div>
@@ -114,7 +114,7 @@ echo $OUTPUT->header();
                $ins_id = $instructorresponse->id;
                $postedby = $instructorresponse->postedby;
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id = $postedby");
-               $student = html_writer:: tag('a',$posteduser->firstname,array('href'=>$CFG->wwwroot.'/user/profile.php?id='.$posteduser->id));
+               $student = fullname($posteduser);
                $date_instructor = date("d/m/y h:i a",$instructorresponse->timecreated);
                if($instructorresponse->status == 0){
                   $ifelse_instructor = get_string('notresponded','block_queries'); 
@@ -132,7 +132,7 @@ echo $OUTPUT->header();
                $test='<div>
                <div class="profilepicture">'.$profilepicture.'</div>
                <p class="subjectclass"><b>'.$instructorresponse->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;&nbsp;'.$student.' - '.$date_instructor.'</p>
-               <hr class="horizontalline"><p><b>'.get_string("descriptionn","block_queries").': </b></p>
+               <hr class="horizontalline">
                <p class="comment_summary">'.$instructorresponse->description.'</p>
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_instructor.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
                </div>
@@ -184,7 +184,7 @@ echo $OUTPUT->header();
             $reg_id = $registrarresponse->id;
             $postedby = $registrarresponse->postedby;
             $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
-            $studentname = html_writer:: tag('a',$posteduser->firstname,array('href'=>$CFG->wwwroot.'/user/profile.php?id='.$posteduser->id));
+            $studentname = fullname($posteduser);
             $date_registrar = date("d/m/y h:i a",$registrarresponse->timecreated);
             if($registrarresponse->status == 0){
                $ifelse_registrar = get_string('notresponded','block_queries'); 
@@ -200,7 +200,7 @@ echo $OUTPUT->header();
             $test='<div>
                <div class="profilepicture">'.$profilepicture.'</div>
                <p class="subjectclass"><b>'.$registrarresponse->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;&nbsp;'.$studentname.' - '.$date_registrar.'</p>
-               <hr class="horizontalline"><p><b>'.get_String("descriptionn","block_queries").':</b></p>
+               <hr class="horizontalline">
                <p class="comment_summary">'.$registrarresponse->description.'</p>
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_registrar.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_registrar.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment_registrar.'</div>
                </div>
@@ -271,7 +271,7 @@ echo $OUTPUT->header();
                $test='<div>
                <div class="profilepicture">'.$profilepicture.'</div>
                <p class="subjectclass"><b>'.$adminquery->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;'.$studentname.' - '.$date_admin.'</p>
-               <hr class="horizontalline"><p><b>'.get_String("descriptionn","block_queries").':</b></p>
+               <hr class="horizontalline">
                <p class="comment_summary">'.$adminquery->description.'</p>
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_admin.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_admin.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
                </div>
