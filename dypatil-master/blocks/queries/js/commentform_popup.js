@@ -3,7 +3,7 @@
 		$('#basicModal'+queryid).dialog({
 		   title: 'Post Comment',
 		   modal: true,
-		   width: 550 
+		   width: 550
 		});
 	}
 

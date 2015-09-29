@@ -49,5 +49,6 @@ $string['replytostudenthtml'] = '<div style="margin:auto;">
 $string['askaquestion_help'] = 'You can ask a question here to your higher authorities.';
 $string['on'] = 'On';
 $string['by'] = 'by';
+$string['askaquestiontoauthorities'] = 'You can ask a question here to your higher authorities.';
 
 

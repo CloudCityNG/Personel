@@ -11,7 +11,7 @@ class block_queries_form extends moodleform {
           ?>
             <script>
             function showmessage() {
-               alert("You can ask a question here to your higher authorities.");
+               alert("<?php echo get_string('askaquestiontoauthorities','block_queries'); ?>");
             }
             </script>
             <?php

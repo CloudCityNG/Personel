@@ -2,7 +2,6 @@
  function commenthtmlform($loginuserid) {
   global $CFG, $DB;
   $popup ='';
-
   $popup .="<script type='text/javascript'>
   $(document).ready(function(){
   $('#submit$loginuserid').on('click',function(e){
@@ -48,5 +47,6 @@
   $popup .=  "</div>";
   $popup .= "</form>";
   $popup .= "</div>";
+
   return $popup;
  }

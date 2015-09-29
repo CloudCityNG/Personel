@@ -43,8 +43,7 @@ echo $OUTPUT->header();
          <p class="subjectclass"><b>'.$studentpostedquerie->subject.'</b><br><b>'.get_string('postedto','block_queries').': </b>'.$postedto.' - '.$date_student.'</p>
          <hr class="horizontalline">
          <p class="comment_summary">'.$studentpostedquerie->description.'</p>
-         <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_student.''.$click.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
-         </div>
+         <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_student.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
          <div class="toggle_style"><span style="display:none;"  class="toggle'.$studentpostedquerie->id.'">';
              
          /********* code for display comments in toggle-starts here************/
@@ -58,9 +57,7 @@ echo $OUTPUT->header();
                      $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
                      $date = html_writer:: tag('span',date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname.'<b>&nbsp;&nbsp;&nbsp;'.get_string("on","block_queries").'</b>'.$date,array('class'=>'posted_by'));
-                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
-                     
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname.'<b>&nbsp;&nbsp;&nbsp;'.get_string("on","block_queries").'</b>'.$date,array('class'=>'posted_by'));                    
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
@@ -89,7 +86,7 @@ echo $OUTPUT->header();
       $table->data  = $data;
       $string = html_writer:: tag('h3',get_string('myqueries','block_queries'),array());
       $string .= html_writer::table($table);
-      $string .= html_writer:: tag('a',get_string('backtohome','block_queries'),array('href'=>$CFG->wwwroot.'/index.php','class'=>'backtohome'));
+      $string .= html_writer:: tag('a',get_string('backtohome','block_queries'),array('href'=>$CFG->wwwroot.'/index.php'));
       echo $string;
       //Here is our script for getting the toggle-------
        echo "<script>
@@ -129,7 +126,7 @@ echo $OUTPUT->header();
                //here we are showing the table content in a list-----------------
                               
                $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
-               $test='<div>
+               $test='<div><div>
                <div class="profilepicture">'.$profilepicture.'</div>
                <p class="subjectclass"><b>'.$instructorresponse->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;&nbsp;'.$student.' - '.$date_instructor.'</p>
                <hr class="horizontalline">
@@ -165,6 +162,7 @@ echo $OUTPUT->header();
                }        
                /*********end of code for display comments in toggle-starts here************/
                $test.='</span></div></div>';
+               $test.= $popup;
                $row[]=$test;
                $data[]=$row;     
             }
@@ -197,7 +195,7 @@ echo $OUTPUT->header();
             $comment_registrar='<a href="javascript:void(0)" onclick="view('.$registrarresponse->id.')">View comments</a>';
             
             $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
-            $test='<div>
+            $test='<div><div>
                <div class="profilepicture">'.$profilepicture.'</div>
                <p class="subjectclass"><b>'.$registrarresponse->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;&nbsp;'.$studentname.' - '.$date_registrar.'</p>
                <hr class="horizontalline">
@@ -241,6 +239,7 @@ echo $OUTPUT->header();
                }         
             /*********end of code for display comments in toggle-started here************/
             $test.='</span></div></div>';
+            $test.=$popup_registrar;
             $row[]=$test;
             $data[] = $row;
          }
@@ -262,13 +261,15 @@ echo $OUTPUT->header();
                   $ifelse_admin = get_string('responded','block_queries'); 
                }
                $click_admin = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$adminqueryid","class"=>"commenticonpostion","onclick"=>"mycommentpopupform($adminqueryid)"));             
+             
                $popup_admin = commenthtmlform($adminqueryid);
+             
                //here we are calling js fuction to get the toggle
                $comment='<a href="javascript:void(0)" onclick="view('.$adminquery->id.')">View comments</a>';
                
                //here we are showing the table content in a list-----------------
                $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
-               $test='<div>
+               $test ='<div><div>
                <div class="profilepicture">'.$profilepicture.'</div>
                <p class="subjectclass"><b>'.$adminquery->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;'.$studentname.' - '.$date_admin.'</p>
                <hr class="horizontalline">
@@ -276,7 +277,6 @@ echo $OUTPUT->header();
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_admin.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_admin.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
                </div>
                <div class="toggle_style"><span style="display:none;"  class="toggle'.$adminquery->id.'">';
-               
                /********* code for display comments in toggle-started here************/
                $queryresponses = $DB->get_records_sql("SELECT * FROM {block_query_response} WHERE queryid=$adminqueryid ORDER BY id DESC");
                if($queryresponses){
@@ -293,6 +293,7 @@ echo $OUTPUT->header();
                      $comments .= html_writer:: tag('p',$queryresponse->comment,array('class'=>'toggle_comment'));
                      $comments .= html_writer:: end_tag('div',array());
                      $test .=$comments;
+                     
                     
                   }
                }   //else condition if no comments are there to display----------
@@ -301,6 +302,7 @@ echo $OUTPUT->header();
                }           
                /*********end of code for display comments in toggle-started here************/
                $test.='</span></div></div>';
+               $test .=$popup_admin;
                $row[]=$test;
                $data[] = $row;
             }                
@@ -315,7 +317,7 @@ echo $OUTPUT->header();
       $table_ins->data  = $data;
       $string = html_writer:: tag('h3',get_string('myqueries','block_queries'),array());
       $string .= html_writer::table($table_ins);
-      $string .= html_writer:: tag('a',get_string('backtohome','block_queries'),array('href'=>$CFG->wwwroot.'/index.php','class'=>'backtohome'));
+      $string .= html_writer:: tag('a',get_string('backtohome','block_queries'),array('href'=>$CFG->wwwroot.'/index.php'));
       echo $string;
       //Here is our script for getting the toggle-------
        echo "<script>
