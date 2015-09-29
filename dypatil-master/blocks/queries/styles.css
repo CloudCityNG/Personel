@@ -1,6 +1,6 @@
 .moodleform_selector{
     width: 50%;
-    margin-top: 8%;
+    margin-top: 5%;
 }
 .block_queries .moodleform_textarea {
     width: 65%;
@@ -9,8 +9,13 @@
        width: 65%;
 }
 .block_queries #fitem_id_submitbutton {
-    margin-top: 10%;
-    margin-left: 42% !important;
+    margin-top: 13%;
+    margin-left: 36% !important;
+}
+#page-site-index .block_queries #fitem_id_submitbutton {
+    position: inherit !important;
+    bottom: none;
+    left: none;
 }
 .moodleform_label{
     font-size: small;
@@ -37,14 +42,9 @@
 .block_queries .fheader{
      font-size: 15px;
 }
-#page form #fitem_id_submitbutton {
-    background-color: none !important;
-    width: 0;
-    height: 12px;
-}
 .block_queries .mform .fitem .felement {
-    margin-left: -1% !important;
-    margin-top: 5px;
+    margin-left: 0% !important;
+    margin-top: 3%;
 }
 .block_queries fieldset.hidden {
      margin-top: -14%;
@@ -136,6 +136,12 @@
 }
 #toggle{
 	display:none;
+}
+#page-site-index .block_queries .ftoggler {
+    display: none;
+}
+#page-site-index .fitemtitle label{
+    display: none;
 }
 .toggle_style{
     margin-left: 2%;
@@ -277,12 +283,10 @@
 #page-my-index .ui-dialog {
     z-index: 300;
     border-radius: 1%;
-    /*position: absolute;*/
     height: auto;
     width: 86% !important;
     top: 30% !important;
     left: 6% !important;
-    /*display: block;*/
 }
 #page-blocks-queries-display_queries .ui-dialog{
     z-index: 300;

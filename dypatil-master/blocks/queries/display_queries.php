@@ -58,7 +58,7 @@ echo $OUTPUT->header();
                      $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
                      $date = html_writer:: tag('span',date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
-                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname.'-'.$date,array('class'=>'posted_by'));
+                     $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname.'<b>&nbsp;&nbsp;&nbsp;'.get_string("on","block_queries").'</b>'.$date,array('class'=>'posted_by'));
                      //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
                      
                      
@@ -114,7 +114,7 @@ echo $OUTPUT->header();
                $ins_id = $instructorresponse->id;
                $postedby = $instructorresponse->postedby;
                $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id = $postedby");
-               $student = $posteduser->firstname;
+               $student = html_writer:: tag('a',$posteduser->firstname,array('href'=>$CFG->wwwroot.'/user/profile.php?id='.$posteduser->id));
                $date_instructor = date("d/m/y h:i a",$instructorresponse->timecreated);
                if($instructorresponse->status == 0){
                   $ifelse_instructor = get_string('notresponded','block_queries'); 
@@ -131,8 +131,8 @@ echo $OUTPUT->header();
                $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
                $test='<div>
                <div class="profilepicture">'.$profilepicture.'</div>
-               <p class="subjectclass"><b>'.$instructorresponse->subject.'</b><br>by '.$student.' - '.$date_instructor.'</p>
-               <hr class="horizontalline"><p><b>Description: </b></p>
+               <p class="subjectclass"><b>'.$instructorresponse->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;&nbsp;'.$student.' - '.$date_instructor.'</p>
+               <hr class="horizontalline"><p><b>'.get_string("descriptionn","block_queries").': </b></p>
                <p class="comment_summary">'.$instructorresponse->description.'</p>
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_instructor.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
                </div>
@@ -184,7 +184,7 @@ echo $OUTPUT->header();
             $reg_id = $registrarresponse->id;
             $postedby = $registrarresponse->postedby;
             $posteduser = $DB->get_record_sql("SELECT * FROM {user} WHERE id=$postedby");
-            $studentname = $posteduser->firstname;
+            $studentname = html_writer:: tag('a',$posteduser->firstname,array('href'=>$CFG->wwwroot.'/user/profile.php?id='.$posteduser->id));
             $date_registrar = date("d/m/y h:i a",$registrarresponse->timecreated);
             if($registrarresponse->status == 0){
                $ifelse_registrar = get_string('notresponded','block_queries'); 
@@ -199,8 +199,8 @@ echo $OUTPUT->header();
             $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
             $test='<div>
                <div class="profilepicture">'.$profilepicture.'</div>
-               <p class="subjectclass"><b>'.$registrarresponse->subject.'</b><br>by '.$studentname.' - '.$date_registrar.'</p>
-               <hr class="horizontalline"><p><b>Description: </b></p>
+               <p class="subjectclass"><b>'.$registrarresponse->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;&nbsp;'.$studentname.' - '.$date_registrar.'</p>
+               <hr class="horizontalline"><p><b>'.get_String("descriptionn","block_queries").':</b></p>
                <p class="comment_summary">'.$registrarresponse->description.'</p>
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_registrar.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_registrar.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment_registrar.'</div>
                </div>
@@ -270,8 +270,8 @@ echo $OUTPUT->header();
                $profilepicture = $OUTPUT->user_picture($posteduser,array('size'=>35));
                $test='<div>
                <div class="profilepicture">'.$profilepicture.'</div>
-               <p class="subjectclass"><b>'.$adminquery->subject.'</b><br>by '.$studentname.' - '.$date_admin.'</p>
-               <hr class="horizontalline"><p><b>Description: </b></p>
+               <p class="subjectclass"><b>'.$adminquery->subject.'</b><br>'.get_string("by","block_queries").'&nbsp;'.$studentname.' - '.$date_admin.'</p>
+               <hr class="horizontalline"><p><b>'.get_String("descriptionn","block_queries").':</b></p>
                <p class="comment_summary">'.$adminquery->description.'</p>
                <div class="informationdiv"><b>'.get_string('status','block_queries').': </b>'.$ifelse_admin.'<b>&nbsp;&nbsp;|&nbsp;&nbsp;'.get_string('comment','block_queries').':&nbsp; </b>'.$click_admin.'&nbsp;&nbsp;|&nbsp;&nbsp;'.$comment.'</div>
                </div>
