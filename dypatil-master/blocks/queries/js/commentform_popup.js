@@ -2,9 +2,9 @@
 	function mycommentpopupform(queryid){
 		$('#basicModal'+queryid).dialog({
 		   title: 'Post Comment',
-		   modal: true,
-		   width: 550
+		   modal: true
 		});
+		$('.ui-dialog').addClass('block_queries_popup');
 	}
 
     //code for the display all comments

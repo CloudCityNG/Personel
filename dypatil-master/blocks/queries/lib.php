@@ -64,7 +64,7 @@ function   blockqueries_tablecontent($sql){
               $row = array();
               $adminqueryid = $querieslist->id;
               $row[] = html_writer:: tag('p',$querieslist->subject,array());
-              $comment_image = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$adminqueryid",'title'=>get_string('addacomment','block_queries'),'onclick'=>"mycommentpopupform($adminqueryid)",'class'=>'iconclass'));
+              $comment_image = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/t/message.svg',"id"=>"showDialog$adminqueryid",'title'=>get_string('addacomment','block_queries'),'onclick'=>"mycommentpopupform($adminqueryid)",'class'=>'queries_iconclass'));
               $comment_popup = commenthtmlform($adminqueryid);
               $row[] = $comment_image.$comment_popup;
               $data[] = $row;

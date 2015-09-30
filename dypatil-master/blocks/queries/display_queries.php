@@ -56,7 +56,7 @@ echo $OUTPUT->header();
                      
                      $comments = html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
                      $postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     $date = html_writer:: tag('span',date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'postedtime'));
+                     $date = html_writer:: tag('span',date("d/m/y h:i a",$queryresponse->postedtime),array('class'=>'queries_postedtime'));
                      $comments .= html_writer:: tag('p',$postedby .' : '.$respondusername->firstname.'<b>&nbsp;&nbsp;&nbsp;'.get_string("on","block_queries").'</b>'.$date,array('class'=>'posted_by'));                    
                      
                      $comments .= html_writer:: start_tag('div',array( 'class'=>'togglediv'));
@@ -217,10 +217,6 @@ echo $OUTPUT->header();
                      
                      $comments = html_writer:: start_tag('div',array( 'class'=>'togglediv'));
                      $comments .= html_writer:: tag('b',$queryresponse->summary,array('class'=>'comment_summary'));
-                     
-                     //$postedby = html_writer:: tag('b',get_string('postedby','block_queries'),array());
-                     
-                     //$postedtime = html_writer:: tag('b',get_string('time','block_queries'),array());
                      $time= html_writer:: tag('span','('.date("d/m/y h:i a",$queryresponse->postedtime).')',array());
                      $comments .= html_writer:: tag('p',$respondusername->firstname.$time,array('class'=>'posted_by'));
                      
