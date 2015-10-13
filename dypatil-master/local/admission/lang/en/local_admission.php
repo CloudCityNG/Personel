@@ -53,7 +53,7 @@ $string['uploaduser']='Add Student';
 $string['serviceid']='Enter Service ID';
 $string['not_serviceid']='Invalid Serviceid Id';
 $string['previousstudent']='Are You?';
-$string['firstname_error']='Please enter First Name';
+$string['firstname_error']='Please Enter First Name';
 $string['lastname_error']='Please enter Last Name';
 $string['gender_error']='Please select a gender';
 $string['birthplace_error']='Please enter the details of Birth place';
@@ -368,3 +368,15 @@ $string['programid_help']='Program is displayed in the format of school name - p
 $string['disabledcheck_applicant']='Please select program level,school and program filter to enable checkbox';
 $string['admission:manage']='Admission:manage';
 $string['admission:view']='Admission:view';
+
+//code added by anil
+$string['lettersonly']='Only Letters and Spaces are allowed';
+$string['mothername']='Mother name'; 
+$string['address']='Address';
+$string['fatheremail']='Father email';
+$string['caste']='Caste';  
+$string['category']='Category';
+$string['category_error']='Please Enter your Category';  
+$string['category_error_info']='Please Enter letters, spaces and - only';
+$string['otherphone']='Other Phone no.';  
+$string['dob_error']='Please Enter your Date of Birth';

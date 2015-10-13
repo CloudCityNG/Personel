@@ -786,33 +786,46 @@ class uploaduser_form extends moodleform {
         $mform = & $this->_form;
         $today = time();
         $date = date('d-M-Y');
+        
         $PAGE->requires->yui_module('moodle-local_admission-school', 'M.local_admission.init_school', array(array('formid' => $mform->getAttribute('id'))));
         $PAGE->requires->yui_module('moodle-local_admission-program', 'M.local_admission.init_program', array(array('formid' => $mform->getAttribute('id'))));
         $PAGE->requires->yui_module('moodle-local_admission-address', 'M.local_admission.init_address', array(array('formid' => $mform->getAttribute('id'))));
+        
         $admission = cobalt_admission::get_instance();
         $pgm = $admission->pgm;
         $typeofstudent = $admission->level;
         $mform->addElement('header', 'moodle', get_string('details', 'local_admission'));
         $mform->addElement('select', 'typeofprogram', get_string('programlevel', 'local_programs'), $pgm);
         $mform->addRule('typeofprogram', get_string('typeofprogram_error', 'local_programs'), 'required', null, 'client');
+        
         $mform->addElement('hidden', 'beforeschool');
         $mform->setType('beforeschool', PARAM_RAW);
         $mform->addElement('hidden', 'beforeprogram');
         $mform->setType('beforeprogram', PARAM_RAW);
-        $mform->addElement('select', 'typeofstudent', get_string('studenttype', 'local_admission'), $typeofstudent);
-        $mform->addHelpButton('typeofstudent', 'typeofstudent', 'local_admission');
-        $mform->addRule('typeofstudent', get_string('required'), 'required', null, 'client');
+          
+        $mform->addElement('hidden', 'typeofstudent', '0'); //added by anil
+        //$mform->addElement('select', 'typeofstudent', get_string('studenttype', 'local_admission'), $typeofstudent); //commented by anil
+        //$mform->addHelpButton('typeofstudent', 'typeofstudent', 'local_admission');  //commented by anil
+        //$mform->addRule('typeofstudent', get_string('required'), 'required', null, 'client');  //commented by anil
+        $mform->setType('typeofstudent', PARAM_RAW);
+        
+       
         $mform->addElement('hidden', 'beforestudent');
         $mform->setType('beforestudent', PARAM_RAW);
+         
+        
         //Name details
         $mform->addElement('header', 'moodle', get_string('nameheading', 'local_admission'));
         $mform->addElement('text', 'firstname', get_string('firstname', 'local_admission'));
         $mform->addRule('firstname', get_string('firstname_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('firstname', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
         $mform->setType('firstname', PARAM_RAW);
         $mform->addElement('text', 'middlename', get_string('middlename', 'local_admission'));
+        $mform->addRule('middlename', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
         $mform->setType('middlename', PARAM_RAW);
         $mform->addElement('text', 'lastname', get_string('lastname', 'local_admission'));
         $mform->addRule('lastname', get_string('lastname_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('lastname', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
         $mform->setType('lastname', PARAM_RAW);
         //Gender details
         $mform->addElement('header', 'moodle', get_string('genderheading', 'local_admission'));
@@ -824,113 +837,195 @@ class uploaduser_form extends moodleform {
         //Dob details
         $mform->addElement('header', 'moodle', get_string('dobheading', 'local_admission'));
         $mform->addElement('date_selector', 'dob', get_string('dob', 'local_admission'));
+        $mform->addRule('dob', get_string('dob_error', 'local_admission'), 'required', null, 'client'); //added by anil
         $mform->addHelpButton('dob', 'dob', 'local_admission');
         $mform->setType('dob', PARAM_RAW);
-        //Country of Birth
-        $mform->addElement('header', 'moodle', get_string('countryheading', 'local_admission'));
+        
+       
+        
+        ////Country of Birth
+        //$mform->addElement('header', 'moodle', get_string('countryheading', 'local_admission'));  //commented by anil
         $country = get_string_manager()->get_list_of_countries();
         $default_country[''] = get_string('selectacountry');
         $country = array_merge($default_country, $country);
-        $mform->addElement('select', 'birthcountry', get_string('country'), $country);
-        $mform->addRule('birthcountry', get_string('missingcountry'), 'required', null, 'server');
+        $mform->addElement('hidden', 'birthcountry', 'empty');  // added by anil
+        //$mform->addElement('select', 'birthcountry', get_string('country'), $country);  //commented by anil
+        //$mform->addRule('birthcountry', get_string('missingcountry'), 'required', null, 'server');  //commented by anil
+        $mform->setType('birthcountry', PARAM_RAW);
+        
+       
+        
         //Place of birth
-        $mform->addElement('header', 'moodle', get_string('placeheading', 'local_admission'));
-        $mform->addElement('textarea', 'birthplace', get_string('placecountrys', 'local_admission'), ' rows="3" cols="23"');
-        $mform->addRule('birthplace', get_string('birthplace_error', 'local_admission'), 'required', null, 'client');
+        //$mform->addElement('header', 'moodle', get_string('placeheading', 'local_admission')); //commented by anil
+        $mform->addElement('hidden', 'birthplace','empty'); // added by anil
+        //$mform->addElement('textarea', 'birthplace', get_string('placecountrys', 'local_admission'), ' rows="3" cols="23"'); //commneted by anil
+        //$mform->addRule('birthplace', get_string('birthplace_error', 'local_admission'), 'required', null, 'client');  //commented by anil
         $mform->setType('birthplace', PARAM_RAW);
-        //Current address
-        $mform->addElement('header', 'moodle', get_string('addressheading', 'local_admission'));
-        $mform->addElement('text', 'fathername', get_string('fathername', 'local_admission'));
-        $mform->addRule('fathername', get_string('fathername_error', 'local_admission'), 'required', null, 'client');
-        $mform->setType('fathername', PARAM_RAW);
+         
+        //---------------code commented by anil-started here--------------//
+        ////Current address
+        //$mform->addElement('header', 'moodle', get_string('addressheading', 'local_admission'));
+        
+        //$mform->addElement('text', 'fathername', get_string('fathername', 'local_admission'));
+        //$mform->addRule('fathername', get_string('fathername_error', 'local_admission'), 'required', null, 'client');
+        //$mform->setType('fathername', PARAM_RAW);
         $mform->addElement('text', 'pob', get_string('pob', 'local_admission'));
-        $mform->addRule('pob', get_string('pob_error', 'local_admission'), 'required', null, 'client');
+        //commented by anil
+        //$mform->addRule('pob', get_string('pob_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('pob', get_string('numeric', 'local_admission'), 'numeric', null, 'client'); //code added by anil        
         $mform->setType('pob', PARAM_RAW);
-		
-        $mform->addElement('text', 'region', get_string('region', 'local_admission'));
-        $mform->addRule('region', get_string('region_error', 'local_admission'), 'required', null, 'client');
+        
+         //---------------code commented by anil-ended here--------------//
+        
+		$mform->addElement('hidden', 'region', 'empty');  // added by anil
+        //$mform->addElement('text', 'region', get_string('region', 'local_admission'));  // commented by anil
+        //$mform->addRule('region', get_string('region_error', 'local_admission'), 'required', null, 'client');  //commented by anil
         $mform->setType('region', PARAM_RAW);
 		
         $mform->addElement('text', 'town', get_string('town', 'local_admission'));
         $mform->addRule('town', get_string('town_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('town', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
         $mform->setType('town', PARAM_RAW);
 		
-        $mform->addElement('text', 'currenthno', get_string('hno', 'local_admission'));
-        $mform->addRule('currenthno', get_string('currenthno_error', 'local_admission'), 'required', null, 'client');
+        
+        $mform->addElement('hidden', 'currenthno', '000');  // added by anil
+        //$mform->addElement('text', 'currenthno', get_string('hno', 'local_admission')); // commented by anil
+        //$mform->addRule('currenthno', get_string('currenthno_error', 'local_admission'), 'required', null, 'client');  //commented by anil
         $mform->setType('currenthno', PARAM_RAW);
-		
+        
         $mform->addElement('select', 'currentcountry', get_string('country'), $country);
         $mform->addRule('currentcountry', get_string('country_error', 'local_admission'), 'required', null, 'server');
-		
+        
+        
         //personal details
         $mform->addElement('header', 'moodle', get_string('personalinfo', 'local_admission'));
+        
+         //---------------code added by anil-started here--------------//
+         
+        $mform->addElement('text', 'caste', get_string('caste', 'local_admission'));
+        $mform->addRule('caste', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
+        $mform->setType('caste', PARAM_RAW);
+        
+        $mform->addElement('text', 'category', get_string('category', 'local_admission'));
+        $mform->addRule('category', get_string('category_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('category', get_string('category_error_info','local_admission'),'regex','/^[a-zA-Z -]+$/','client'); // added by anil
+        $mform->setType('category', PARAM_RAW);
+        
+         //---------------code added by anil-ended here--------------//
+        
+        $mform->addElement('text', 'fathername', get_string('fathername', 'local_admission'));
+        $mform->addRule('fathername', get_string('fathername_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('fathername', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
+        $mform->setType('fathername', PARAM_RAW);
+        
+         //---------------code added by anil-started here--------------//
+        $mform->addElement('text', 'mothername', get_string('mothername', 'local_admission'));
+        $mform->addRule('mothername', get_string('lettersonly','local_admission'),'regex','/^[a-zA-Z ]+$/','client'); // added by anil
+        $mform->setType('mothername', PARAM_RAW);
+        //---------------code added by anil-ended here--------------//
+        
         $mform->addElement('text', 'phone', get_string('phone', 'local_admission'));
         $mform->addRule('phone', get_string('phone_error', 'local_admission'), 'required', null, 'client');
         $mform->addRule('phone', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
         $mform->addRule('phone', get_string('phoneminimum', 'local_admission'), 'minlength', 10, 'client');
         $mform->addRule('phone', get_string('phonemaximum', 'local_admission'), 'maxlength', 15, 'client');
         $mform->setType('phone', PARAM_RAW);
+        
+        //---------------code added by anil-started here--------------//
+        $mform->addElement('text', 'otherphone', get_string('otherphone', 'local_admission'));
+        //$mform->addRule('phone', get_string('phone_error', 'local_admission'), 'required', null, 'client');
+        $mform->addRule('otherphone', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
+        $mform->addRule('otherphone', get_string('phoneminimum', 'local_admission'), 'minlength', 10, 'client');
+        $mform->addRule('otherphone', get_string('phonemaximum', 'local_admission'), 'maxlength', 15, 'client');
+        $mform->setType('otherphone', PARAM_RAW);
+          //---------------code added by anil-ended here--------------//
 		
         $mform->addElement('text', 'email', get_string('email', 'local_admission'));
         $mform->addRule('email', get_string('email_error', 'local_admission'), 'required', null, 'client');
         $mform->addRule('email', get_string('emailerror', 'local_admission'), 'email', null, 'client');
         $mform->setType('email', PARAM_RAW);
-		
-        $mform->addElement('text', 'howlong', get_string('howlong', 'local_admission'));
-        $mform->addRule('howlong', get_string('howlong_error', 'local_admission'), 'required', null, 'client');
-        $mform->addRule('howlong', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
-        $mform->addRule('howlong', get_string('howlongmaximum', 'local_admission'), 'maxlength', 2, 'client');
+        
+           //---------------code added by anil-started here--------------//
+        $mform->addElement('text', 'fatheremail', get_string('fatheremail', 'local_admission'));
+        $mform->addRule('fatheremail', get_string('emailerror', 'local_admission'), 'email', null, 'client');
+        $mform->setType('fatheremail', PARAM_RAW);
+        
+       
+        $mform->addElement('textarea', 'address', get_string('address', 'local_admission'));
+        $mform->addRule('address', 'required', 'required', null, 'client');
+        $mform->setType('address', PARAM_RAW);
+		 //---------------code added by anil-ended here--------------//
+         
+        $mform->addElement('hidden', 'howlong','0');   //added by anil
+        //$mform->addElement('text', 'howlong', get_string('howlong', 'local_admission')); //commented by anil
+        //$mform->addRule('howlong', get_string('howlong_error', 'local_admission'), 'required', null, 'client');   //commented by anil
+        //$mform->addRule('howlong', get_string('numeric', 'local_admission'), 'numeric', null, 'client');  //commented by anil
+        //$mform->addRule('howlong', get_string('howlongmaximum', 'local_admission'), 'maxlength', 2, 'client');  //commented by anil
         $mform->setType('howlong', PARAM_INT);
 		
+        
         $same = array('Select', 'Yes', 'No');
-        $mform->addElement('select', 'same', get_string('same', 'local_admission'), $same);
-        $mform->addRule('same', get_string('same_error', 'local_admission'), 'required', null, 'client');
-		
-        //permanent details
+        $mform->addElement('hidden', 'same', '1');
+        //$mform->addElement('select', 'same', get_string('same', 'local_admission'), $same);  //commented by anil
+        //$mform->addRule('same', get_string('same_error', 'local_admission'), 'required', null, 'client');  //commented by anil
+        $mform->setType('same', PARAM_RAW);
+           
+        ////permanent details
         $mform->addElement('hidden', 'beforeaddress');
         $mform->setType('beforeaddress', PARAM_RAW);
         $mform->registerNoSubmitButton('updatecourseformat');
         $mform->addElement('submit', 'updatecourseformat', get_string('courseformatudpate'));
-		
-        $mform->addElement('header', 'moodle', get_string('primaryschool', 'local_admission'));
-        $mform->addElement('text', 'primaryschoolname', get_string('primaryschoolname', 'local_admission'));
-        $mform->addRule('primaryschoolname', get_string('psname_error', 'local_admission'), 'required', null, 'client');
-        $mform->setType('primaryschoolname', PARAM_RAW);
-		
-        $mform->addElement('text', 'primaryyear', get_string('primaryyear', 'local_admission'));
-        $mform->addRule('primaryyear', get_string('py_error', 'local_admission'), 'required', null, 'client');
-        $mform->addRule('primaryyear', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
-        $mform->addRule('primaryyear', get_string('minimum', 'local_admission'), 'minlength', 4, 'client');
-        $mform->addRule('primaryyear', get_string('maximum', 'local_admission'), 'maxlength', 4, 'client');
-        $mform->setType('primaryyear', PARAM_INT);
-		
-        $mform->addElement('text', 'primaryscore', get_string('primaryscore', 'local_admission'));
-        $mform->addHelpButton('primaryscore', 'primaryscore', 'local_admission');
-        $mform->addRule('primaryscore', get_string('ps_error', 'local_admission'), 'required', null, 'client');
+        
+          //---------------code commented by anil-started here--------------//
+        
+        //$mform->addElement('header', 'moodle', get_string('primaryschool', 'local_admission'));
+        $mform->addElement('hidden', 'primaryschoolname','empty');  //added by anil
+        //$mform->addElement('text', 'primaryschoolname', get_string('primaryschoolname', 'local_admission'));
+        //$mform->addRule('primaryschoolname', get_string('psname_error', 'local_admission'), 'required', null, 'client');
+        $mform->setType('primaryschoolname', PARAM_RAW);   
+        
+        $mform->addElement('hidden', 'primaryyear','0000');  //added by anil
+        //$mform->addElement('text', 'primaryyear', get_string('primaryyear', 'local_admission')); //commented by anil
+        //$mform->addRule('primaryyear', get_string('py_error', 'local_admission'), 'required', null, 'client');
+        //$mform->addRule('primaryyear', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
+        //$mform->addRule('primaryyear', get_string('minimum', 'local_admission'), 'minlength', 4, 'client'); //commented by anil
+        //$mform->addRule('primaryyear', get_string('maximum', 'local_admission'), 'maxlength', 4, 'client'); //commented by anil
+        $mform->setType('primaryyear', PARAM_INT);   //added by anil
+        
+        $mform->addElement('hidden', 'primaryscore','0'); //added by anil
+        //$mform->addElement('text', 'primaryscore', get_string('primaryscore', 'local_admission')); //commented by anil
+        //$mform->addHelpButton('primaryscore', 'primaryscore', 'local_admission');
+        //$mform->addRule('primaryscore', get_string('ps_error', 'local_admission'), 'required', null, 'client');
         //$mform->addRule('primaryscore', get_string('numeric','local_admission'), 'numeric', null,'client');
-        $mform->addRule('primaryscore', get_string('positivenumeric', 'local_admission'), 'regex', '/^[0-9]\d*$/', 'client');
+        //$mform->addRule('primaryscore', get_string('positivenumeric', 'local_admission'), 'regex', '/^[0-9]\d*$/', 'client'); 
         $mform->setType('primaryscore', PARAM_RAW);
-		
-        $mform->addElement('text', 'primaryplace', get_string('pnc', 'local_admission'));
-        $mform->addRule('primaryplace', get_string('pp_error', 'local_admission'), 'required', null, 'client');
+        
+        $mform->addElement('hidden', 'primaryplace','empty');   //added by anil
+        //$mform->addElement('text', 'primaryplace', get_string('pnc', 'local_admission'));
+        //$mform->addRule('primaryplace', get_string('pp_error', 'local_admission'), 'required', null, 'client');
         $mform->setType('primaryplace', PARAM_RAW);
-		
-        $mform->addElement('hidden', 'uploadfiles');
-        $mform->setType('uploadfiles', PARAM_RAW);
-		
-        $mform->addElement('header', 'moodle', get_string('fileheading', 'local_admission'));
-		
-        $help = $OUTPUT->help_icon('uploadfile', 'local_admission', get_string('file', 'local_admission'));
-        //@ $mform->addElement('file', 'uploadfile', get_string('uploadfile', 'local_admission') . $help);
-        //$mform->setType('uploadfile', PARAM_RAW);
-        //$mform->setType('MAX_FILE_SIZE', PARAM_RAW);
-        //$mform->addRule('uploadfile', get_string('file_error', 'local_admission'), 'required', null, 'client');
-                 $filemanageroptions=   array(
-             'maxfiles' =>2,        
-            'subdirs' => 0,
-            'accepted_types' => '*'
-        );
-        $mform->addElement('filemanager', 'uploadfile', get_string('uploadfile', 'local_admission'), null,   $filemanageroptions);
+        
+        
+         //---------------code commented by anil-started here--------------//
+        
+        //$mform->addElement('hidden', 'uploadfiles');
+        //$mform->setType('uploadfiles', PARAM_RAW);
+             
+        //$mform->addElement('header', 'moodle', get_string('fileheading', 'local_admission'));
+        //
+        //$help = $OUTPUT->help_icon('uploadfile', 'local_admission', get_string('file', 'local_admission'));
+        ////@ $mform->addElement('file', 'uploadfile', get_string('uploadfile', 'local_admission') . $help);
+        ////$mform->setType('uploadfile', PARAM_RAW);
+        ////$mform->setType('MAX_FILE_SIZE', PARAM_RAW);
+        ////$mform->addRule('uploadfile', get_string('file_error', 'local_admission'), 'required', null, 'client');
+        //         $filemanageroptions=   array(
+        //     'maxfiles' =>2,        
+        //    'subdirs' => 0,
+        //    'accepted_types' => '*'
+        //);
+        //$mform->addElement('filemanager', 'uploadfile', get_string('uploadfile', 'local_admission'), null,   $filemanageroptions);
+        
+        //---------------code commented by anil-ended here--------------//
 		
         $value = 1;
         $mform->addElement('hidden', 'typeofapplication', $value);
@@ -939,51 +1034,56 @@ class uploaduser_form extends moodleform {
         $mform->setType('dateofapplication', PARAM_INT);
         $mform->addElement('hidden', 'previousstudent', $value);
         $mform->setType('previousstudent', PARAM_RAW);
+        
+        
         $this->add_action_buttons('false', 'Submit');
     }
-
     function definition_after_data() {
         global $DB, $CFG;
         $mform = $this->_form;
-        $student = $mform->getElementValue('typeofstudent');
-        if (isset($student) && !empty($student) && $student[0] > 0) {
-            if ($student[0] == 2) {
-                $score = $mform->createElement('text', 'score', get_string('score', 'local_admission'));
-                $mform->insertElementBefore($score, 'beforestudent');
-                $mform->addRule('score', get_string('required'), 'required', null, 'client');
-                $mform->addRule('score', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
-                $mform->setType('score', PARAM_RAW);
-                $halltkt = $mform->createElement('text', 'hallticketno', get_string('hallticketno', 'local_admission'));
-                $mform->insertElementBefore($halltkt, 'score');
-                $mform->addRule('hallticketno', get_string('required'), 'required', null, 'client');
-                $mform->addRule('hallticketno', get_string('alphanumeric', 'local_admission'), 'alphanumeric', null, 'client');
-                $mform->setType('hallticketno', PARAM_RAW);
-                $exam = $mform->createElement('text', 'examname', get_string('examname', 'local_admission'));
-                $mform->insertElementBefore($exam, 'hallticketno');
-                $mform->addRule('examname', get_string('required'), 'required', null, 'client');
-                $mform->setType('examname', PARAM_RAW);
-                $sh = $mform->createElement('header', 'moodle', get_string('entrance', 'local_admission'));
-                $mform->insertElementBefore($sh, 'examname');
-            }
-            if ($student[0] == 3) {
-                $desc = $mform->createElement('textarea', 'description', get_string('description', 'local_admission'), ' rows="3" cols="23"');
-                $mform->insertElementBefore($desc, 'beforestudent');
-                $mform->addRule('description', get_string('required'), 'required', null, 'client');
-                $mform->setType('description', PARAM_RAW);
-                $reason = $mform->createElement('text', 'reason', get_string('reason', 'local_admission'));
-                $mform->insertElementBefore($reason, 'description');
-                $mform->addRule('reason', get_string('required'), 'required', null, 'client');
-                $mform->setType('reason', PARAM_RAW);
-                $noofm = $mform->createElement('text', 'noofmonths', get_string('noofyears', 'local_admission'));
-                $mform->insertElementBefore($noofm, 'reason');
-                $mform->addRule('noofmonths', get_string('required'), 'required', null, 'client');
-                $mform->addRule('noofmonths', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
-                $mform->addRule('noofmonths', get_string('howlongmaximum', 'local_admission'), 'maxlength', 2, 'client');
-                $mform->setType('noofmonths', PARAM_INT);
-                $gh = $mform->createElement('header', 'moodle', get_string('details', 'local_admission'));
-                $mform->insertElementBefore($gh, 'noofmonths');
-            }
-        }
+        //---------------code commented by anil-started here--------------//
+
+        //$student = $mform->getElementValue('typeofstudent');
+        //if (isset($student) && !empty($student) && $student[0] > 0) {
+        //    if ($student[0] == 2) {
+        //        $score = $mform->createElement('text', 'score', get_string('score', 'local_admission'));
+        //        $mform->insertElementBefore($score, 'beforestudent');
+        //        $mform->addRule('score', get_string('required'), 'required', null, 'client');
+        //        $mform->addRule('score', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
+        //        $mform->setType('score', PARAM_RAW);
+        //        $halltkt = $mform->createElement('text', 'hallticketno', get_string('hallticketno', 'local_admission'));
+        //        $mform->insertElementBefore($halltkt, 'score');
+        //        $mform->addRule('hallticketno', get_string('required'), 'required', null, 'client');
+        //        $mform->addRule('hallticketno', get_string('alphanumeric', 'local_admission'), 'alphanumeric', null, 'client');
+        //        $mform->setType('hallticketno', PARAM_RAW);
+        //        $exam = $mform->createElement('text', 'examname', get_string('examname', 'local_admission'));
+        //        $mform->insertElementBefore($exam, 'hallticketno');
+        //        $mform->addRule('examname', get_string('required'), 'required', null, 'client');
+        //        $mform->setType('examname', PARAM_RAW);
+        //        $sh = $mform->createElement('header', 'moodle', get_string('entrance', 'local_admission'));
+        //        $mform->insertElementBefore($sh, 'examname');
+        //    }
+        //    if ($student[0] == 3) {
+        //        $desc = $mform->createElement('textarea', 'description', get_string('description', 'local_admission'), ' rows="3" cols="23"');
+        //        $mform->insertElementBefore($desc, 'beforestudent');
+        //        $mform->addRule('description', get_string('required'), 'required', null, 'client');
+        //        $mform->setType('description', PARAM_RAW);
+        //        $reason = $mform->createElement('text', 'reason', get_string('reason', 'local_admission'));
+        //        $mform->insertElementBefore($reason, 'description');
+        //        $mform->addRule('reason', get_string('required'), 'required', null, 'client');
+        //        $mform->setType('reason', PARAM_RAW);
+        //        $noofm = $mform->createElement('text', 'noofmonths', get_string('noofyears', 'local_admission'));
+        //        $mform->insertElementBefore($noofm, 'reason');
+        //        $mform->addRule('noofmonths', get_string('required'), 'required', null, 'client');
+        //        $mform->addRule('noofmonths', get_string('numeric', 'local_admission'), 'numeric', null, 'client');
+        //        $mform->addRule('noofmonths', get_string('howlongmaximum', 'local_admission'), 'maxlength', 2, 'client');
+        //        $mform->setType('noofmonths', PARAM_INT);
+        //        $gh = $mform->createElement('header', 'moodle', get_string('details', 'local_admission'));
+        //        $mform->insertElementBefore($gh, 'noofmonths');
+        //    }
+        //}
+        //---------------code commented by anil-ended here--------------//
+
         $tid = $mform->getElementValue('typeofprogram');
         if (isset($tid) && !empty($tid) && $tid[0] > 0) {
             $program = get_school_program($tid[0]);
@@ -1061,7 +1161,6 @@ class uploaduser_form extends moodleform {
             $mform->insertElementBefore($six, 'contactname');
         }
     }
-
     public function validation($data, $files) {
         $errors = array();
         global $COURSE, $DB, $CFG;
@@ -1072,18 +1171,21 @@ class uploaduser_form extends moodleform {
         if ($dob_array[0] > $currentyear) {
             $errors['dob'] = 'Enter Valid Date of Birth';
         }
-        if ($dob_array[0] >= $data['primaryyear']) {
-            $errors['dob'] = get_string('doberror', 'local_admission');
-        }
-        if ($years < $data['howlong']) {
-            $errors['howlong'] = 'Enter Valid Years';
-        }
-        if ($data['primaryyear'] > $currentyear) {
-            $errors['primaryyear'] = 'Primary year cannot be greater than current year';
-        }
-        if ($data['primaryyear'] < $dob_array[0]) {
-            $errors['primaryyear'] = 'Primary year cannot be less than Date of birth';
-        }
+        //************* code commented by anil-started here*************//
+        //if ($dob_array[0] >= $data['primaryyear']) {
+        //    $errors['dob'] = get_string('doberror', 'local_admission');
+        //}
+        
+        //if ($years < $data['howlong']) {
+        //    $errors['howlong'] = 'Enter Valid Years';
+        //}
+        //if ($data['primaryyear'] > $currentyear) {
+        //    $errors['primaryyear'] = 'Primary year cannot be greater than current year';
+        //}
+        //if ($data['primaryyear'] < $dob_array[0]) {
+        //    $errors['primaryyear'] = 'Primary year cannot be less than Date of birth';
+        //}
+        //************* code commented by anil-ended here*************//
 
         if (isset($data['ugyear']) && ($data['ugyear'] > $currentyear)) {
             $errors['ugyear'] = 'Undergraduateyear Should Not Greaterthan Currentyear';
@@ -1138,9 +1240,9 @@ class uploaduser_form extends moodleform {
 		if (!empty($result)) 
 		$errors['pob']='Special characters other than - / : are not allowed';
 		
-		$result = preg_replace("/[\/\-:sA-Za-z0-9 ]/", "", $data['pincode']);
-		if (!empty($result)) 
-		$errors['pincode']='Special characters other than - / : are not allowed';
+		//$result = preg_replace("/[\/\-:sA-Za-z0-9 ]/", "", $data['pincode']);
+		//if (!empty($result)) 
+		//$errors['pincode']='Special characters other than - / : are not allowed';
 		
         if ($data['typeofprogram'] == 0) {
             $errors['typeofprogram'] = 'Select Program Type';
@@ -1148,17 +1250,15 @@ class uploaduser_form extends moodleform {
         if ($data['programid'] == 0) {
             $errors['programid'] = get_string('missingprogram', 'local_programs');
         }
-        if ($data['typeofstudent'] == 0) {
-            $errors['typeofstudent'] = 'Select Student Type';
-        }
-        if ($data['curriculumid'] == 0) {
-            $errors['curriculumid'] = get_string('missingcurriculumname', 'local_curriculum');
-        }
+        //if ($data['typeofstudent'] == 0) {
+        //    $errors['typeofstudent'] = 'Select Student Type';
+        //}
+        //if ($data['curriculumid'] == 0) {
+        //    $errors['curriculumid'] = get_string('missingcurriculumname', 'local_curriculum');
+        //}
         return $errors;
     }
-
 }
-
 class newapplicant_form extends moodleform {
 
     public function definition() {

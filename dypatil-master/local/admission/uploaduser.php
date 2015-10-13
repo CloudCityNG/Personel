@@ -1,5 +1,4 @@
 <?php
-
 require_once(dirname(__FILE__) . '/../../config.php');
 global $CFG, $DB, $PAGE, $USER, $OUTPUT;
 require_once($CFG->dirroot . '/local/admission/lib.php');
@@ -32,13 +31,13 @@ if (isset($CFG->allowframembedding) and !$CFG->allowframembedding) {
 }
 $mform = new uploaduser_form();
 $data = $mform->get_data();
+//print_object($data); 
 $mform->display();
 if ($data) {
-
     if ($data->same == 1) {
         $data->pcountry = $data->currentcountry;
-        $data->permanenthno = $data->currenthno;
-        $data->state = $data->region;
+        $data->permanenthno = $data->currenthno;  
+        $data->state = $data->region;   
         $data->city = $data->town;
         $data->pincode = $data->pob;
         $data->contactname = $data->fathername;
@@ -51,10 +50,12 @@ if ($data) {
     $random = random_string(5);
     $update->applicationid = $program . $applicant . $random;
     $applicationid = $DB->update_record('local_admission', $update);
-    @ mkdir("uploads/$applicant");
-    $target_path = "uploads/$applicant/";
-    @ $target_path = $target_path . basename($_FILES['uploadfile']['name']);
-    @ $l = move_uploaded_file($_FILES['uploadfile']['tmp_name'], $target_path);
+    //***************comment added by anil-start here***************//
+        //@ mkdir("uploads/$applicant");
+        //$target_path = "uploads/$applicant/";
+        //@ $target_path = $target_path . basename($_FILES['uploadfile']['name']);
+        //@ $l = move_uploaded_file($_FILES['uploadfile']['tmp_name'], $target_path);
+    //***************comment added by anil-ended here***************//
     $username = generateusername($applicant);
     $password = generatePassword();
     $service = $admission->cobalt_admission_info($applicant, $data->curriculumid, $username, $password);

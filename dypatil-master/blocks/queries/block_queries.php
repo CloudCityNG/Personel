@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die();
         
         //calling function to get student data
         $studentlogin = block_queries_getrole_user($courses,'student');
-      
+        
         /************calling function for getting data to the logged in user*************/
         $this->content->text = block_queries_display_view($USER,$instructorlogin,$registrarlogin,$studentlogin);
   

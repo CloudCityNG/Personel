@@ -50,7 +50,7 @@
 		<FIELD NAME="description" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="reason" NEXT="schoolid"/>
 		<FIELD NAME="schoolid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="description" NEXT="programid"/>
         <FIELD NAME="programid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="schoolid" NEXT="typeofprogram"/>
-		 <FIELD NAME="typeofprogram" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="programid" NEXT="typeofapplication"/>
+		<FIELD NAME="typeofprogram" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="programid" NEXT="typeofapplication"/>
         <FIELD NAME="typeofapplication" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofprogram" NEXT="typeofstudent"/>
 		<FIELD NAME="typeofstudent" TYPE="char" LENGTH="25" NOTNULL="false" SEQUENCE="false" PREVIOUS="typeofapplication" NEXT="dateofapplication"/>
 		<FIELD NAME="dateofapplication" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false" PREVIOUS="typeofstudent" NEXT="applicationid"/>
@@ -65,14 +65,12 @@
         <FIELD NAME="previousstudent" TYPE="int" LENGTH="20" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="graduateplace" NEXT="uploadfile"/>
 	<FIELD NAME="uploadfile" TYPE="int" LENGTH="20" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="previousstudent" NEXT="address" />
 	<FIELD NAME="address" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="uploadfile" NEXT= "otherphone"/>
-	<FIELD NAME="otherphone" TYPE="char" LENGTH="150" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="address" NEXT="fatheremail"/>
-	<FIELD NAME="fatheremail" TYPE="char" LENGTH="100" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="otherphone"  NEXT="category"/>
-	<FIELD NAME="category" TYPE="char" LENGTH="50" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="fatheremail" NEXT="caste" />
-	<FIELD NAME="caste" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="category" NEXT="mothername" />
-	<FIELD NAME="mothername" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="caste" />
-	
-		 <!--<FIELD NAME="fundsbygovt" TYPE="int" LENGTH="2" DEFAULT="0" NOTNULL="false" SEQUENCE="false" PREVIOUS="previousstudent"/>-->
-        </FIELDS>
+	<FIELD NAME="caste" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="address" NEXT="category" />
+	<FIELD NAME="category" TYPE="char" LENGTH="50" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="caste" NEXT="otherphone" />
+	<FIELD NAME="otherphone" TYPE="char" LENGTH="150" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="category" NEXT="fatheremail"/>
+	<FIELD NAME="fatheremail" TYPE="char" LENGTH="100" DEFAULT="0" NOTNULL="true" SEQUENCE="false" PREVIOUS="otherphone"  NEXT="mothername"/>
+	<FIELD NAME="mothername" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="fatheremail"/>
+     </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>

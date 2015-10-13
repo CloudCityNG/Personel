@@ -2,7 +2,7 @@
 //function to get data if loggedin user is registrar
 function block_queries_getrole_user($courses, $rolename){
      global $CFG, $USER, $PAGE, $DB;
-      /************Query to get data if loggedin user is registrar*************/
+      /************Query to get data to display content in block*************/
       $registrarlogin = array();
       foreach($courses as $course) {
         $sql="SELECT u.id, u.email, u.firstname, u.lastname
@@ -32,33 +32,32 @@ function block_queries_display_view($USER,$instructorlogin,$registrarlogin,$stud
           $blockqueries_returncontent = implode('',$blockqueries_returncontent);
      }
      elseif(!empty($instructorlogin) ){
-          $sql .=" AND userrole = 'instructor' ORDER BY id DESC LIMIT 3";
-          $blockqueries_returncontent[]=blockqueries_tablecontent($sql);
-          $blockqueries_returncontent = implode('',$blockqueries_returncontent);
+        $sql .=" AND userrole = 'instructor' ORDER BY id DESC LIMIT 3";
+        $blockqueries_returncontent[]=blockqueries_tablecontent($sql);
+        $blockqueries_returncontent = implode('',$blockqueries_returncontent);
      }
      elseif(!empty($registrarlogin)){
-          $sql .=" AND userrole = 'registrar' ORDER BY id DESC LIMIT 3";
-          $blockqueries_returncontent[]=blockqueries_tablecontent($sql);
-          $blockqueries_returncontent = implode('',$blockqueries_returncontent);
+        $sql .=" AND userrole = 'registrar' ORDER BY id DESC LIMIT 3";
+        $blockqueries_returncontent[]=blockqueries_tablecontent($sql);
+        $blockqueries_returncontent = implode('',$blockqueries_returncontent);
      }
      elseif(!empty($studentlogin)){
-          $formdata = new stdClass();
-          $actionpage = $CFG->wwwroot.'/blocks/queries/sendingemail.php';
-          $mform= new block_queries_form($actionpage);
-          $blockqueries_returncontent[] = $mform->render();  //to display form in block
-          $blockqueries_returncontent = implode('',$blockqueries_returncontent);
-     }
+        $formdata = new stdClass();
+        $actionpage = $CFG->wwwroot.'/blocks/queries/sendingemail.php';
+        $mform= new block_queries_form($actionpage);
+        $blockqueries_returncontent[] = $mform->render();  //to display form in block
+        $blockqueries_returncontent = implode('',$blockqueries_returncontent);
+   }
      else {
           $blockqueries_returncontent[] = html_writer:: tag('p',get_string('noprevioussubjects','block_queries'),array());  
      }
      return $blockqueries_returncontent;
 } // end of function 
 
-function   blockqueries_tablecontent($sql){
+function blockqueries_tablecontent($sql){
      global $CFG, $USER, $PAGE, $DB;
      $blockqueries_displaycontent = array();
-          $querieslists=$DB->get_records_sql($sql);
-          
+          $querieslists=$DB->get_records_sql($sql); 
           $data = array();
             foreach($querieslists as $querieslist){
               $row = array();

@@ -19,7 +19,7 @@
   });
     </script>";
     
-  $popup .= "<div id='basicModal$loginuserid' class='queriespopup' style='display:none;'><div class='error_box$loginuserid'></div>";
+  $popup .= "<div id='basicModal$loginuserid' style='display:none;'><div class='error_box$loginuserid'></div>";
   $actionpage = $CFG->wwwroot.'/blocks/queries/comment_emailtostudent.php';
   $popup .= '<form name="myForm'.$loginuserid.'" method="post" action="'.$actionpage.'">';
   $popup .= "<div>";
