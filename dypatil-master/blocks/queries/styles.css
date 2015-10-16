@@ -193,7 +193,9 @@
 #page-blocks-queries-display_queries .subjectclass {
    margin-left: 5%; 
 }
-
+#page-my-index .block_queries .mform span.error {
+    margin-top: 5px;
+}
 
 
 

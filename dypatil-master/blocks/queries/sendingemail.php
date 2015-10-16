@@ -19,7 +19,6 @@ echo $OUTPUT->header();
       $toinsertrecord->postedby = $USER->id;
       $toinsertrecord->status = 0;
       $toinsertrecord->timecreated = time();
-      //print_object($toinsertrecord);
       $DB->insert_record('block_queries',$toinsertrecord);
       //send email code
       //$sendingdata = $DB->get_record_sql("SELECT * FROM {block_queries} WHERE id = $useridandtype[0]");

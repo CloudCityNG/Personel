@@ -1,5 +1,5 @@
 <?php
-//function to get data if loggedin user is registrar
+//function display content in block for instructor, registrar and student
 function block_queries_getrole_user($courses, $rolename){
      global $CFG, $USER, $PAGE, $DB;
       /************Query to get data to display content in block*************/
@@ -19,7 +19,7 @@ function block_queries_getrole_user($courses, $rolename){
         }
       }
     return $registrarlogin;
-}//end of function to get data if loggedin user is registrar
+}//end of function 
 
 //function to diplay the data according to the user role 
 function block_queries_display_view($USER,$instructorlogin,$registrarlogin,$studentlogin){

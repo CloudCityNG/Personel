@@ -29,6 +29,7 @@ $string['backtohome'] = 'Back to home';
 $string['mypreviewqueries'] = 'My Queries';
 $string['viewcomment'] = 'View';
 $string['postedto'] = 'posted to';
+$string['select'] = '--Select--';
 $string['emailtext'] = 'Hi {$a->fullname}, <br><br>
                         {a->description}';
 $string['emailhtmlbody'] = '<div style="margin:auto;">

@@ -25,7 +25,9 @@ class block_queries_form extends moodleform {
                     ON cxt.id = ra.contextid 
                     JOIN {user} AS u
                     ON ra.userid = u.id
-                    WHERE cxt.instanceid = $course->id AND ra.roleid = 10 AND cxt.contextlevel = 50";
+                    JOIN {role} AS r
+                    ON ra.roleid = r.id
+                    WHERE cxt.instanceid = $course->id AND r.shortname = 'instructor' AND cxt.contextlevel = 50";
                $instructors =  $DB->get_records_sql($sql);
                if($instructors) {
                     foreach($instructors as $instructor){
@@ -43,7 +45,9 @@ class block_queries_form extends moodleform {
                     ON cxt.id = ra.contextid 
                     JOIN {user} AS u
                     ON ra.userid = u.id
-                    WHERE cxt.instanceid = $course->id AND ra.roleid = 9 AND cxt.contextlevel = 50";
+                    JOIN {role} AS r
+                    ON ra.roleid = r.id
+                    WHERE cxt.instanceid = $course->id AND r.shortname = 'registrar' AND cxt.contextlevel = 50";
                $registrars =  $DB->get_records_sql($sql);
                if($registrars) {
                     foreach($registrars as $registrar){
@@ -52,14 +56,15 @@ class block_queries_form extends moodleform {
                     }
                }
           }
+          $selectarray = array();
+          $selectarray[null] = get_string('select','block_queries');
           $record = $DB->get_record_sql("SELECT * FROM {user} WHERE id = 2");
           $adminoption=array();
           $adminoption[$record->id.',admin'] = $record->firstname;
-          $options = array( get_string('instructor', 'block_queries')=>$instructors12,get_string('registrar', 'block_queries')=>$registraroptions,get_string('admin', 'block_queries')=>$adminoption);
+          $options = array(''=>$selectarray,get_string('instructor', 'block_queries')=>$instructors12,get_string('registrar', 'block_queries')=>$registraroptions,get_string('admin', 'block_queries')=>$adminoption);
           
           $helpbutton = html_writer:: empty_tag('img',array('src'=>$CFG->wwwroot.'/pix/help.png','class'=>'helpbutton','onclick'=>'showmessage();'));
           $mform->addElement('html', html_writer::tag('span',get_string('usertype','block_queries').$helpbutton,array()));
-          
           
           $mform->addElement('html', html_writer::start_tag('div',array('class'=>'moodleform_div')));
           $mform->addElement('selectgroups', 'usertype','', $options,array('class'=>'moodleform_selector'));
