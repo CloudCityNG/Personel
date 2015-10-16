@@ -1,8 +1,7 @@
 <?php
-//function display content in block for instructor, registrar and student
+//function for check the login user instructor or registrar or student
 function block_queries_getrole_user($courses, $rolename){
      global $CFG, $USER, $PAGE, $DB;
-      /************Query to get data to display content in block*************/
       $registrarlogin = array();
       foreach($courses as $course) {
         $sql="SELECT u.id, u.email, u.firstname, u.lastname
@@ -21,7 +20,7 @@ function block_queries_getrole_user($courses, $rolename){
     return $registrarlogin;
 }//end of function 
 
-//function to diplay the data according to the user role 
+//function to diplay the data in block according to the user role 
 function block_queries_display_view($USER,$instructorlogin,$registrarlogin,$studentlogin){
      global $CFG, $USER, $PAGE, $DB;
      $blockqueries_returncontent = array();

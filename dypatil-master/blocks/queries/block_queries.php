@@ -26,13 +26,13 @@ defined('MOODLE_INTERNAL') || die();
         //query to enrol users courses particulars
         $courses = enrol_get_users_courses($USER->id);
       
-        //calling function to get instuctror data
+        //calling function for if login user instructor or not
         $instructorlogin = block_queries_getrole_user($courses,'instructor');
       
-        //calling function to get registrar data
+        //calling function for if login user registrar or not
         $registrarlogin = block_queries_getrole_user($courses,'registrar');
         
-        //calling function to get student data
+        //calling function for if login user student or not
         $studentlogin = block_queries_getrole_user($courses,'student');
         
         /************calling function for getting data to the logged in user*************/
